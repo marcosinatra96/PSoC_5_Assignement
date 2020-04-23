@@ -84,5 +84,9 @@
     #define BYTE_TO_SEND 6 //We know EXACTLY the number of bytes to be sent
     #define TRANSMIT_BUFFER_SIZE 1+ BYTE_TO_SEND +1 //Contains 1 header byte and 1 tail byte
 
+    /**
+    *   \brief conversion factor from raw data (received by the accelerometer) into mg
+    */  
+    #define CONVERSION_FACTOR 1000/256    
 #endif
 /* [] END OF FILE */

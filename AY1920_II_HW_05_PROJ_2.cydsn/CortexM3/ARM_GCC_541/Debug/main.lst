@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 1
 
 
    1              		.syntax unified
@@ -56,86 +56,87 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
   29              		.cfi_startproc
   30              		@ args = 0, pretend = 0, frame = 72
   31              		@ frame_needed = 0, uses_anonymous_args = 0
-  32 0000 10B5     		push	{r4, lr}
-  33              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 2
+  32 0000 30B5     		push	{r4, r5, lr}
+  33              		.cfi_def_cfa_offset 12
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 2
 
 
-  34              		.cfi_offset 4, -8
-  35              		.cfi_offset 14, -4
-  36 0002 92B0     		sub	sp, sp, #72
-  37              		.cfi_def_cfa_offset 80
+  34              		.cfi_offset 4, -12
+  35              		.cfi_offset 5, -8
+  36              		.cfi_offset 14, -4
+  37 0002 93B0     		sub	sp, sp, #76
+  38              		.cfi_def_cfa_offset 88
   25:main.c        ****     CyGlobalIntEnable; /* Enable global interrupts. */
-  38              		.loc 1 25 0
-  39              		.syntax unified
-  40              	@ 25 "main.c" 1
-  41 0004 62B6     		CPSIE   i
-  42              	@ 0 "" 2
+  39              		.loc 1 25 0
+  40              		.syntax unified
+  41              	@ 25 "main.c" 1
+  42 0004 62B6     		CPSIE   i
+  43              	@ 0 "" 2
   26:main.c        **** 
   27:main.c        ****     /* Place your initialization/startup code here (e.g. MyInst_Start()) */
   28:main.c        ****     I2C_Peripheral_Start();
-  43              		.loc 1 28 0
-  44              		.thumb
-  45              		.syntax unified
-  46 0006 FFF7FEFF 		bl	I2C_Peripheral_Start
-  47              	.LVL0:
+  44              		.loc 1 28 0
+  45              		.thumb
+  46              		.syntax unified
+  47 0006 FFF7FEFF 		bl	I2C_Peripheral_Start
+  48              	.LVL0:
   29:main.c        ****     UART_Debug_Start();
-  48              		.loc 1 29 0
-  49 000a FFF7FEFF 		bl	UART_Debug_Start
-  50              	.LVL1:
+  49              		.loc 1 29 0
+  50 000a FFF7FEFF 		bl	UART_Debug_Start
+  51              	.LVL1:
   30:main.c        ****     
   31:main.c        ****     CyDelay(5); //"The boot procedure is complete about 5 milliseconds after device power-up."
-  51              		.loc 1 31 0
-  52 000e 0520     		movs	r0, #5
-  53 0010 FFF7FEFF 		bl	CyDelay
-  54              	.LVL2:
-  55              	.LBB2:
+  52              		.loc 1 31 0
+  53 000e 0520     		movs	r0, #5
+  54 0010 FFF7FEFF 		bl	CyDelay
+  55              	.LVL2:
+  56              	.LBB2:
   32:main.c        ****     
   33:main.c        ****     // String to print out messages on the UART
   34:main.c        ****     char message[50];
   35:main.c        **** 
   36:main.c        ****     // Check which devices are present on the I2C bus
   37:main.c        ****     for (int i = 0 ; i < 128; i++)
-  56              		.loc 1 37 0
-  57 0014 0024     		movs	r4, #0
-  58 0016 0CE0     		b	.L2
-  59              	.LVL3:
-  60              	.L4:
+  57              		.loc 1 37 0
+  58 0014 0024     		movs	r4, #0
+  59 0016 0CE0     		b	.L2
+  60              	.LVL3:
+  61              	.L4:
   38:main.c        ****     {
   39:main.c        ****         if (I2C_Peripheral_IsDeviceConnected(i))
-  61              		.loc 1 39 0
-  62 0018 E0B2     		uxtb	r0, r4
-  63 001a FFF7FEFF 		bl	I2C_Peripheral_IsDeviceConnected
-  64              	.LVL4:
-  65 001e 38B1     		cbz	r0, .L3
+  62              		.loc 1 39 0
+  63 0018 E0B2     		uxtb	r0, r4
+  64 001a FFF7FEFF 		bl	I2C_Peripheral_IsDeviceConnected
+  65              	.LVL4:
+  66 001e 38B1     		cbz	r0, .L3
   40:main.c        ****         {
   41:main.c        ****             // print out the address is hex format
   42:main.c        ****             sprintf(message, "Device 0x%02X is connected\r\n", i);
-  66              		.loc 1 42 0
-  67 0020 2246     		mov	r2, r4
-  68 0022 7649     		ldr	r1, .L23
-  69 0024 05A8     		add	r0, sp, #20
-  70 0026 FFF7FEFF 		bl	sprintf
-  71              	.LVL5:
+  67              		.loc 1 42 0
+  68 0020 2246     		mov	r2, r4
+  69 0022 8349     		ldr	r1, .L26
+  70 0024 05A8     		add	r0, sp, #20
+  71 0026 FFF7FEFF 		bl	sprintf
+  72              	.LVL5:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 3
+
+
   43:main.c        ****             UART_Debug_PutString(message); 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 3
-
-
-  72              		.loc 1 43 0
-  73 002a 05A8     		add	r0, sp, #20
-  74 002c FFF7FEFF 		bl	UART_Debug_PutString
-  75              	.LVL6:
-  76              	.L3:
+  73              		.loc 1 43 0
+  74 002a 05A8     		add	r0, sp, #20
+  75 002c FFF7FEFF 		bl	UART_Debug_PutString
+  76              	.LVL6:
+  77              	.L3:
   37:main.c        ****     {
-  77              		.loc 1 37 0 discriminator 2
-  78 0030 0134     		adds	r4, r4, #1
-  79              	.LVL7:
-  80              	.L2:
+  78              		.loc 1 37 0 discriminator 2
+  79 0030 0134     		adds	r4, r4, #1
+  80              	.LVL7:
+  81              	.L2:
   37:main.c        ****     {
-  81              		.loc 1 37 0 is_stmt 0 discriminator 1
-  82 0032 7F2C     		cmp	r4, #127
-  83 0034 F0DD     		ble	.L4
-  84              	.LBE2:
+  82              		.loc 1 37 0 is_stmt 0 discriminator 1
+  83 0032 7F2C     		cmp	r4, #127
+  84 0034 F0DD     		ble	.L4
+  85              	.LBE2:
   44:main.c        ****         }
   45:main.c        ****         
   46:main.c        ****     }
@@ -147,141 +148,141 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
   52:main.c        ****     /* Read WHO AM I REGISTER register */
   53:main.c        ****     uint8_t who_am_i_reg;
   54:main.c        ****     ErrorCode error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
-  85              		.loc 1 54 0 is_stmt 1
-  86 0036 0DF11302 		add	r2, sp, #19
-  87 003a 0F21     		movs	r1, #15
-  88 003c 1820     		movs	r0, #24
-  89 003e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
-  90              	.LVL8:
+  86              		.loc 1 54 0 is_stmt 1
+  87 0036 0DF11302 		add	r2, sp, #19
+  88 003a 0F21     		movs	r1, #15
+  89 003c 1820     		movs	r0, #24
+  90 003e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+  91              	.LVL8:
   55:main.c        ****                                                   LIS3DH_WHO_AM_I_REG_ADDR, 
   56:main.c        ****                                                   &who_am_i_reg);
   57:main.c        ****     if (error == NO_ERROR)
-  91              		.loc 1 57 0
-  92 0042 48B9     		cbnz	r0, .L5
+  92              		.loc 1 57 0
+  93 0042 48B9     		cbnz	r0, .L5
   58:main.c        ****     {
   59:main.c        ****         sprintf(message, "WHO AM I REG: 0x%02X [Expected: 0x33]\r\n", who_am_i_reg);
-  93              		.loc 1 59 0
-  94 0044 9DF81320 		ldrb	r2, [sp, #19]	@ zero_extendqisi2
-  95 0048 6D49     		ldr	r1, .L23+4
-  96 004a 05A8     		add	r0, sp, #20
-  97              	.LVL9:
-  98 004c FFF7FEFF 		bl	sprintf
-  99              	.LVL10:
+  94              		.loc 1 59 0
+  95 0044 9DF81320 		ldrb	r2, [sp, #19]	@ zero_extendqisi2
+  96 0048 7A49     		ldr	r1, .L26+4
+  97 004a 05A8     		add	r0, sp, #20
+  98              	.LVL9:
+  99 004c FFF7FEFF 		bl	sprintf
+ 100              	.LVL10:
   60:main.c        ****         UART_Debug_PutString(message); 
- 100              		.loc 1 60 0
- 101 0050 05A8     		add	r0, sp, #20
- 102 0052 FFF7FEFF 		bl	UART_Debug_PutString
- 103              	.LVL11:
- 104 0056 02E0     		b	.L6
- 105              	.LVL12:
- 106              	.L5:
+ 101              		.loc 1 60 0
+ 102 0050 05A8     		add	r0, sp, #20
+ 103 0052 FFF7FEFF 		bl	UART_Debug_PutString
+ 104              	.LVL11:
+ 105 0056 02E0     		b	.L6
+ 106              	.LVL12:
+ 107              	.L5:
   61:main.c        ****     }
   62:main.c        ****     else
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 4
+
+
   63:main.c        ****     {
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 4
-
-
   64:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm\r\n");   
- 107              		.loc 1 64 0
- 108 0058 6A48     		ldr	r0, .L23+8
- 109              	.LVL13:
- 110 005a FFF7FEFF 		bl	UART_Debug_PutString
- 111              	.LVL14:
- 112              	.L6:
+ 108              		.loc 1 64 0
+ 109 0058 7748     		ldr	r0, .L26+8
+ 110              	.LVL13:
+ 111 005a FFF7FEFF 		bl	UART_Debug_PutString
+ 112              	.LVL14:
+ 113              	.L6:
   65:main.c        ****     }
   66:main.c        ****     
   67:main.c        ****     /*      I2C Reading Status Register       */
   68:main.c        ****     
   69:main.c        ****     uint8_t status_register; 
   70:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 113              		.loc 1 70 0
- 114 005e 0DF11202 		add	r2, sp, #18
- 115 0062 2721     		movs	r1, #39
- 116 0064 1820     		movs	r0, #24
- 117 0066 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 118              	.LVL15:
+ 114              		.loc 1 70 0
+ 115 005e 0DF11202 		add	r2, sp, #18
+ 116 0062 2721     		movs	r1, #39
+ 117 0064 1820     		movs	r0, #24
+ 118 0066 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 119              	.LVL15:
   71:main.c        ****                                         LIS3DH_STATUS_REG,
   72:main.c        ****                                         &status_register);
   73:main.c        ****     
   74:main.c        ****     if (error == NO_ERROR)
- 119              		.loc 1 74 0
- 120 006a 48B9     		cbnz	r0, .L7
+ 120              		.loc 1 74 0
+ 121 006a 48B9     		cbnz	r0, .L7
   75:main.c        ****     {
   76:main.c        ****         sprintf(message, "STATUS REGISTER: 0x%02X\r\n", status_register);
- 121              		.loc 1 76 0
- 122 006c 9DF81220 		ldrb	r2, [sp, #18]	@ zero_extendqisi2
- 123 0070 6549     		ldr	r1, .L23+12
- 124 0072 05A8     		add	r0, sp, #20
- 125              	.LVL16:
- 126 0074 FFF7FEFF 		bl	sprintf
- 127              	.LVL17:
+ 122              		.loc 1 76 0
+ 123 006c 9DF81220 		ldrb	r2, [sp, #18]	@ zero_extendqisi2
+ 124 0070 7249     		ldr	r1, .L26+12
+ 125 0072 05A8     		add	r0, sp, #20
+ 126              	.LVL16:
+ 127 0074 FFF7FEFF 		bl	sprintf
+ 128              	.LVL17:
   77:main.c        ****         UART_Debug_PutString(message); 
- 128              		.loc 1 77 0
- 129 0078 05A8     		add	r0, sp, #20
- 130 007a FFF7FEFF 		bl	UART_Debug_PutString
- 131              	.LVL18:
- 132 007e 02E0     		b	.L8
- 133              	.LVL19:
- 134              	.L7:
+ 129              		.loc 1 77 0
+ 130 0078 05A8     		add	r0, sp, #20
+ 131 007a FFF7FEFF 		bl	UART_Debug_PutString
+ 132              	.LVL18:
+ 133 007e 02E0     		b	.L8
+ 134              	.LVL19:
+ 135              	.L7:
   78:main.c        ****     }
   79:main.c        ****     else
   80:main.c        ****     {
   81:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read status register\r\n");   
- 135              		.loc 1 81 0
- 136 0080 6248     		ldr	r0, .L23+16
- 137              	.LVL20:
- 138 0082 FFF7FEFF 		bl	UART_Debug_PutString
- 139              	.LVL21:
- 140              	.L8:
+ 136              		.loc 1 81 0
+ 137 0080 6F48     		ldr	r0, .L26+16
+ 138              	.LVL20:
+ 139 0082 FFF7FEFF 		bl	UART_Debug_PutString
+ 140              	.LVL21:
+ 141              	.L8:
   82:main.c        ****     }
   83:main.c        ****     
   84:main.c        ****     /******************************************/
   85:main.c        ****     /*        Read Control Register 1         */
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 5
+
+
   86:main.c        ****     /******************************************/
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 5
-
-
   87:main.c        ****     uint8_t ctrl_reg1; 
   88:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 141              		.loc 1 88 0
- 142 0086 0DF11102 		add	r2, sp, #17
- 143 008a 2021     		movs	r1, #32
- 144 008c 1820     		movs	r0, #24
- 145 008e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 146              	.LVL22:
+ 142              		.loc 1 88 0
+ 143 0086 0DF11102 		add	r2, sp, #17
+ 144 008a 2021     		movs	r1, #32
+ 145 008c 1820     		movs	r0, #24
+ 146 008e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 147              	.LVL22:
   89:main.c        ****                                         LIS3DH_CTRL_REG1,
   90:main.c        ****                                         &ctrl_reg1);
   91:main.c        ****     
   92:main.c        ****     if (error == NO_ERROR)
- 147              		.loc 1 92 0
- 148 0092 48B9     		cbnz	r0, .L9
+ 148              		.loc 1 92 0
+ 149 0092 48B9     		cbnz	r0, .L9
   93:main.c        ****     {
   94:main.c        ****         sprintf(message, "CONTROL REGISTER 1: 0x%02X\r\n", ctrl_reg1);
- 149              		.loc 1 94 0
- 150 0094 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
- 151 0098 5D49     		ldr	r1, .L23+20
- 152 009a 05A8     		add	r0, sp, #20
- 153              	.LVL23:
- 154 009c FFF7FEFF 		bl	sprintf
- 155              	.LVL24:
+ 150              		.loc 1 94 0
+ 151 0094 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
+ 152 0098 6A49     		ldr	r1, .L26+20
+ 153 009a 05A8     		add	r0, sp, #20
+ 154              	.LVL23:
+ 155 009c FFF7FEFF 		bl	sprintf
+ 156              	.LVL24:
   95:main.c        ****         UART_Debug_PutString(message); 
- 156              		.loc 1 95 0
- 157 00a0 05A8     		add	r0, sp, #20
- 158 00a2 FFF7FEFF 		bl	UART_Debug_PutString
- 159              	.LVL25:
- 160 00a6 02E0     		b	.L10
- 161              	.LVL26:
- 162              	.L9:
+ 157              		.loc 1 95 0
+ 158 00a0 05A8     		add	r0, sp, #20
+ 159 00a2 FFF7FEFF 		bl	UART_Debug_PutString
+ 160              	.LVL25:
+ 161 00a6 02E0     		b	.L10
+ 162              	.LVL26:
+ 163              	.L9:
   96:main.c        ****     }
   97:main.c        ****     else
   98:main.c        ****     {
   99:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
- 163              		.loc 1 99 0
- 164 00a8 5A48     		ldr	r0, .L23+24
- 165              	.LVL27:
- 166 00aa FFF7FEFF 		bl	UART_Debug_PutString
- 167              	.LVL28:
- 168              	.L10:
+ 164              		.loc 1 99 0
+ 165 00a8 6748     		ldr	r0, .L26+24
+ 166              	.LVL27:
+ 167 00aa FFF7FEFF 		bl	UART_Debug_PutString
+ 168              	.LVL28:
+ 169              	.L10:
  100:main.c        ****     }
  101:main.c        ****     
  102:main.c        ****     /******************************************/
@@ -290,64 +291,64 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
  105:main.c        ****     
  106:main.c        ****         
  107:main.c        ****     UART_Debug_PutString("\r\nWriting new values..\r\n");
- 169              		.loc 1 107 0
- 170 00ae 5A48     		ldr	r0, .L23+28
- 171 00b0 FFF7FEFF 		bl	UART_Debug_PutString
- 172              	.LVL29:
+ 170              		.loc 1 107 0
+ 171 00ae 6748     		ldr	r0, .L26+28
+ 172 00b0 FFF7FEFF 		bl	UART_Debug_PutString
+ 173              	.LVL29:
  108:main.c        ****     
  109:main.c        ****     if (ctrl_reg1 != LIS3DH_NORMAL_MODE_CTRL_REG1)
- 173              		.loc 1 109 0
- 174 00b4 9DF81130 		ldrb	r3, [sp, #17]	@ zero_extendqisi2
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 6
+ 174              		.loc 1 109 0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 6
 
 
- 175 00b8 572B     		cmp	r3, #87
- 176 00ba 14D0     		beq	.L11
+ 175 00b4 9DF81130 		ldrb	r3, [sp, #17]	@ zero_extendqisi2
+ 176 00b8 572B     		cmp	r3, #87
+ 177 00ba 14D0     		beq	.L11
  110:main.c        ****     {
  111:main.c        ****         ctrl_reg1 = LIS3DH_NORMAL_MODE_CTRL_REG1;
- 177              		.loc 1 111 0
- 178 00bc 5722     		movs	r2, #87
- 179 00be 8DF81120 		strb	r2, [sp, #17]
+ 178              		.loc 1 111 0
+ 179 00bc 5722     		movs	r2, #87
+ 180 00be 8DF81120 		strb	r2, [sp, #17]
  112:main.c        ****     
  113:main.c        ****         error = I2C_Peripheral_WriteRegister(LIS3DH_DEVICE_ADDRESS,
- 180              		.loc 1 113 0
- 181 00c2 2021     		movs	r1, #32
- 182 00c4 1820     		movs	r0, #24
- 183 00c6 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
- 184              	.LVL30:
+ 181              		.loc 1 113 0
+ 182 00c2 2021     		movs	r1, #32
+ 183 00c4 1820     		movs	r0, #24
+ 184 00c6 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
+ 185              	.LVL30:
  114:main.c        ****                                              LIS3DH_CTRL_REG1,
  115:main.c        ****                                              ctrl_reg1);
  116:main.c        ****     
  117:main.c        ****         if (error == NO_ERROR)
- 185              		.loc 1 117 0
- 186 00ca 48B9     		cbnz	r0, .L12
+ 186              		.loc 1 117 0
+ 187 00ca 48B9     		cbnz	r0, .L12
  118:main.c        ****         {
  119:main.c        ****             sprintf(message, "CONTROL REGISTER 1 successfully written as: 0x%02X\r\n", ctrl_reg1);
- 187              		.loc 1 119 0
- 188 00cc 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
- 189 00d0 5249     		ldr	r1, .L23+32
- 190 00d2 05A8     		add	r0, sp, #20
- 191              	.LVL31:
- 192 00d4 FFF7FEFF 		bl	sprintf
- 193              	.LVL32:
+ 188              		.loc 1 119 0
+ 189 00cc 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
+ 190 00d0 5F49     		ldr	r1, .L26+32
+ 191 00d2 05A8     		add	r0, sp, #20
+ 192              	.LVL31:
+ 193 00d4 FFF7FEFF 		bl	sprintf
+ 194              	.LVL32:
  120:main.c        ****             UART_Debug_PutString(message); 
- 194              		.loc 1 120 0
- 195 00d8 05A8     		add	r0, sp, #20
- 196 00da FFF7FEFF 		bl	UART_Debug_PutString
- 197              	.LVL33:
- 198 00de 02E0     		b	.L11
- 199              	.LVL34:
- 200              	.L12:
+ 195              		.loc 1 120 0
+ 196 00d8 05A8     		add	r0, sp, #20
+ 197 00da FFF7FEFF 		bl	UART_Debug_PutString
+ 198              	.LVL33:
+ 199 00de 02E0     		b	.L11
+ 200              	.LVL34:
+ 201              	.L12:
  121:main.c        ****         }
  122:main.c        ****         else
  123:main.c        ****         {
  124:main.c        ****             UART_Debug_PutString("Error occurred during I2C comm to set control register 1\r\n");  
- 201              		.loc 1 124 0
- 202 00e0 4F48     		ldr	r0, .L23+36
- 203              	.LVL35:
- 204 00e2 FFF7FEFF 		bl	UART_Debug_PutString
- 205              	.LVL36:
- 206              	.L11:
+ 202              		.loc 1 124 0
+ 203 00e0 5C48     		ldr	r0, .L26+36
+ 204              	.LVL35:
+ 205 00e2 FFF7FEFF 		bl	UART_Debug_PutString
+ 206              	.LVL36:
+ 207              	.L11:
  125:main.c        ****         }
  126:main.c        ****     }
  127:main.c        ****     
@@ -356,48 +357,48 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
  130:main.c        ****     /******************************************/
  131:main.c        **** 
  132:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 207              		.loc 1 132 0
- 208 00e6 0DF11102 		add	r2, sp, #17
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 7
+ 208              		.loc 1 132 0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 7
 
 
- 209 00ea 2021     		movs	r1, #32
- 210 00ec 1820     		movs	r0, #24
- 211 00ee FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 212              	.LVL37:
+ 209 00e6 0DF11102 		add	r2, sp, #17
+ 210 00ea 2021     		movs	r1, #32
+ 211 00ec 1820     		movs	r0, #24
+ 212 00ee FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 213              	.LVL37:
  133:main.c        ****                                         LIS3DH_CTRL_REG1,
  134:main.c        ****                                         &ctrl_reg1);
  135:main.c        ****     
  136:main.c        ****     if (error == NO_ERROR)
- 213              		.loc 1 136 0
- 214 00f2 48B9     		cbnz	r0, .L13
+ 214              		.loc 1 136 0
+ 215 00f2 48B9     		cbnz	r0, .L13
  137:main.c        ****     {
  138:main.c        ****         sprintf(message, "CONTROL REGISTER 1 after overwrite operation: 0x%02X\r\n", ctrl_reg1);
- 215              		.loc 1 138 0
- 216 00f4 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
- 217 00f8 4A49     		ldr	r1, .L23+40
- 218 00fa 05A8     		add	r0, sp, #20
- 219              	.LVL38:
- 220 00fc FFF7FEFF 		bl	sprintf
- 221              	.LVL39:
+ 216              		.loc 1 138 0
+ 217 00f4 9DF81120 		ldrb	r2, [sp, #17]	@ zero_extendqisi2
+ 218 00f8 5749     		ldr	r1, .L26+40
+ 219 00fa 05A8     		add	r0, sp, #20
+ 220              	.LVL38:
+ 221 00fc FFF7FEFF 		bl	sprintf
+ 222              	.LVL39:
  139:main.c        ****         UART_Debug_PutString(message); 
- 222              		.loc 1 139 0
- 223 0100 05A8     		add	r0, sp, #20
- 224 0102 FFF7FEFF 		bl	UART_Debug_PutString
- 225              	.LVL40:
- 226 0106 02E0     		b	.L14
- 227              	.LVL41:
- 228              	.L13:
+ 223              		.loc 1 139 0
+ 224 0100 05A8     		add	r0, sp, #20
+ 225 0102 FFF7FEFF 		bl	UART_Debug_PutString
+ 226              	.LVL40:
+ 227 0106 02E0     		b	.L14
+ 228              	.LVL41:
+ 229              	.L13:
  140:main.c        ****     }
  141:main.c        ****     else
  142:main.c        ****     {
  143:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register 1\r\n");   
- 229              		.loc 1 143 0
- 230 0108 4248     		ldr	r0, .L23+24
- 231              	.LVL42:
- 232 010a FFF7FEFF 		bl	UART_Debug_PutString
- 233              	.LVL43:
- 234              	.L14:
+ 230              		.loc 1 143 0
+ 231 0108 4F48     		ldr	r0, .L26+24
+ 232              	.LVL42:
+ 233 010a FFF7FEFF 		bl	UART_Debug_PutString
+ 234              	.LVL43:
+ 235              	.L14:
  144:main.c        ****     }
  145:main.c        ****     
  146:main.c        **** 
@@ -405,111 +406,111 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
  148:main.c        ****     uint8_t ctrl_reg4;
  149:main.c        **** 
  150:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 235              		.loc 1 150 0
- 236 010e 04AA     		add	r2, sp, #16
- 237 0110 2321     		movs	r1, #35
- 238 0112 1820     		movs	r0, #24
- 239 0114 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 240              	.LVL44:
+ 236              		.loc 1 150 0
+ 237 010e 04AA     		add	r2, sp, #16
+ 238 0110 2321     		movs	r1, #35
+ 239 0112 1820     		movs	r0, #24
+ 240 0114 FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 241              	.LVL44:
  151:main.c        ****                                         LIS3DH_CTRL_REG4,
  152:main.c        ****                                         &ctrl_reg4);
  153:main.c        ****     
  154:main.c        ****     if (error == NO_ERROR)
- 241              		.loc 1 154 0
- 242 0118 48B9     		cbnz	r0, .L15
+ 242              		.loc 1 154 0
+ 243 0118 48B9     		cbnz	r0, .L15
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 8
+
+
  155:main.c        ****     {
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 8
-
-
  156:main.c        ****         sprintf(message, "CONTROL REGISTER 4: 0x%02X\r\n", ctrl_reg4);
- 243              		.loc 1 156 0
- 244 011a 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
- 245 011e 4249     		ldr	r1, .L23+44
- 246 0120 05A8     		add	r0, sp, #20
- 247              	.LVL45:
- 248 0122 FFF7FEFF 		bl	sprintf
- 249              	.LVL46:
+ 244              		.loc 1 156 0
+ 245 011a 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
+ 246 011e 4F49     		ldr	r1, .L26+44
+ 247 0120 05A8     		add	r0, sp, #20
+ 248              	.LVL45:
+ 249 0122 FFF7FEFF 		bl	sprintf
+ 250              	.LVL46:
  157:main.c        ****         UART_Debug_PutString(message); 
- 250              		.loc 1 157 0
- 251 0126 05A8     		add	r0, sp, #20
- 252 0128 FFF7FEFF 		bl	UART_Debug_PutString
- 253              	.LVL47:
- 254 012c 02E0     		b	.L16
- 255              	.LVL48:
- 256              	.L15:
+ 251              		.loc 1 157 0
+ 252 0126 05A8     		add	r0, sp, #20
+ 253 0128 FFF7FEFF 		bl	UART_Debug_PutString
+ 254              	.LVL47:
+ 255 012c 02E0     		b	.L16
+ 256              	.LVL48:
+ 257              	.L15:
  158:main.c        ****     }
  159:main.c        ****     else
  160:main.c        ****     {
  161:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
- 257              		.loc 1 161 0
- 258 012e 3F48     		ldr	r0, .L23+48
- 259              	.LVL49:
- 260 0130 FFF7FEFF 		bl	UART_Debug_PutString
- 261              	.LVL50:
- 262              	.L16:
+ 258              		.loc 1 161 0
+ 259 012e 4C48     		ldr	r0, .L26+48
+ 260              	.LVL49:
+ 261 0130 FFF7FEFF 		bl	UART_Debug_PutString
+ 262              	.LVL50:
+ 263              	.L16:
  162:main.c        ****     }
  163:main.c        ****     
  164:main.c        ****     
  165:main.c        ****     ctrl_reg4 = LIS3DH_CTRL_REG4_BDU_ACTIVE; // must be changed to the appropriate value
- 263              		.loc 1 165 0
- 264 0134 8022     		movs	r2, #128
- 265 0136 12AC     		add	r4, sp, #72
- 266              	.LVL51:
- 267 0138 04F8382D 		strb	r2, [r4, #-56]!
+ 264              		.loc 1 165 0
+ 265 0134 8022     		movs	r2, #128
+ 266 0136 12AC     		add	r4, sp, #72
+ 267              	.LVL51:
+ 268 0138 04F8382D 		strb	r2, [r4, #-56]!
  166:main.c        ****     
  167:main.c        ****     error = I2C_Peripheral_WriteRegister(LIS3DH_DEVICE_ADDRESS,
- 268              		.loc 1 167 0
- 269 013c 2321     		movs	r1, #35
- 270 013e 1820     		movs	r0, #24
- 271 0140 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
- 272              	.LVL52:
+ 269              		.loc 1 167 0
+ 270 013c 2321     		movs	r1, #35
+ 271 013e 1820     		movs	r0, #24
+ 272 0140 FFF7FEFF 		bl	I2C_Peripheral_WriteRegister
+ 273              	.LVL52:
  168:main.c        ****                                          LIS3DH_CTRL_REG4,
  169:main.c        ****                                          ctrl_reg4);
  170:main.c        ****     
  171:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 273              		.loc 1 171 0
- 274 0144 2246     		mov	r2, r4
- 275 0146 2321     		movs	r1, #35
- 276 0148 1820     		movs	r0, #24
- 277 014a FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 278              	.LVL53:
+ 274              		.loc 1 171 0
+ 275 0144 2246     		mov	r2, r4
+ 276 0146 2321     		movs	r1, #35
+ 277 0148 1820     		movs	r0, #24
+ 278 014a FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 279              	.LVL53:
  172:main.c        ****                                         LIS3DH_CTRL_REG4,
  173:main.c        ****                                         &ctrl_reg4);
  174:main.c        ****     
  175:main.c        ****     
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 9
+
+
  176:main.c        ****     if (error == NO_ERROR)
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 9
-
-
- 279              		.loc 1 176 0
- 280 014e 48B9     		cbnz	r0, .L17
+ 280              		.loc 1 176 0
+ 281 014e 48B9     		cbnz	r0, .L17
  177:main.c        ****     {
  178:main.c        ****         sprintf(message, "CONTROL REGISTER 4 after being updated: 0x%02X\r\n", ctrl_reg4);
- 281              		.loc 1 178 0
- 282 0150 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
- 283 0154 3649     		ldr	r1, .L23+52
- 284 0156 05A8     		add	r0, sp, #20
- 285              	.LVL54:
- 286 0158 FFF7FEFF 		bl	sprintf
- 287              	.LVL55:
+ 282              		.loc 1 178 0
+ 283 0150 9DF81020 		ldrb	r2, [sp, #16]	@ zero_extendqisi2
+ 284 0154 4349     		ldr	r1, .L26+52
+ 285 0156 05A8     		add	r0, sp, #20
+ 286              	.LVL54:
+ 287 0158 FFF7FEFF 		bl	sprintf
+ 288              	.LVL55:
  179:main.c        ****         UART_Debug_PutString(message); 
- 288              		.loc 1 179 0
- 289 015c 05A8     		add	r0, sp, #20
- 290 015e FFF7FEFF 		bl	UART_Debug_PutString
- 291              	.LVL56:
- 292 0162 02E0     		b	.L18
- 293              	.LVL57:
- 294              	.L17:
+ 289              		.loc 1 179 0
+ 290 015c 05A8     		add	r0, sp, #20
+ 291 015e FFF7FEFF 		bl	UART_Debug_PutString
+ 292              	.LVL56:
+ 293 0162 02E0     		b	.L18
+ 294              	.LVL57:
+ 295              	.L17:
  180:main.c        ****     }
  181:main.c        ****     else
  182:main.c        ****     {
  183:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
- 295              		.loc 1 183 0
- 296 0164 3148     		ldr	r0, .L23+48
- 297              	.LVL58:
- 298 0166 FFF7FEFF 		bl	UART_Debug_PutString
- 299              	.LVL59:
- 300              	.L18:
+ 296              		.loc 1 183 0
+ 297 0164 3E48     		ldr	r0, .L26+48
+ 298              	.LVL58:
+ 299 0166 FFF7FEFF 		bl	UART_Debug_PutString
+ 300              	.LVL59:
+ 301              	.L18:
  184:main.c        ****     }
  185:main.c        ****     
  186:main.c        ****     
@@ -526,2042 +527,2045 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 1
  197:main.c        ****     uint8_t AccData[6]; //Array storing the info read from the 6 adjacent registers
  198:main.c        ****     uint8_t header = 0xA0;
  199:main.c        ****     uint8_t footer = 0xC0;
- 200:main.c        **** 
- 201:main.c        ****     /*Setup header and tail*/
- 202:main.c        ****     OutArray[0] = header; //Header
- 301              		.loc 1 202 0
- 302 016a A023     		movs	r3, #160
- 303 016c 8DF80830 		strb	r3, [sp, #8]
- 203:main.c        ****     OutArray[TRANSMIT_BUFFER_SIZE-1] = footer; //Tail
- 304              		.loc 1 203 0
- 305 0170 C023     		movs	r3, #192
- 306 0172 8DF80F30 		strb	r3, [sp, #15]
- 307              	.L19:
- 204:main.c        ****     
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 10
+ 200:main.c        ****     
+ 201:main.c        **** 
+ 202:main.c        ****     /*Setup header and tail*/
+ 203:main.c        ****     OutArray[0] = header; //Header
+ 302              		.loc 1 203 0
+ 303 016a A023     		movs	r3, #160
+ 304 016c 8DF80830 		strb	r3, [sp, #8]
+ 204:main.c        ****     OutArray[TRANSMIT_BUFFER_SIZE-1] = footer; //Tail
+ 305              		.loc 1 204 0
+ 306 0170 C023     		movs	r3, #192
+ 307 0172 8DF80F30 		strb	r3, [sp, #15]
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 10
 
 
- 205:main.c        ****     for(;;)
- 206:main.c        ****     {
- 207:main.c        ****         /*    I2C Reading Status Register     */         
- 208:main.c        ****         error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
- 308              		.loc 1 208 0
- 309 0176 0DF11202 		add	r2, sp, #18
- 310 017a 2721     		movs	r1, #39
- 311 017c 1820     		movs	r0, #24
- 312 017e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
- 313              	.LVL60:
- 209:main.c        ****                                         LIS3DH_STATUS_REG,
- 210:main.c        ****                                         &status_register);
- 211:main.c        ****         
- 212:main.c        ****         /*  Check if a new set of data is available  */        
- 213:main.c        ****         if (status_register & (1 << ZYXDA))
- 314              		.loc 1 213 0
- 315 0182 9DF81230 		ldrb	r3, [sp, #18]	@ zero_extendqisi2
- 316 0186 13F0080F 		tst	r3, #8
- 317 018a F4D0     		beq	.L19
- 214:main.c        ****         {   
- 215:main.c        ****             //read the adjacent registers
- 216:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
- 318              		.loc 1 216 0
- 319 018c 6B46     		mov	r3, sp
- 320 018e 0522     		movs	r2, #5
- 321 0190 2821     		movs	r1, #40
- 322 0192 1820     		movs	r0, #24
- 323 0194 FFF7FEFF 		bl	I2C_Peripheral_ReadRegisterMulti
- 324              	.LVL61:
- 217:main.c        ****                                                 LIS3DH_OUT_X_L,
- 218:main.c        ****                                                 register_count,
- 219:main.c        ****                                                 &AccData[0]);
- 220:main.c        ****             
- 221:main.c        ****             if(error == NO_ERROR)
- 325              		.loc 1 221 0
- 326 0198 0028     		cmp	r0, #0
- 327 019a ECD1     		bne	.L19
- 222:main.c        ****             {
- 223:main.c        ****                 /* Values cover a range that goes from 512 to -512 digit (hence, ±2 mg) */
- 224:main.c        ****                 
- 225:main.c        ****                 /*  X-AXIS  */
- 226:main.c        ****                 Out_Acc_X = (int16)((AccData[0] | (AccData[1]<<8)))>>6; //Right justified 16bit int
- 328              		.loc 1 226 0
- 329 019c 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
- 330 01a0 9DF80110 		ldrb	r1, [sp, #1]	@ zero_extendqisi2
- 331 01a4 43EA0121 		orr	r1, r3, r1, lsl #8
- 332 01a8 41F38911 		sbfx	r1, r1, #6, #10
- 333              	.LVL62:
- 227:main.c        ****                 
- 228:main.c        ****                 /*  Y-AXIS  */           
- 229:main.c        ****                 Out_Acc_Y = (int16)((AccData[2] | (AccData[3]<<8)))>>6; //Right justified 16bit int
- 334              		.loc 1 229 0
- 335 01ac 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
- 336 01b0 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
- 337 01b4 43EA0222 		orr	r2, r3, r2, lsl #8
- 338 01b8 42F38912 		sbfx	r2, r2, #6, #10
- 339              	.LVL63:
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 11
+ 308              	.L19:
+ 205:main.c        ****     
+ 206:main.c        ****     for(;;)
+ 207:main.c        ****     {
+ 208:main.c        ****         /*    I2C Reading Status Register     */         
+ 209:main.c        ****         error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+ 309              		.loc 1 209 0
+ 310 0176 0DF11202 		add	r2, sp, #18
+ 311 017a 2721     		movs	r1, #39
+ 312 017c 1820     		movs	r0, #24
+ 313 017e FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
+ 314              	.LVL60:
+ 210:main.c        ****                                         LIS3DH_STATUS_REG,
+ 211:main.c        ****                                         &status_register);
+ 212:main.c        ****         
+ 213:main.c        ****         /*  Check if a new set of data is available  */        
+ 214:main.c        ****         if (status_register & (1 << ZYXDA))
+ 315              		.loc 1 214 0
+ 316 0182 9DF81230 		ldrb	r3, [sp, #18]	@ zero_extendqisi2
+ 317 0186 13F0080F 		tst	r3, #8
+ 318 018a F4D0     		beq	.L19
+ 215:main.c        ****         {   
+ 216:main.c        ****             //read the adjacent registers
+ 217:main.c        ****             error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+ 319              		.loc 1 217 0
+ 320 018c 6B46     		mov	r3, sp
+ 321 018e 0522     		movs	r2, #5
+ 322 0190 2821     		movs	r1, #40
+ 323 0192 1820     		movs	r0, #24
+ 324 0194 FFF7FEFF 		bl	I2C_Peripheral_ReadRegisterMulti
+ 325              	.LVL61:
+ 218:main.c        ****                                                 LIS3DH_OUT_X_L,
+ 219:main.c        ****                                                 register_count,
+ 220:main.c        ****                                                 &AccData[0]);
+ 221:main.c        ****             
+ 222:main.c        ****             if(error == NO_ERROR)
+ 326              		.loc 1 222 0
+ 327 0198 0028     		cmp	r0, #0
+ 328 019a ECD1     		bne	.L19
+ 223:main.c        ****             {
+ 224:main.c        ****                 /* Raw values coming from the accelerometerValues cover a full scale range that goe
+ 225:main.c        ****                 (hence, in acceleration unit, ±2 mg). Dividing by a factor of 256 and multipliyng 
+ 226:main.c        ****                 new full scall range which goes from +2000 mg to -2000mg */
+ 227:main.c        **** 
+ 228:main.c        ****                 
+ 229:main.c        ****                 /*  X-AXIS  */
+ 230:main.c        ****                 Out_Acc_X = (int16)((AccData[0] | (AccData[1]<<8)))>>6; //Right justified 16bit int
+ 329              		.loc 1 230 0
+ 330 019c 9DF80030 		ldrb	r3, [sp]	@ zero_extendqisi2
+ 331 01a0 9DF80120 		ldrb	r2, [sp, #1]	@ zero_extendqisi2
+ 332 01a4 43EA0223 		orr	r3, r3, r2, lsl #8
+ 333 01a8 43F38913 		sbfx	r3, r3, #6, #10
+ 334              	.LVL62:
+ 231:main.c        ****                 Out_Acc_X = Out_Acc_X * CONVERSION_FACTOR;
+ 335              		.loc 1 231 0
+ 336 01ac 4FF47A72 		mov	r2, #1000
+ 337 01b0 02FB03F3 		mul	r3, r2, r3
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 11
 
 
- 230:main.c        ****                 
- 231:main.c        ****                 /*  Z-AXIS  */           
- 232:main.c        ****                 Out_Acc_Z = (int16)((AccData[4] | (AccData[5]<<8)))>>6; //Right justified 16bit int
- 340              		.loc 1 232 0
- 341 01bc 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
- 342 01c0 9DF80500 		ldrb	r0, [sp, #5]	@ zero_extendqisi2
- 343              	.LVL64:
- 344 01c4 43EA0023 		orr	r3, r3, r0, lsl #8
- 345 01c8 43F38913 		sbfx	r3, r3, #6, #10
+ 338              	.LVL63:
+ 339 01b4 002B     		cmp	r3, #0
+ 340 01b6 00DA     		bge	.L21
+ 341 01b8 FF33     		adds	r3, r3, #255
+ 342              	.L21:
+ 343 01ba 1812     		asrs	r0, r3, #8
+ 344              	.LVL64:
+ 345 01bc 04B2     		sxth	r4, r0
  346              	.LVL65:
- 233:main.c        ****                 
- 234:main.c        ****                 OutArray[1] = (uint8_t)(Out_Acc_X & 0xFF); //LSB of accelerometer X-axis
- 347              		.loc 1 234 0
- 348 01cc 8DF80910 		strb	r1, [sp, #9]
- 235:main.c        ****                 OutArray[2] = (uint8_t)(Out_Acc_X >> 8);   //MSB of accelerometer X-axis
- 349              		.loc 1 235 0
- 350 01d0 C1F30721 		ubfx	r1, r1, #8, #8
- 351              	.LVL66:
- 352 01d4 8DF80A10 		strb	r1, [sp, #10]
- 236:main.c        ****                 OutArray[3] = (uint8_t)(Out_Acc_Y & 0xFF); //LSB of accelerometer Y-axis
- 353              		.loc 1 236 0
- 354 01d8 8DF80B20 		strb	r2, [sp, #11]
- 237:main.c        ****                 OutArray[4] = (uint8_t)(Out_Acc_Y >> 8);   //LSB of accelerometer Y-axis
- 355              		.loc 1 237 0
- 356 01dc C2F30722 		ubfx	r2, r2, #8, #8
- 357              	.LVL67:
- 358 01e0 8DF80C20 		strb	r2, [sp, #12]
- 238:main.c        ****                 OutArray[5] = (uint8_t)(Out_Acc_Z & 0xFF); //LSB of accelerometer Z-axis
- 359              		.loc 1 238 0
- 360 01e4 8DF80D30 		strb	r3, [sp, #13]
- 239:main.c        ****                 OutArray[6] = (uint8_t)(Out_Acc_Z >> 8);   //LSB of accelerometer Z-axis
- 361              		.loc 1 239 0
- 362 01e8 C3F30723 		ubfx	r3, r3, #8, #8
+ 232:main.c        ****                 /*  Y-AXIS  */           
+ 233:main.c        ****                 Out_Acc_Y = (int16)((AccData[2] | (AccData[3]<<8)))>>6; //Right justified 16bit int
+ 347              		.loc 1 233 0
+ 348 01be 9DF80230 		ldrb	r3, [sp, #2]	@ zero_extendqisi2
+ 349 01c2 9DF80320 		ldrb	r2, [sp, #3]	@ zero_extendqisi2
+ 350 01c6 43EA0223 		orr	r3, r3, r2, lsl #8
+ 351 01ca 43F38912 		sbfx	r2, r3, #6, #10
+ 352              	.LVL66:
+ 234:main.c        ****                 Out_Acc_Y = Out_Acc_Y * CONVERSION_FACTOR;
+ 353              		.loc 1 234 0
+ 354 01ce 4FF47A73 		mov	r3, #1000
+ 355 01d2 03FB02F3 		mul	r3, r3, r2
+ 356 01d6 002B     		cmp	r3, #0
+ 357 01d8 00DA     		bge	.L22
+ 358 01da FF33     		adds	r3, r3, #255
+ 359              	.L22:
+ 360 01dc 1A12     		asrs	r2, r3, #8
+ 361              	.LVL67:
+ 362 01de 15B2     		sxth	r5, r2
  363              	.LVL68:
- 364 01ec 8DF80E30 		strb	r3, [sp, #14]
- 240:main.c        ****                 UART_Debug_PutArray(OutArray, TRANSMIT_BUFFER_SIZE);//Send information through UART
- 365              		.loc 1 240 0
- 366 01f0 0821     		movs	r1, #8
- 367 01f2 0DEB0100 		add	r0, sp, r1
- 368              	.LVL69:
- 369 01f6 FFF7FEFF 		bl	UART_Debug_PutArray
- 370              	.LVL70:
- 371 01fa BCE7     		b	.L19
- 372              	.L24:
- 373              		.align	2
- 374              	.L23:
- 375 01fc 00000000 		.word	.LC0
- 376 0200 20000000 		.word	.LC1
- 377 0204 48000000 		.word	.LC2
- 378 0208 6C000000 		.word	.LC3
- 379 020c 88000000 		.word	.LC4
- 380 0210 C4000000 		.word	.LC5
- 381 0214 E4000000 		.word	.LC6
- 382 0218 20010000 		.word	.LC7
- 383 021c 3C010000 		.word	.LC8
- 384 0220 74010000 		.word	.LC9
- 385 0224 B0010000 		.word	.LC10
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 12
-
-
- 386 0228 E8010000 		.word	.LC11
- 387 022c 08020000 		.word	.LC12
- 388 0230 44020000 		.word	.LC13
- 389              		.cfi_endproc
- 390              	.LFE64:
- 391              		.size	main, .-main
- 392              		.section	.rodata.str1.4,"aMS",%progbits,1
- 393              		.align	2
- 394              	.LC0:
- 395 0000 44657669 		.ascii	"Device 0x%02X is connected\015\012\000"
- 395      63652030 
- 395      78253032 
- 395      58206973 
- 395      20636F6E 
- 396 001d 000000   		.space	3
- 397              	.LC1:
- 398 0020 57484F20 		.ascii	"WHO AM I REG: 0x%02X [Expected: 0x33]\015\012\000"
- 398      414D2049 
- 398      20524547 
- 398      3A203078 
- 398      25303258 
- 399              	.LC2:
- 400 0048 4572726F 		.ascii	"Error occurred during I2C comm\015\012\000"
- 400      72206F63 
- 400      63757272 
- 400      65642064 
- 400      7572696E 
- 401 0069 000000   		.space	3
- 402              	.LC3:
- 403 006c 53544154 		.ascii	"STATUS REGISTER: 0x%02X\015\012\000"
- 403      55532052 
- 403      45474953 
- 403      5445523A 
- 403      20307825 
- 404 0086 0000     		.space	2
- 405              	.LC4:
- 406 0088 4572726F 		.ascii	"Error occurred during I2C comm to read status regis"
- 406      72206F63 
- 406      63757272 
- 406      65642064 
- 406      7572696E 
- 407 00bb 7465720D 		.ascii	"ter\015\012\000"
- 407      0A00
- 408 00c1 000000   		.space	3
- 409              	.LC5:
- 410 00c4 434F4E54 		.ascii	"CONTROL REGISTER 1: 0x%02X\015\012\000"
- 410      524F4C20 
- 410      52454749 
- 410      53544552 
- 410      20313A20 
- 411 00e1 000000   		.space	3
- 412              	.LC6:
- 413 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
- 413      72206F63 
- 413      63757272 
- 413      65642064 
- 413      7572696E 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 13
-
-
- 414 0117 73746572 		.ascii	"ster 1\015\012\000"
- 414      20310D0A 
- 414      00
- 415              	.LC7:
- 416 0120 0D0A5772 		.ascii	"\015\012Writing new values..\015\012\000"
- 416      6974696E 
- 416      67206E65 
- 416      77207661 
- 416      6C756573 
- 417 0139 000000   		.space	3
- 418              	.LC8:
- 419 013c 434F4E54 		.ascii	"CONTROL REGISTER 1 successfully written as: 0x%02X\015"
- 419      524F4C20 
- 419      52454749 
- 419      53544552 
- 419      20312073 
- 420 016f 0A00     		.ascii	"\012\000"
- 421 0171 000000   		.space	3
- 422              	.LC9:
- 423 0174 4572726F 		.ascii	"Error occurred during I2C comm to set control regis"
- 423      72206F63 
- 423      63757272 
- 423      65642064 
- 423      7572696E 
- 424 01a7 74657220 		.ascii	"ter 1\015\012\000"
- 424      310D0A00 
- 425 01af 00       		.space	1
- 426              	.LC10:
- 427 01b0 434F4E54 		.ascii	"CONTROL REGISTER 1 after overwrite operation: 0x%02"
- 427      524F4C20 
- 427      52454749 
- 427      53544552 
- 427      20312061 
- 428 01e3 580D0A00 		.ascii	"X\015\012\000"
- 429 01e7 00       		.space	1
- 430              	.LC11:
- 431 01e8 434F4E54 		.ascii	"CONTROL REGISTER 4: 0x%02X\015\012\000"
- 431      524F4C20 
- 431      52454749 
- 431      53544552 
- 431      20343A20 
- 432 0205 000000   		.space	3
- 433              	.LC12:
- 434 0208 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
- 434      72206F63 
- 434      63757272 
- 434      65642064 
- 434      7572696E 
- 435 023b 73746572 		.ascii	"ster4\015\012\000"
- 435      340D0A00 
- 436 0243 00       		.space	1
- 437              	.LC13:
- 438 0244 434F4E54 		.ascii	"CONTROL REGISTER 4 after being updated: 0x%02X\015\012"
- 438      524F4C20 
- 438      52454749 
- 438      53544552 
- 438      20342061 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 14
-
-
- 439 0274 00       		.ascii	"\000"
- 440              		.text
- 441              	.Letext0:
- 442              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 443              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 444              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
- 445              		.file 5 "ErrorCodes.h"
- 446              		.file 6 "I2C_Interface.h"
- 447              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
- 448              		.file 8 "Generated_Source\\PSoC5/UART_Debug.h"
- 449              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
- 450              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
- 451              		.section	.debug_info,"",%progbits
- 452              	.Ldebug_info0:
- 453 0000 71060000 		.4byte	0x671
- 454 0004 0400     		.2byte	0x4
- 455 0006 00000000 		.4byte	.Ldebug_abbrev0
- 456 000a 04       		.byte	0x4
- 457 000b 01       		.uleb128 0x1
- 458 000c A5000000 		.4byte	.LASF48
- 459 0010 0C       		.byte	0xc
- 460 0011 D0020000 		.4byte	.LASF49
- 461 0015 53020000 		.4byte	.LASF50
- 462 0019 00000000 		.4byte	.Ldebug_ranges0+0
- 463 001d 00000000 		.4byte	0
- 464 0021 00000000 		.4byte	.Ldebug_line0
- 465 0025 02       		.uleb128 0x2
- 466 0026 01       		.byte	0x1
- 467 0027 06       		.byte	0x6
- 468 0028 1D030000 		.4byte	.LASF0
- 469 002c 03       		.uleb128 0x3
- 470 002d 0F000000 		.4byte	.LASF2
- 471 0031 02       		.byte	0x2
- 472 0032 1D       		.byte	0x1d
- 473 0033 37000000 		.4byte	0x37
- 474 0037 02       		.uleb128 0x2
- 475 0038 01       		.byte	0x1
- 476 0039 08       		.byte	0x8
- 477 003a 97000000 		.4byte	.LASF1
- 478 003e 03       		.uleb128 0x3
- 479 003f B7010000 		.4byte	.LASF3
- 480 0043 02       		.byte	0x2
- 481 0044 29       		.byte	0x29
- 482 0045 49000000 		.4byte	0x49
- 483 0049 02       		.uleb128 0x2
- 484 004a 02       		.byte	0x2
- 485 004b 05       		.byte	0x5
- 486 004c F8020000 		.4byte	.LASF4
- 487 0050 02       		.uleb128 0x2
- 488 0051 02       		.byte	0x2
- 489 0052 07       		.byte	0x7
- 490 0053 4B010000 		.4byte	.LASF5
- 491 0057 03       		.uleb128 0x3
- 492 0058 4F000000 		.4byte	.LASF6
- 493 005c 02       		.byte	0x2
- 494 005d 3F       		.byte	0x3f
- 495 005e 62000000 		.4byte	0x62
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 15
-
-
- 496 0062 02       		.uleb128 0x2
- 497 0063 04       		.byte	0x4
- 498 0064 05       		.byte	0x5
- 499 0065 59000000 		.4byte	.LASF7
- 500 0069 02       		.uleb128 0x2
- 501 006a 04       		.byte	0x4
- 502 006b 07       		.byte	0x7
- 503 006c 39010000 		.4byte	.LASF8
- 504 0070 02       		.uleb128 0x2
- 505 0071 08       		.byte	0x8
- 506 0072 05       		.byte	0x5
- 507 0073 B1020000 		.4byte	.LASF9
- 508 0077 02       		.uleb128 0x2
- 509 0078 08       		.byte	0x8
- 510 0079 07       		.byte	0x7
- 511 007a E2010000 		.4byte	.LASF10
- 512 007e 04       		.uleb128 0x4
- 513 007f 04       		.byte	0x4
- 514 0080 05       		.byte	0x5
- 515 0081 696E7400 		.ascii	"int\000"
- 516 0085 02       		.uleb128 0x2
- 517 0086 04       		.byte	0x4
- 518 0087 07       		.byte	0x7
- 519 0088 D5010000 		.4byte	.LASF11
- 520 008c 03       		.uleb128 0x3
- 521 008d F9010000 		.4byte	.LASF12
- 522 0091 03       		.byte	0x3
- 523 0092 18       		.byte	0x18
- 524 0093 2C000000 		.4byte	0x2c
- 525 0097 03       		.uleb128 0x3
- 526 0098 1F020000 		.4byte	.LASF13
- 527 009c 03       		.byte	0x3
- 528 009d 20       		.byte	0x20
- 529 009e 3E000000 		.4byte	0x3e
- 530 00a2 03       		.uleb128 0x3
- 531 00a3 80000000 		.4byte	.LASF14
- 532 00a7 03       		.byte	0x3
- 533 00a8 2C       		.byte	0x2c
- 534 00a9 57000000 		.4byte	0x57
- 535 00ad 05       		.uleb128 0x5
- 536 00ae 33010000 		.4byte	.LASF15
- 537 00b2 04       		.byte	0x4
- 538 00b3 E801     		.2byte	0x1e8
- 539 00b5 49000000 		.4byte	0x49
- 540 00b9 02       		.uleb128 0x2
- 541 00ba 04       		.byte	0x4
- 542 00bb 04       		.byte	0x4
- 543 00bc 88000000 		.4byte	.LASF16
- 544 00c0 02       		.uleb128 0x2
- 545 00c1 08       		.byte	0x8
- 546 00c2 04       		.byte	0x4
- 547 00c3 6D010000 		.4byte	.LASF17
- 548 00c7 02       		.uleb128 0x2
- 549 00c8 01       		.byte	0x1
- 550 00c9 08       		.byte	0x8
- 551 00ca D7020000 		.4byte	.LASF18
- 552 00ce 06       		.uleb128 0x6
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 16
-
-
- 553 00cf 01       		.byte	0x1
- 554 00d0 37000000 		.4byte	0x37
- 555 00d4 05       		.byte	0x5
- 556 00d5 15       		.byte	0x15
- 557 00d6 E7000000 		.4byte	0xe7
- 558 00da 07       		.uleb128 0x7
- 559 00db 02030000 		.4byte	.LASF19
- 560 00df 00       		.byte	0
- 561 00e0 07       		.uleb128 0x7
- 562 00e1 0B030000 		.4byte	.LASF20
- 563 00e5 01       		.byte	0x1
- 564 00e6 00       		.byte	0
- 565 00e7 03       		.uleb128 0x3
- 566 00e8 76000000 		.4byte	.LASF21
- 567 00ec 05       		.byte	0x5
- 568 00ed 18       		.byte	0x18
- 569 00ee CE000000 		.4byte	0xce
- 570 00f2 02       		.uleb128 0x2
- 571 00f3 08       		.byte	0x8
- 572 00f4 04       		.byte	0x4
- 573 00f5 11030000 		.4byte	.LASF22
- 574 00f9 02       		.uleb128 0x2
- 575 00fa 04       		.byte	0x4
- 576 00fb 07       		.byte	0x7
- 577 00fc A2020000 		.4byte	.LASF23
- 578 0100 08       		.uleb128 0x8
- 579 0101 B2010000 		.4byte	.LASF51
- 580 0105 01       		.byte	0x1
- 581 0106 17       		.byte	0x17
- 582 0107 7E000000 		.4byte	0x7e
- 583 010b 00000000 		.4byte	.LFB64
- 584 010f 34020000 		.4byte	.LFE64-.LFB64
- 585 0113 01       		.uleb128 0x1
- 586 0114 9C       		.byte	0x9c
- 587 0115 C5050000 		.4byte	0x5c5
- 588 0119 09       		.uleb128 0x9
- 589 011a 00000000 		.4byte	.LASF24
- 590 011e 01       		.byte	0x1
- 591 011f 22       		.byte	0x22
- 592 0120 C5050000 		.4byte	0x5c5
- 593 0124 02       		.uleb128 0x2
- 594 0125 91       		.byte	0x91
- 595 0126 44       		.sleb128 -60
- 596 0127 09       		.uleb128 0x9
- 597 0128 29030000 		.4byte	.LASF25
- 598 012c 01       		.byte	0x1
- 599 012d 35       		.byte	0x35
- 600 012e 8C000000 		.4byte	0x8c
- 601 0132 02       		.uleb128 0x2
- 602 0133 91       		.byte	0x91
- 603 0134 43       		.sleb128 -61
- 604 0135 0A       		.uleb128 0xa
- 605 0136 AB020000 		.4byte	.LASF26
- 606 013a 01       		.byte	0x1
- 607 013b 36       		.byte	0x36
- 608 013c E7000000 		.4byte	0xe7
- 609 0140 00000000 		.4byte	.LLST0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 17
-
-
- 610 0144 09       		.uleb128 0x9
- 611 0145 43020000 		.4byte	.LASF27
- 612 0149 01       		.byte	0x1
- 613 014a 45       		.byte	0x45
- 614 014b 8C000000 		.4byte	0x8c
- 615 014f 02       		.uleb128 0x2
- 616 0150 91       		.byte	0x91
- 617 0151 42       		.sleb128 -62
- 618 0152 09       		.uleb128 0x9
- 619 0153 C1010000 		.4byte	.LASF28
- 620 0157 01       		.byte	0x1
- 621 0158 57       		.byte	0x57
- 622 0159 8C000000 		.4byte	0x8c
- 623 015d 02       		.uleb128 0x2
- 624 015e 91       		.byte	0x91
- 625 015f 41       		.sleb128 -63
- 626 0160 09       		.uleb128 0x9
- 627 0161 CB010000 		.4byte	.LASF29
- 628 0165 01       		.byte	0x1
- 629 0166 94       		.byte	0x94
- 630 0167 8C000000 		.4byte	0x8c
- 631 016b 02       		.uleb128 0x2
- 632 016c 91       		.byte	0x91
- 633 016d 40       		.sleb128 -64
- 634 016e 0A       		.uleb128 0xa
- 635 016f 01020000 		.4byte	.LASF30
- 636 0173 01       		.byte	0x1
- 637 0174 C0       		.byte	0xc0
- 638 0175 97000000 		.4byte	0x97
- 639 0179 AD000000 		.4byte	.LLST1
- 640 017d 0A       		.uleb128 0xa
- 641 017e 0B020000 		.4byte	.LASF31
- 642 0182 01       		.byte	0x1
- 643 0183 C1       		.byte	0xc1
- 644 0184 97000000 		.4byte	0x97
- 645 0188 E3000000 		.4byte	.LLST2
- 646 018c 0A       		.uleb128 0xa
- 647 018d 15020000 		.4byte	.LASF32
- 648 0191 01       		.byte	0x1
- 649 0192 C2       		.byte	0xc2
- 650 0193 97000000 		.4byte	0x97
- 651 0197 1A010000 		.4byte	.LLST3
- 652 019b 09       		.uleb128 0x9
- 653 019c 8E000000 		.4byte	.LASF33
- 654 01a0 01       		.byte	0x1
- 655 01a1 C3       		.byte	0xc3
- 656 01a2 D5050000 		.4byte	0x5d5
- 657 01a6 03       		.uleb128 0x3
- 658 01a7 91       		.byte	0x91
- 659 01a8 B87F     		.sleb128 -72
- 660 01aa 0B       		.uleb128 0xb
- 661 01ab 34020000 		.4byte	.LASF34
- 662 01af 01       		.byte	0x1
- 663 01b0 C4       		.byte	0xc4
- 664 01b1 8C000000 		.4byte	0x8c
- 665 01b5 05       		.byte	0x5
- 666 01b6 09       		.uleb128 0x9
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 18
-
-
- 667 01b7 65010000 		.4byte	.LASF35
- 668 01bb 01       		.byte	0x1
- 669 01bc C5       		.byte	0xc5
- 670 01bd E5050000 		.4byte	0x5e5
- 671 01c1 03       		.uleb128 0x3
- 672 01c2 91       		.byte	0x91
- 673 01c3 B07F     		.sleb128 -80
- 674 01c5 0C       		.uleb128 0xc
- 675 01c6 08000000 		.4byte	.LASF36
- 676 01ca 01       		.byte	0x1
- 677 01cb C6       		.byte	0xc6
- 678 01cc 8C000000 		.4byte	0x8c
- 679 01d0 A07F     		.sleb128 -96
- 680 01d2 0C       		.uleb128 0xc
- 681 01d3 5E010000 		.4byte	.LASF37
- 682 01d7 01       		.byte	0x1
- 683 01d8 C7       		.byte	0xc7
- 684 01d9 8C000000 		.4byte	0x8c
- 685 01dd 40       		.sleb128 -64
- 686 01de 0D       		.uleb128 0xd
- 687 01df 14000000 		.4byte	.LBB2
- 688 01e3 22000000 		.4byte	.LBE2-.LBB2
- 689 01e7 40020000 		.4byte	0x240
- 690 01eb 0E       		.uleb128 0xe
- 691 01ec 6900     		.ascii	"i\000"
- 692 01ee 01       		.byte	0x1
- 693 01ef 25       		.byte	0x25
- 694 01f0 7E000000 		.4byte	0x7e
- 695 01f4 6F010000 		.4byte	.LLST4
- 696 01f8 0F       		.uleb128 0xf
- 697 01f9 1E000000 		.4byte	.LVL4
- 698 01fd 06060000 		.4byte	0x606
- 699 0201 0C020000 		.4byte	0x20c
- 700 0205 10       		.uleb128 0x10
- 701 0206 01       		.uleb128 0x1
- 702 0207 50       		.byte	0x50
- 703 0208 02       		.uleb128 0x2
- 704 0209 74       		.byte	0x74
- 705 020a 00       		.sleb128 0
- 706 020b 00       		.byte	0
- 707 020c 0F       		.uleb128 0xf
- 708 020d 2A000000 		.4byte	.LVL5
- 709 0211 11060000 		.4byte	0x611
- 710 0215 2F020000 		.4byte	0x22f
- 711 0219 10       		.uleb128 0x10
- 712 021a 01       		.uleb128 0x1
- 713 021b 50       		.byte	0x50
- 714 021c 02       		.uleb128 0x2
- 715 021d 91       		.byte	0x91
- 716 021e 44       		.sleb128 -60
- 717 021f 10       		.uleb128 0x10
- 718 0220 01       		.uleb128 0x1
- 719 0221 51       		.byte	0x51
- 720 0222 05       		.uleb128 0x5
- 721 0223 03       		.byte	0x3
- 722 0224 00000000 		.4byte	.LC0
- 723 0228 10       		.uleb128 0x10
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 19
-
-
- 724 0229 01       		.uleb128 0x1
- 725 022a 52       		.byte	0x52
- 726 022b 02       		.uleb128 0x2
- 727 022c 74       		.byte	0x74
- 728 022d 00       		.sleb128 0
- 729 022e 00       		.byte	0
- 730 022f 11       		.uleb128 0x11
- 731 0230 30000000 		.4byte	.LVL6
- 732 0234 1C060000 		.4byte	0x61c
- 733 0238 10       		.uleb128 0x10
- 734 0239 01       		.uleb128 0x1
- 735 023a 50       		.byte	0x50
- 736 023b 02       		.uleb128 0x2
- 737 023c 91       		.byte	0x91
- 738 023d 44       		.sleb128 -60
- 739 023e 00       		.byte	0
- 740 023f 00       		.byte	0
- 741 0240 12       		.uleb128 0x12
- 742 0241 0A000000 		.4byte	.LVL0
- 743 0245 27060000 		.4byte	0x627
- 744 0249 12       		.uleb128 0x12
- 745 024a 0E000000 		.4byte	.LVL1
- 746 024e 32060000 		.4byte	0x632
- 747 0252 0F       		.uleb128 0xf
- 748 0253 14000000 		.4byte	.LVL2
- 749 0257 3D060000 		.4byte	0x63d
- 750 025b 65020000 		.4byte	0x265
- 751 025f 10       		.uleb128 0x10
- 752 0260 01       		.uleb128 0x1
- 753 0261 50       		.byte	0x50
- 754 0262 01       		.uleb128 0x1
- 755 0263 35       		.byte	0x35
- 756 0264 00       		.byte	0
- 757 0265 0F       		.uleb128 0xf
- 758 0266 42000000 		.4byte	.LVL8
- 759 026a 48060000 		.4byte	0x648
- 760 026e 83020000 		.4byte	0x283
- 761 0272 10       		.uleb128 0x10
- 762 0273 01       		.uleb128 0x1
- 763 0274 50       		.byte	0x50
- 764 0275 01       		.uleb128 0x1
- 765 0276 48       		.byte	0x48
- 766 0277 10       		.uleb128 0x10
- 767 0278 01       		.uleb128 0x1
- 768 0279 51       		.byte	0x51
- 769 027a 01       		.uleb128 0x1
- 770 027b 3F       		.byte	0x3f
- 771 027c 10       		.uleb128 0x10
- 772 027d 01       		.uleb128 0x1
- 773 027e 52       		.byte	0x52
- 774 027f 02       		.uleb128 0x2
- 775 0280 91       		.byte	0x91
- 776 0281 43       		.sleb128 -61
- 777 0282 00       		.byte	0
- 778 0283 0F       		.uleb128 0xf
- 779 0284 50000000 		.4byte	.LVL10
- 780 0288 11060000 		.4byte	0x611
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 20
-
-
- 781 028c A0020000 		.4byte	0x2a0
- 782 0290 10       		.uleb128 0x10
- 783 0291 01       		.uleb128 0x1
- 784 0292 50       		.byte	0x50
- 785 0293 02       		.uleb128 0x2
- 786 0294 91       		.byte	0x91
- 787 0295 44       		.sleb128 -60
- 788 0296 10       		.uleb128 0x10
- 789 0297 01       		.uleb128 0x1
- 790 0298 51       		.byte	0x51
- 791 0299 05       		.uleb128 0x5
- 792 029a 03       		.byte	0x3
- 793 029b 20000000 		.4byte	.LC1
- 794 029f 00       		.byte	0
- 795 02a0 0F       		.uleb128 0xf
- 796 02a1 56000000 		.4byte	.LVL11
- 797 02a5 1C060000 		.4byte	0x61c
- 798 02a9 B4020000 		.4byte	0x2b4
- 799 02ad 10       		.uleb128 0x10
- 800 02ae 01       		.uleb128 0x1
- 801 02af 50       		.byte	0x50
- 802 02b0 02       		.uleb128 0x2
- 803 02b1 91       		.byte	0x91
- 804 02b2 44       		.sleb128 -60
- 805 02b3 00       		.byte	0
- 806 02b4 0F       		.uleb128 0xf
- 807 02b5 5E000000 		.4byte	.LVL14
- 808 02b9 1C060000 		.4byte	0x61c
- 809 02bd CB020000 		.4byte	0x2cb
- 810 02c1 10       		.uleb128 0x10
- 811 02c2 01       		.uleb128 0x1
- 812 02c3 50       		.byte	0x50
- 813 02c4 05       		.uleb128 0x5
- 814 02c5 03       		.byte	0x3
- 815 02c6 48000000 		.4byte	.LC2
- 816 02ca 00       		.byte	0
- 817 02cb 0F       		.uleb128 0xf
- 818 02cc 6A000000 		.4byte	.LVL15
- 819 02d0 48060000 		.4byte	0x648
- 820 02d4 EA020000 		.4byte	0x2ea
- 821 02d8 10       		.uleb128 0x10
- 822 02d9 01       		.uleb128 0x1
- 823 02da 50       		.byte	0x50
- 824 02db 01       		.uleb128 0x1
- 825 02dc 48       		.byte	0x48
- 826 02dd 10       		.uleb128 0x10
- 827 02de 01       		.uleb128 0x1
- 828 02df 51       		.byte	0x51
- 829 02e0 02       		.uleb128 0x2
- 830 02e1 08       		.byte	0x8
- 831 02e2 27       		.byte	0x27
- 832 02e3 10       		.uleb128 0x10
- 833 02e4 01       		.uleb128 0x1
- 834 02e5 52       		.byte	0x52
- 835 02e6 02       		.uleb128 0x2
- 836 02e7 91       		.byte	0x91
- 837 02e8 42       		.sleb128 -62
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 21
-
-
- 838 02e9 00       		.byte	0
- 839 02ea 0F       		.uleb128 0xf
- 840 02eb 78000000 		.4byte	.LVL17
- 841 02ef 11060000 		.4byte	0x611
- 842 02f3 07030000 		.4byte	0x307
- 843 02f7 10       		.uleb128 0x10
- 844 02f8 01       		.uleb128 0x1
- 845 02f9 50       		.byte	0x50
- 846 02fa 02       		.uleb128 0x2
- 847 02fb 91       		.byte	0x91
- 848 02fc 44       		.sleb128 -60
- 849 02fd 10       		.uleb128 0x10
- 850 02fe 01       		.uleb128 0x1
- 851 02ff 51       		.byte	0x51
- 852 0300 05       		.uleb128 0x5
- 853 0301 03       		.byte	0x3
- 854 0302 6C000000 		.4byte	.LC3
- 855 0306 00       		.byte	0
- 856 0307 0F       		.uleb128 0xf
- 857 0308 7E000000 		.4byte	.LVL18
- 858 030c 1C060000 		.4byte	0x61c
- 859 0310 1B030000 		.4byte	0x31b
- 860 0314 10       		.uleb128 0x10
- 861 0315 01       		.uleb128 0x1
- 862 0316 50       		.byte	0x50
- 863 0317 02       		.uleb128 0x2
- 864 0318 91       		.byte	0x91
- 865 0319 44       		.sleb128 -60
- 866 031a 00       		.byte	0
- 867 031b 0F       		.uleb128 0xf
- 868 031c 86000000 		.4byte	.LVL21
- 869 0320 1C060000 		.4byte	0x61c
- 870 0324 32030000 		.4byte	0x332
- 871 0328 10       		.uleb128 0x10
- 872 0329 01       		.uleb128 0x1
- 873 032a 50       		.byte	0x50
- 874 032b 05       		.uleb128 0x5
- 875 032c 03       		.byte	0x3
- 876 032d 88000000 		.4byte	.LC4
- 877 0331 00       		.byte	0
- 878 0332 0F       		.uleb128 0xf
- 879 0333 92000000 		.4byte	.LVL22
- 880 0337 48060000 		.4byte	0x648
- 881 033b 51030000 		.4byte	0x351
- 882 033f 10       		.uleb128 0x10
- 883 0340 01       		.uleb128 0x1
- 884 0341 50       		.byte	0x50
- 885 0342 01       		.uleb128 0x1
- 886 0343 48       		.byte	0x48
- 887 0344 10       		.uleb128 0x10
- 888 0345 01       		.uleb128 0x1
- 889 0346 51       		.byte	0x51
- 890 0347 02       		.uleb128 0x2
- 891 0348 08       		.byte	0x8
- 892 0349 20       		.byte	0x20
- 893 034a 10       		.uleb128 0x10
- 894 034b 01       		.uleb128 0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 22
-
-
- 895 034c 52       		.byte	0x52
- 896 034d 02       		.uleb128 0x2
- 897 034e 91       		.byte	0x91
- 898 034f 41       		.sleb128 -63
- 899 0350 00       		.byte	0
- 900 0351 0F       		.uleb128 0xf
- 901 0352 A0000000 		.4byte	.LVL24
- 902 0356 11060000 		.4byte	0x611
- 903 035a 6E030000 		.4byte	0x36e
- 904 035e 10       		.uleb128 0x10
- 905 035f 01       		.uleb128 0x1
- 906 0360 50       		.byte	0x50
- 907 0361 02       		.uleb128 0x2
- 908 0362 91       		.byte	0x91
- 909 0363 44       		.sleb128 -60
- 910 0364 10       		.uleb128 0x10
- 911 0365 01       		.uleb128 0x1
- 912 0366 51       		.byte	0x51
- 913 0367 05       		.uleb128 0x5
- 914 0368 03       		.byte	0x3
- 915 0369 C4000000 		.4byte	.LC5
- 916 036d 00       		.byte	0
- 917 036e 0F       		.uleb128 0xf
- 918 036f A6000000 		.4byte	.LVL25
- 919 0373 1C060000 		.4byte	0x61c
- 920 0377 82030000 		.4byte	0x382
- 921 037b 10       		.uleb128 0x10
- 922 037c 01       		.uleb128 0x1
- 923 037d 50       		.byte	0x50
- 924 037e 02       		.uleb128 0x2
- 925 037f 91       		.byte	0x91
- 926 0380 44       		.sleb128 -60
- 927 0381 00       		.byte	0
- 928 0382 0F       		.uleb128 0xf
- 929 0383 AE000000 		.4byte	.LVL28
- 930 0387 1C060000 		.4byte	0x61c
- 931 038b 99030000 		.4byte	0x399
- 932 038f 10       		.uleb128 0x10
- 933 0390 01       		.uleb128 0x1
- 934 0391 50       		.byte	0x50
- 935 0392 05       		.uleb128 0x5
- 936 0393 03       		.byte	0x3
- 937 0394 E4000000 		.4byte	.LC6
- 938 0398 00       		.byte	0
- 939 0399 0F       		.uleb128 0xf
- 940 039a B4000000 		.4byte	.LVL29
- 941 039e 1C060000 		.4byte	0x61c
- 942 03a2 B0030000 		.4byte	0x3b0
- 943 03a6 10       		.uleb128 0x10
- 944 03a7 01       		.uleb128 0x1
- 945 03a8 50       		.byte	0x50
- 946 03a9 05       		.uleb128 0x5
- 947 03aa 03       		.byte	0x3
- 948 03ab 20010000 		.4byte	.LC7
- 949 03af 00       		.byte	0
- 950 03b0 0F       		.uleb128 0xf
- 951 03b1 CA000000 		.4byte	.LVL30
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 23
-
-
- 952 03b5 53060000 		.4byte	0x653
- 953 03b9 CF030000 		.4byte	0x3cf
- 954 03bd 10       		.uleb128 0x10
- 955 03be 01       		.uleb128 0x1
- 956 03bf 50       		.byte	0x50
- 957 03c0 01       		.uleb128 0x1
- 958 03c1 48       		.byte	0x48
- 959 03c2 10       		.uleb128 0x10
- 960 03c3 01       		.uleb128 0x1
- 961 03c4 51       		.byte	0x51
- 962 03c5 02       		.uleb128 0x2
- 963 03c6 08       		.byte	0x8
- 964 03c7 20       		.byte	0x20
- 965 03c8 10       		.uleb128 0x10
- 966 03c9 01       		.uleb128 0x1
- 967 03ca 52       		.byte	0x52
- 968 03cb 02       		.uleb128 0x2
- 969 03cc 08       		.byte	0x8
- 970 03cd 57       		.byte	0x57
- 971 03ce 00       		.byte	0
- 972 03cf 0F       		.uleb128 0xf
- 973 03d0 D8000000 		.4byte	.LVL32
- 974 03d4 11060000 		.4byte	0x611
- 975 03d8 EC030000 		.4byte	0x3ec
- 976 03dc 10       		.uleb128 0x10
- 977 03dd 01       		.uleb128 0x1
- 978 03de 50       		.byte	0x50
- 979 03df 02       		.uleb128 0x2
- 980 03e0 91       		.byte	0x91
- 981 03e1 44       		.sleb128 -60
- 982 03e2 10       		.uleb128 0x10
- 983 03e3 01       		.uleb128 0x1
- 984 03e4 51       		.byte	0x51
- 985 03e5 05       		.uleb128 0x5
- 986 03e6 03       		.byte	0x3
- 987 03e7 3C010000 		.4byte	.LC8
- 988 03eb 00       		.byte	0
- 989 03ec 0F       		.uleb128 0xf
- 990 03ed DE000000 		.4byte	.LVL33
- 991 03f1 1C060000 		.4byte	0x61c
- 992 03f5 00040000 		.4byte	0x400
- 993 03f9 10       		.uleb128 0x10
- 994 03fa 01       		.uleb128 0x1
- 995 03fb 50       		.byte	0x50
- 996 03fc 02       		.uleb128 0x2
- 997 03fd 91       		.byte	0x91
- 998 03fe 44       		.sleb128 -60
- 999 03ff 00       		.byte	0
- 1000 0400 0F       		.uleb128 0xf
- 1001 0401 E6000000 		.4byte	.LVL36
- 1002 0405 1C060000 		.4byte	0x61c
- 1003 0409 17040000 		.4byte	0x417
- 1004 040d 10       		.uleb128 0x10
- 1005 040e 01       		.uleb128 0x1
- 1006 040f 50       		.byte	0x50
- 1007 0410 05       		.uleb128 0x5
- 1008 0411 03       		.byte	0x3
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 24
-
-
- 1009 0412 74010000 		.4byte	.LC9
- 1010 0416 00       		.byte	0
- 1011 0417 0F       		.uleb128 0xf
- 1012 0418 F2000000 		.4byte	.LVL37
- 1013 041c 48060000 		.4byte	0x648
- 1014 0420 36040000 		.4byte	0x436
- 1015 0424 10       		.uleb128 0x10
- 1016 0425 01       		.uleb128 0x1
- 1017 0426 50       		.byte	0x50
- 1018 0427 01       		.uleb128 0x1
- 1019 0428 48       		.byte	0x48
- 1020 0429 10       		.uleb128 0x10
- 1021 042a 01       		.uleb128 0x1
- 1022 042b 51       		.byte	0x51
- 1023 042c 02       		.uleb128 0x2
- 1024 042d 08       		.byte	0x8
- 1025 042e 20       		.byte	0x20
- 1026 042f 10       		.uleb128 0x10
- 1027 0430 01       		.uleb128 0x1
- 1028 0431 52       		.byte	0x52
- 1029 0432 02       		.uleb128 0x2
- 1030 0433 91       		.byte	0x91
- 1031 0434 41       		.sleb128 -63
- 1032 0435 00       		.byte	0
- 1033 0436 0F       		.uleb128 0xf
- 1034 0437 00010000 		.4byte	.LVL39
- 1035 043b 11060000 		.4byte	0x611
- 1036 043f 53040000 		.4byte	0x453
- 1037 0443 10       		.uleb128 0x10
- 1038 0444 01       		.uleb128 0x1
- 1039 0445 50       		.byte	0x50
- 1040 0446 02       		.uleb128 0x2
- 1041 0447 91       		.byte	0x91
- 1042 0448 44       		.sleb128 -60
- 1043 0449 10       		.uleb128 0x10
- 1044 044a 01       		.uleb128 0x1
- 1045 044b 51       		.byte	0x51
- 1046 044c 05       		.uleb128 0x5
- 1047 044d 03       		.byte	0x3
- 1048 044e B0010000 		.4byte	.LC10
- 1049 0452 00       		.byte	0
- 1050 0453 0F       		.uleb128 0xf
- 1051 0454 06010000 		.4byte	.LVL40
- 1052 0458 1C060000 		.4byte	0x61c
- 1053 045c 67040000 		.4byte	0x467
- 1054 0460 10       		.uleb128 0x10
- 1055 0461 01       		.uleb128 0x1
- 1056 0462 50       		.byte	0x50
- 1057 0463 02       		.uleb128 0x2
- 1058 0464 91       		.byte	0x91
- 1059 0465 44       		.sleb128 -60
- 1060 0466 00       		.byte	0
- 1061 0467 0F       		.uleb128 0xf
- 1062 0468 0E010000 		.4byte	.LVL43
- 1063 046c 1C060000 		.4byte	0x61c
- 1064 0470 7E040000 		.4byte	0x47e
- 1065 0474 10       		.uleb128 0x10
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 25
-
-
- 1066 0475 01       		.uleb128 0x1
- 1067 0476 50       		.byte	0x50
- 1068 0477 05       		.uleb128 0x5
- 1069 0478 03       		.byte	0x3
- 1070 0479 E4000000 		.4byte	.LC6
- 1071 047d 00       		.byte	0
- 1072 047e 0F       		.uleb128 0xf
- 1073 047f 18010000 		.4byte	.LVL44
- 1074 0483 48060000 		.4byte	0x648
- 1075 0487 9D040000 		.4byte	0x49d
- 1076 048b 10       		.uleb128 0x10
- 1077 048c 01       		.uleb128 0x1
- 1078 048d 50       		.byte	0x50
- 1079 048e 01       		.uleb128 0x1
- 1080 048f 48       		.byte	0x48
- 1081 0490 10       		.uleb128 0x10
- 1082 0491 01       		.uleb128 0x1
- 1083 0492 51       		.byte	0x51
- 1084 0493 02       		.uleb128 0x2
- 1085 0494 08       		.byte	0x8
- 1086 0495 23       		.byte	0x23
- 1087 0496 10       		.uleb128 0x10
- 1088 0497 01       		.uleb128 0x1
- 1089 0498 52       		.byte	0x52
- 1090 0499 02       		.uleb128 0x2
- 1091 049a 91       		.byte	0x91
- 1092 049b 40       		.sleb128 -64
- 1093 049c 00       		.byte	0
- 1094 049d 0F       		.uleb128 0xf
- 1095 049e 26010000 		.4byte	.LVL46
- 1096 04a2 11060000 		.4byte	0x611
- 1097 04a6 BA040000 		.4byte	0x4ba
- 1098 04aa 10       		.uleb128 0x10
- 1099 04ab 01       		.uleb128 0x1
- 1100 04ac 50       		.byte	0x50
- 1101 04ad 02       		.uleb128 0x2
- 1102 04ae 91       		.byte	0x91
- 1103 04af 44       		.sleb128 -60
- 1104 04b0 10       		.uleb128 0x10
- 1105 04b1 01       		.uleb128 0x1
- 1106 04b2 51       		.byte	0x51
- 1107 04b3 05       		.uleb128 0x5
- 1108 04b4 03       		.byte	0x3
- 1109 04b5 E8010000 		.4byte	.LC11
- 1110 04b9 00       		.byte	0
- 1111 04ba 0F       		.uleb128 0xf
- 1112 04bb 2C010000 		.4byte	.LVL47
- 1113 04bf 1C060000 		.4byte	0x61c
- 1114 04c3 CE040000 		.4byte	0x4ce
- 1115 04c7 10       		.uleb128 0x10
- 1116 04c8 01       		.uleb128 0x1
- 1117 04c9 50       		.byte	0x50
- 1118 04ca 02       		.uleb128 0x2
- 1119 04cb 91       		.byte	0x91
- 1120 04cc 44       		.sleb128 -60
- 1121 04cd 00       		.byte	0
- 1122 04ce 0F       		.uleb128 0xf
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 26
-
-
- 1123 04cf 34010000 		.4byte	.LVL50
- 1124 04d3 1C060000 		.4byte	0x61c
- 1125 04d7 E5040000 		.4byte	0x4e5
- 1126 04db 10       		.uleb128 0x10
- 1127 04dc 01       		.uleb128 0x1
- 1128 04dd 50       		.byte	0x50
- 1129 04de 05       		.uleb128 0x5
- 1130 04df 03       		.byte	0x3
- 1131 04e0 08020000 		.4byte	.LC12
- 1132 04e4 00       		.byte	0
- 1133 04e5 0F       		.uleb128 0xf
- 1134 04e6 44010000 		.4byte	.LVL52
- 1135 04ea 53060000 		.4byte	0x653
- 1136 04ee 04050000 		.4byte	0x504
- 1137 04f2 10       		.uleb128 0x10
- 1138 04f3 01       		.uleb128 0x1
- 1139 04f4 50       		.byte	0x50
- 1140 04f5 01       		.uleb128 0x1
- 1141 04f6 48       		.byte	0x48
- 1142 04f7 10       		.uleb128 0x10
- 1143 04f8 01       		.uleb128 0x1
- 1144 04f9 51       		.byte	0x51
- 1145 04fa 02       		.uleb128 0x2
- 1146 04fb 08       		.byte	0x8
- 1147 04fc 23       		.byte	0x23
- 1148 04fd 10       		.uleb128 0x10
- 1149 04fe 01       		.uleb128 0x1
- 1150 04ff 52       		.byte	0x52
- 1151 0500 02       		.uleb128 0x2
- 1152 0501 09       		.byte	0x9
- 1153 0502 80       		.byte	0x80
- 1154 0503 00       		.byte	0
- 1155 0504 0F       		.uleb128 0xf
- 1156 0505 4E010000 		.4byte	.LVL53
- 1157 0509 48060000 		.4byte	0x648
- 1158 050d 23050000 		.4byte	0x523
- 1159 0511 10       		.uleb128 0x10
- 1160 0512 01       		.uleb128 0x1
- 1161 0513 50       		.byte	0x50
- 1162 0514 01       		.uleb128 0x1
- 1163 0515 48       		.byte	0x48
- 1164 0516 10       		.uleb128 0x10
- 1165 0517 01       		.uleb128 0x1
- 1166 0518 51       		.byte	0x51
- 1167 0519 02       		.uleb128 0x2
- 1168 051a 08       		.byte	0x8
- 1169 051b 23       		.byte	0x23
- 1170 051c 10       		.uleb128 0x10
- 1171 051d 01       		.uleb128 0x1
- 1172 051e 52       		.byte	0x52
- 1173 051f 02       		.uleb128 0x2
- 1174 0520 74       		.byte	0x74
- 1175 0521 00       		.sleb128 0
- 1176 0522 00       		.byte	0
- 1177 0523 0F       		.uleb128 0xf
- 1178 0524 5C010000 		.4byte	.LVL55
- 1179 0528 11060000 		.4byte	0x611
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 27
-
-
- 1180 052c 40050000 		.4byte	0x540
- 1181 0530 10       		.uleb128 0x10
- 1182 0531 01       		.uleb128 0x1
- 1183 0532 50       		.byte	0x50
- 1184 0533 02       		.uleb128 0x2
- 1185 0534 91       		.byte	0x91
- 1186 0535 44       		.sleb128 -60
- 1187 0536 10       		.uleb128 0x10
- 1188 0537 01       		.uleb128 0x1
- 1189 0538 51       		.byte	0x51
- 1190 0539 05       		.uleb128 0x5
- 1191 053a 03       		.byte	0x3
- 1192 053b 44020000 		.4byte	.LC13
- 1193 053f 00       		.byte	0
- 1194 0540 0F       		.uleb128 0xf
- 1195 0541 62010000 		.4byte	.LVL56
- 1196 0545 1C060000 		.4byte	0x61c
- 1197 0549 54050000 		.4byte	0x554
- 1198 054d 10       		.uleb128 0x10
- 1199 054e 01       		.uleb128 0x1
- 1200 054f 50       		.byte	0x50
- 1201 0550 02       		.uleb128 0x2
- 1202 0551 91       		.byte	0x91
- 1203 0552 44       		.sleb128 -60
- 1204 0553 00       		.byte	0
- 1205 0554 0F       		.uleb128 0xf
- 1206 0555 6A010000 		.4byte	.LVL59
- 1207 0559 1C060000 		.4byte	0x61c
- 1208 055d 6B050000 		.4byte	0x56b
- 1209 0561 10       		.uleb128 0x10
- 1210 0562 01       		.uleb128 0x1
- 1211 0563 50       		.byte	0x50
- 1212 0564 05       		.uleb128 0x5
- 1213 0565 03       		.byte	0x3
- 1214 0566 08020000 		.4byte	.LC12
- 1215 056a 00       		.byte	0
- 1216 056b 0F       		.uleb128 0xf
- 1217 056c 82010000 		.4byte	.LVL60
- 1218 0570 48060000 		.4byte	0x648
- 1219 0574 8A050000 		.4byte	0x58a
- 1220 0578 10       		.uleb128 0x10
- 1221 0579 01       		.uleb128 0x1
- 1222 057a 50       		.byte	0x50
- 1223 057b 01       		.uleb128 0x1
- 1224 057c 48       		.byte	0x48
- 1225 057d 10       		.uleb128 0x10
- 1226 057e 01       		.uleb128 0x1
- 1227 057f 51       		.byte	0x51
- 1228 0580 02       		.uleb128 0x2
- 1229 0581 08       		.byte	0x8
- 1230 0582 27       		.byte	0x27
- 1231 0583 10       		.uleb128 0x10
- 1232 0584 01       		.uleb128 0x1
- 1233 0585 52       		.byte	0x52
- 1234 0586 02       		.uleb128 0x2
- 1235 0587 91       		.byte	0x91
- 1236 0588 42       		.sleb128 -62
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 28
-
-
- 1237 0589 00       		.byte	0
- 1238 058a 0F       		.uleb128 0xf
- 1239 058b 98010000 		.4byte	.LVL61
- 1240 058f 5E060000 		.4byte	0x65e
- 1241 0593 AE050000 		.4byte	0x5ae
- 1242 0597 10       		.uleb128 0x10
- 1243 0598 01       		.uleb128 0x1
- 1244 0599 50       		.byte	0x50
- 1245 059a 01       		.uleb128 0x1
- 1246 059b 48       		.byte	0x48
- 1247 059c 10       		.uleb128 0x10
- 1248 059d 01       		.uleb128 0x1
- 1249 059e 51       		.byte	0x51
- 1250 059f 02       		.uleb128 0x2
- 1251 05a0 08       		.byte	0x8
- 1252 05a1 28       		.byte	0x28
- 1253 05a2 10       		.uleb128 0x10
- 1254 05a3 01       		.uleb128 0x1
- 1255 05a4 52       		.byte	0x52
- 1256 05a5 01       		.uleb128 0x1
- 1257 05a6 35       		.byte	0x35
- 1258 05a7 10       		.uleb128 0x10
- 1259 05a8 01       		.uleb128 0x1
- 1260 05a9 53       		.byte	0x53
- 1261 05aa 02       		.uleb128 0x2
- 1262 05ab 7D       		.byte	0x7d
- 1263 05ac 00       		.sleb128 0
- 1264 05ad 00       		.byte	0
- 1265 05ae 11       		.uleb128 0x11
- 1266 05af FA010000 		.4byte	.LVL70
- 1267 05b3 69060000 		.4byte	0x669
- 1268 05b7 10       		.uleb128 0x10
- 1269 05b8 01       		.uleb128 0x1
- 1270 05b9 50       		.byte	0x50
- 1271 05ba 03       		.uleb128 0x3
- 1272 05bb 91       		.byte	0x91
- 1273 05bc B87F     		.sleb128 -72
- 1274 05be 10       		.uleb128 0x10
- 1275 05bf 01       		.uleb128 0x1
- 1276 05c0 51       		.byte	0x51
- 1277 05c1 01       		.uleb128 0x1
- 1278 05c2 38       		.byte	0x38
- 1279 05c3 00       		.byte	0
- 1280 05c4 00       		.byte	0
- 1281 05c5 13       		.uleb128 0x13
- 1282 05c6 C7000000 		.4byte	0xc7
- 1283 05ca D5050000 		.4byte	0x5d5
- 1284 05ce 14       		.uleb128 0x14
- 1285 05cf F9000000 		.4byte	0xf9
- 1286 05d3 31       		.byte	0x31
- 1287 05d4 00       		.byte	0
- 1288 05d5 13       		.uleb128 0x13
- 1289 05d6 8C000000 		.4byte	0x8c
- 1290 05da E5050000 		.4byte	0x5e5
- 1291 05de 14       		.uleb128 0x14
- 1292 05df F9000000 		.4byte	0xf9
- 1293 05e3 07       		.byte	0x7
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 29
-
-
- 1294 05e4 00       		.byte	0
- 1295 05e5 13       		.uleb128 0x13
- 1296 05e6 8C000000 		.4byte	0x8c
- 1297 05ea F5050000 		.4byte	0x5f5
- 1298 05ee 14       		.uleb128 0x14
- 1299 05ef F9000000 		.4byte	0xf9
- 1300 05f3 05       		.byte	0x5
- 1301 05f4 00       		.byte	0
- 1302 05f5 15       		.uleb128 0x15
- 1303 05f6 27020000 		.4byte	.LASF52
- 1304 05fa 0A       		.byte	0xa
- 1305 05fb 1207     		.2byte	0x712
- 1306 05fd 01060000 		.4byte	0x601
- 1307 0601 16       		.uleb128 0x16
- 1308 0602 A2000000 		.4byte	0xa2
- 1309 0606 17       		.uleb128 0x17
- 1310 0607 2E000000 		.4byte	.LASF38
- 1311 060b 2E000000 		.4byte	.LASF38
- 1312 060f 06       		.byte	0x6
- 1313 0610 5D       		.byte	0x5d
- 1314 0611 17       		.uleb128 0x17
- 1315 0612 36030000 		.4byte	.LASF39
- 1316 0616 36030000 		.4byte	.LASF39
- 1317 061a 07       		.byte	0x7
- 1318 061b E7       		.byte	0xe7
- 1319 061c 17       		.uleb128 0x17
- 1320 061d 19000000 		.4byte	.LASF40
- 1321 0621 19000000 		.4byte	.LASF40
- 1322 0625 08       		.byte	0x8
- 1323 0626 8B       		.byte	0x8b
- 1324 0627 17       		.uleb128 0x17
- 1325 0628 46030000 		.4byte	.LASF41
- 1326 062c 46030000 		.4byte	.LASF41
- 1327 0630 06       		.byte	0x6
- 1328 0631 17       		.byte	0x17
- 1329 0632 17       		.uleb128 0x17
- 1330 0633 BF020000 		.4byte	.LASF42
- 1331 0637 BF020000 		.4byte	.LASF42
- 1332 063b 08       		.byte	0x8
- 1333 063c 54       		.byte	0x54
- 1334 063d 17       		.uleb128 0x17
- 1335 063e 3E030000 		.4byte	.LASF43
- 1336 0642 3E030000 		.4byte	.LASF43
- 1337 0646 09       		.byte	0x9
- 1338 0647 76       		.byte	0x76
- 1339 0648 17       		.uleb128 0x17
- 1340 0649 DC020000 		.4byte	.LASF44
- 1341 064d DC020000 		.4byte	.LASF44
- 1342 0651 06       		.byte	0x6
- 1343 0652 28       		.byte	0x28
- 1344 0653 17       		.uleb128 0x17
- 1345 0654 95010000 		.4byte	.LASF45
- 1346 0658 95010000 		.4byte	.LASF45
- 1347 065c 06       		.byte	0x6
- 1348 065d 43       		.byte	0x43
- 1349 065e 17       		.uleb128 0x17
- 1350 065f 74010000 		.4byte	.LASF46
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 30
-
-
- 1351 0663 74010000 		.4byte	.LASF46
- 1352 0667 06       		.byte	0x6
- 1353 0668 36       		.byte	0x36
- 1354 0669 17       		.uleb128 0x17
- 1355 066a 62000000 		.4byte	.LASF47
- 1356 066e 62000000 		.4byte	.LASF47
- 1357 0672 08       		.byte	0x8
- 1358 0673 8C       		.byte	0x8c
- 1359 0674 00       		.byte	0
- 1360              		.section	.debug_abbrev,"",%progbits
- 1361              	.Ldebug_abbrev0:
- 1362 0000 01       		.uleb128 0x1
- 1363 0001 11       		.uleb128 0x11
- 1364 0002 01       		.byte	0x1
- 1365 0003 25       		.uleb128 0x25
- 1366 0004 0E       		.uleb128 0xe
- 1367 0005 13       		.uleb128 0x13
- 1368 0006 0B       		.uleb128 0xb
- 1369 0007 03       		.uleb128 0x3
- 1370 0008 0E       		.uleb128 0xe
- 1371 0009 1B       		.uleb128 0x1b
- 1372 000a 0E       		.uleb128 0xe
- 1373 000b 55       		.uleb128 0x55
- 1374 000c 17       		.uleb128 0x17
- 1375 000d 11       		.uleb128 0x11
- 1376 000e 01       		.uleb128 0x1
- 1377 000f 10       		.uleb128 0x10
- 1378 0010 17       		.uleb128 0x17
- 1379 0011 00       		.byte	0
- 1380 0012 00       		.byte	0
- 1381 0013 02       		.uleb128 0x2
- 1382 0014 24       		.uleb128 0x24
- 1383 0015 00       		.byte	0
- 1384 0016 0B       		.uleb128 0xb
- 1385 0017 0B       		.uleb128 0xb
- 1386 0018 3E       		.uleb128 0x3e
- 1387 0019 0B       		.uleb128 0xb
- 1388 001a 03       		.uleb128 0x3
- 1389 001b 0E       		.uleb128 0xe
- 1390 001c 00       		.byte	0
- 1391 001d 00       		.byte	0
- 1392 001e 03       		.uleb128 0x3
- 1393 001f 16       		.uleb128 0x16
- 1394 0020 00       		.byte	0
- 1395 0021 03       		.uleb128 0x3
- 1396 0022 0E       		.uleb128 0xe
- 1397 0023 3A       		.uleb128 0x3a
- 1398 0024 0B       		.uleb128 0xb
- 1399 0025 3B       		.uleb128 0x3b
- 1400 0026 0B       		.uleb128 0xb
- 1401 0027 49       		.uleb128 0x49
- 1402 0028 13       		.uleb128 0x13
- 1403 0029 00       		.byte	0
- 1404 002a 00       		.byte	0
- 1405 002b 04       		.uleb128 0x4
- 1406 002c 24       		.uleb128 0x24
- 1407 002d 00       		.byte	0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 31
-
-
- 1408 002e 0B       		.uleb128 0xb
- 1409 002f 0B       		.uleb128 0xb
- 1410 0030 3E       		.uleb128 0x3e
- 1411 0031 0B       		.uleb128 0xb
- 1412 0032 03       		.uleb128 0x3
- 1413 0033 08       		.uleb128 0x8
- 1414 0034 00       		.byte	0
- 1415 0035 00       		.byte	0
- 1416 0036 05       		.uleb128 0x5
- 1417 0037 16       		.uleb128 0x16
- 1418 0038 00       		.byte	0
- 1419 0039 03       		.uleb128 0x3
- 1420 003a 0E       		.uleb128 0xe
- 1421 003b 3A       		.uleb128 0x3a
- 1422 003c 0B       		.uleb128 0xb
- 1423 003d 3B       		.uleb128 0x3b
- 1424 003e 05       		.uleb128 0x5
- 1425 003f 49       		.uleb128 0x49
- 1426 0040 13       		.uleb128 0x13
- 1427 0041 00       		.byte	0
- 1428 0042 00       		.byte	0
- 1429 0043 06       		.uleb128 0x6
- 1430 0044 04       		.uleb128 0x4
- 1431 0045 01       		.byte	0x1
- 1432 0046 0B       		.uleb128 0xb
- 1433 0047 0B       		.uleb128 0xb
- 1434 0048 49       		.uleb128 0x49
- 1435 0049 13       		.uleb128 0x13
- 1436 004a 3A       		.uleb128 0x3a
- 1437 004b 0B       		.uleb128 0xb
- 1438 004c 3B       		.uleb128 0x3b
- 1439 004d 0B       		.uleb128 0xb
- 1440 004e 01       		.uleb128 0x1
- 1441 004f 13       		.uleb128 0x13
- 1442 0050 00       		.byte	0
- 1443 0051 00       		.byte	0
- 1444 0052 07       		.uleb128 0x7
- 1445 0053 28       		.uleb128 0x28
- 1446 0054 00       		.byte	0
- 1447 0055 03       		.uleb128 0x3
- 1448 0056 0E       		.uleb128 0xe
- 1449 0057 1C       		.uleb128 0x1c
- 1450 0058 0B       		.uleb128 0xb
- 1451 0059 00       		.byte	0
- 1452 005a 00       		.byte	0
- 1453 005b 08       		.uleb128 0x8
- 1454 005c 2E       		.uleb128 0x2e
- 1455 005d 01       		.byte	0x1
- 1456 005e 3F       		.uleb128 0x3f
- 1457 005f 19       		.uleb128 0x19
- 1458 0060 03       		.uleb128 0x3
- 1459 0061 0E       		.uleb128 0xe
- 1460 0062 3A       		.uleb128 0x3a
- 1461 0063 0B       		.uleb128 0xb
- 1462 0064 3B       		.uleb128 0x3b
- 1463 0065 0B       		.uleb128 0xb
- 1464 0066 27       		.uleb128 0x27
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 32
-
-
- 1465 0067 19       		.uleb128 0x19
- 1466 0068 49       		.uleb128 0x49
- 1467 0069 13       		.uleb128 0x13
- 1468 006a 8701     		.uleb128 0x87
- 1469 006c 19       		.uleb128 0x19
- 1470 006d 11       		.uleb128 0x11
- 1471 006e 01       		.uleb128 0x1
- 1472 006f 12       		.uleb128 0x12
- 1473 0070 06       		.uleb128 0x6
- 1474 0071 40       		.uleb128 0x40
- 1475 0072 18       		.uleb128 0x18
- 1476 0073 9742     		.uleb128 0x2117
- 1477 0075 19       		.uleb128 0x19
- 1478 0076 01       		.uleb128 0x1
- 1479 0077 13       		.uleb128 0x13
- 1480 0078 00       		.byte	0
- 1481 0079 00       		.byte	0
- 1482 007a 09       		.uleb128 0x9
- 1483 007b 34       		.uleb128 0x34
- 1484 007c 00       		.byte	0
- 1485 007d 03       		.uleb128 0x3
- 1486 007e 0E       		.uleb128 0xe
- 1487 007f 3A       		.uleb128 0x3a
- 1488 0080 0B       		.uleb128 0xb
- 1489 0081 3B       		.uleb128 0x3b
- 1490 0082 0B       		.uleb128 0xb
- 1491 0083 49       		.uleb128 0x49
- 1492 0084 13       		.uleb128 0x13
- 1493 0085 02       		.uleb128 0x2
- 1494 0086 18       		.uleb128 0x18
- 1495 0087 00       		.byte	0
- 1496 0088 00       		.byte	0
- 1497 0089 0A       		.uleb128 0xa
- 1498 008a 34       		.uleb128 0x34
- 1499 008b 00       		.byte	0
- 1500 008c 03       		.uleb128 0x3
- 1501 008d 0E       		.uleb128 0xe
- 1502 008e 3A       		.uleb128 0x3a
- 1503 008f 0B       		.uleb128 0xb
- 1504 0090 3B       		.uleb128 0x3b
- 1505 0091 0B       		.uleb128 0xb
- 1506 0092 49       		.uleb128 0x49
- 1507 0093 13       		.uleb128 0x13
- 1508 0094 02       		.uleb128 0x2
- 1509 0095 17       		.uleb128 0x17
- 1510 0096 00       		.byte	0
- 1511 0097 00       		.byte	0
- 1512 0098 0B       		.uleb128 0xb
- 1513 0099 34       		.uleb128 0x34
- 1514 009a 00       		.byte	0
- 1515 009b 03       		.uleb128 0x3
- 1516 009c 0E       		.uleb128 0xe
- 1517 009d 3A       		.uleb128 0x3a
- 1518 009e 0B       		.uleb128 0xb
- 1519 009f 3B       		.uleb128 0x3b
- 1520 00a0 0B       		.uleb128 0xb
- 1521 00a1 49       		.uleb128 0x49
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 33
-
-
- 1522 00a2 13       		.uleb128 0x13
- 1523 00a3 1C       		.uleb128 0x1c
- 1524 00a4 0B       		.uleb128 0xb
- 1525 00a5 00       		.byte	0
- 1526 00a6 00       		.byte	0
- 1527 00a7 0C       		.uleb128 0xc
- 1528 00a8 34       		.uleb128 0x34
- 1529 00a9 00       		.byte	0
- 1530 00aa 03       		.uleb128 0x3
- 1531 00ab 0E       		.uleb128 0xe
- 1532 00ac 3A       		.uleb128 0x3a
- 1533 00ad 0B       		.uleb128 0xb
- 1534 00ae 3B       		.uleb128 0x3b
- 1535 00af 0B       		.uleb128 0xb
- 1536 00b0 49       		.uleb128 0x49
- 1537 00b1 13       		.uleb128 0x13
- 1538 00b2 1C       		.uleb128 0x1c
- 1539 00b3 0D       		.uleb128 0xd
- 1540 00b4 00       		.byte	0
- 1541 00b5 00       		.byte	0
- 1542 00b6 0D       		.uleb128 0xd
- 1543 00b7 0B       		.uleb128 0xb
- 1544 00b8 01       		.byte	0x1
- 1545 00b9 11       		.uleb128 0x11
- 1546 00ba 01       		.uleb128 0x1
- 1547 00bb 12       		.uleb128 0x12
- 1548 00bc 06       		.uleb128 0x6
- 1549 00bd 01       		.uleb128 0x1
- 1550 00be 13       		.uleb128 0x13
- 1551 00bf 00       		.byte	0
- 1552 00c0 00       		.byte	0
- 1553 00c1 0E       		.uleb128 0xe
- 1554 00c2 34       		.uleb128 0x34
- 1555 00c3 00       		.byte	0
- 1556 00c4 03       		.uleb128 0x3
- 1557 00c5 08       		.uleb128 0x8
- 1558 00c6 3A       		.uleb128 0x3a
- 1559 00c7 0B       		.uleb128 0xb
- 1560 00c8 3B       		.uleb128 0x3b
- 1561 00c9 0B       		.uleb128 0xb
- 1562 00ca 49       		.uleb128 0x49
- 1563 00cb 13       		.uleb128 0x13
- 1564 00cc 02       		.uleb128 0x2
- 1565 00cd 17       		.uleb128 0x17
- 1566 00ce 00       		.byte	0
- 1567 00cf 00       		.byte	0
- 1568 00d0 0F       		.uleb128 0xf
- 1569 00d1 898201   		.uleb128 0x4109
- 1570 00d4 01       		.byte	0x1
- 1571 00d5 11       		.uleb128 0x11
- 1572 00d6 01       		.uleb128 0x1
- 1573 00d7 31       		.uleb128 0x31
- 1574 00d8 13       		.uleb128 0x13
- 1575 00d9 01       		.uleb128 0x1
- 1576 00da 13       		.uleb128 0x13
- 1577 00db 00       		.byte	0
- 1578 00dc 00       		.byte	0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 34
-
-
- 1579 00dd 10       		.uleb128 0x10
- 1580 00de 8A8201   		.uleb128 0x410a
- 1581 00e1 00       		.byte	0
- 1582 00e2 02       		.uleb128 0x2
- 1583 00e3 18       		.uleb128 0x18
- 1584 00e4 9142     		.uleb128 0x2111
- 1585 00e6 18       		.uleb128 0x18
- 1586 00e7 00       		.byte	0
- 1587 00e8 00       		.byte	0
- 1588 00e9 11       		.uleb128 0x11
- 1589 00ea 898201   		.uleb128 0x4109
- 1590 00ed 01       		.byte	0x1
- 1591 00ee 11       		.uleb128 0x11
- 1592 00ef 01       		.uleb128 0x1
- 1593 00f0 31       		.uleb128 0x31
- 1594 00f1 13       		.uleb128 0x13
- 1595 00f2 00       		.byte	0
- 1596 00f3 00       		.byte	0
- 1597 00f4 12       		.uleb128 0x12
- 1598 00f5 898201   		.uleb128 0x4109
- 1599 00f8 00       		.byte	0
- 1600 00f9 11       		.uleb128 0x11
- 1601 00fa 01       		.uleb128 0x1
- 1602 00fb 31       		.uleb128 0x31
- 1603 00fc 13       		.uleb128 0x13
- 1604 00fd 00       		.byte	0
- 1605 00fe 00       		.byte	0
- 1606 00ff 13       		.uleb128 0x13
- 1607 0100 01       		.uleb128 0x1
- 1608 0101 01       		.byte	0x1
- 1609 0102 49       		.uleb128 0x49
- 1610 0103 13       		.uleb128 0x13
- 1611 0104 01       		.uleb128 0x1
- 1612 0105 13       		.uleb128 0x13
- 1613 0106 00       		.byte	0
- 1614 0107 00       		.byte	0
- 1615 0108 14       		.uleb128 0x14
- 1616 0109 21       		.uleb128 0x21
- 1617 010a 00       		.byte	0
- 1618 010b 49       		.uleb128 0x49
- 1619 010c 13       		.uleb128 0x13
- 1620 010d 2F       		.uleb128 0x2f
- 1621 010e 0B       		.uleb128 0xb
- 1622 010f 00       		.byte	0
- 1623 0110 00       		.byte	0
- 1624 0111 15       		.uleb128 0x15
- 1625 0112 34       		.uleb128 0x34
- 1626 0113 00       		.byte	0
- 1627 0114 03       		.uleb128 0x3
- 1628 0115 0E       		.uleb128 0xe
- 1629 0116 3A       		.uleb128 0x3a
- 1630 0117 0B       		.uleb128 0xb
- 1631 0118 3B       		.uleb128 0x3b
- 1632 0119 05       		.uleb128 0x5
- 1633 011a 49       		.uleb128 0x49
- 1634 011b 13       		.uleb128 0x13
- 1635 011c 3F       		.uleb128 0x3f
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 35
-
-
- 1636 011d 19       		.uleb128 0x19
- 1637 011e 3C       		.uleb128 0x3c
- 1638 011f 19       		.uleb128 0x19
- 1639 0120 00       		.byte	0
- 1640 0121 00       		.byte	0
- 1641 0122 16       		.uleb128 0x16
- 1642 0123 35       		.uleb128 0x35
- 1643 0124 00       		.byte	0
- 1644 0125 49       		.uleb128 0x49
- 1645 0126 13       		.uleb128 0x13
- 1646 0127 00       		.byte	0
- 1647 0128 00       		.byte	0
- 1648 0129 17       		.uleb128 0x17
- 1649 012a 2E       		.uleb128 0x2e
- 1650 012b 00       		.byte	0
- 1651 012c 3F       		.uleb128 0x3f
- 1652 012d 19       		.uleb128 0x19
- 1653 012e 3C       		.uleb128 0x3c
- 1654 012f 19       		.uleb128 0x19
- 1655 0130 6E       		.uleb128 0x6e
- 1656 0131 0E       		.uleb128 0xe
- 1657 0132 03       		.uleb128 0x3
- 1658 0133 0E       		.uleb128 0xe
- 1659 0134 3A       		.uleb128 0x3a
- 1660 0135 0B       		.uleb128 0xb
- 1661 0136 3B       		.uleb128 0x3b
- 1662 0137 0B       		.uleb128 0xb
- 1663 0138 00       		.byte	0
- 1664 0139 00       		.byte	0
- 1665 013a 00       		.byte	0
- 1666              		.section	.debug_loc,"",%progbits
- 1667              	.Ldebug_loc0:
- 1668              	.LLST0:
- 1669 0000 42000000 		.4byte	.LVL8
- 1670 0004 4C000000 		.4byte	.LVL9
- 1671 0008 0100     		.2byte	0x1
- 1672 000a 50       		.byte	0x50
- 1673 000b 58000000 		.4byte	.LVL12
- 1674 000f 5A000000 		.4byte	.LVL13
- 1675 0013 0100     		.2byte	0x1
- 1676 0015 50       		.byte	0x50
- 1677 0016 6A000000 		.4byte	.LVL15
- 1678 001a 74000000 		.4byte	.LVL16
- 1679 001e 0100     		.2byte	0x1
- 1680 0020 50       		.byte	0x50
- 1681 0021 80000000 		.4byte	.LVL19
- 1682 0025 82000000 		.4byte	.LVL20
- 1683 0029 0100     		.2byte	0x1
- 1684 002b 50       		.byte	0x50
- 1685 002c 92000000 		.4byte	.LVL22
- 1686 0030 9C000000 		.4byte	.LVL23
- 1687 0034 0100     		.2byte	0x1
- 1688 0036 50       		.byte	0x50
- 1689 0037 A8000000 		.4byte	.LVL26
- 1690 003b AA000000 		.4byte	.LVL27
- 1691 003f 0100     		.2byte	0x1
- 1692 0041 50       		.byte	0x50
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 36
-
-
- 1693 0042 CA000000 		.4byte	.LVL30
- 1694 0046 D4000000 		.4byte	.LVL31
- 1695 004a 0100     		.2byte	0x1
- 1696 004c 50       		.byte	0x50
- 1697 004d E0000000 		.4byte	.LVL34
- 1698 0051 E2000000 		.4byte	.LVL35
- 1699 0055 0100     		.2byte	0x1
- 1700 0057 50       		.byte	0x50
- 1701 0058 F2000000 		.4byte	.LVL37
- 1702 005c FC000000 		.4byte	.LVL38
- 1703 0060 0100     		.2byte	0x1
- 1704 0062 50       		.byte	0x50
- 1705 0063 08010000 		.4byte	.LVL41
- 1706 0067 0A010000 		.4byte	.LVL42
- 1707 006b 0100     		.2byte	0x1
- 1708 006d 50       		.byte	0x50
- 1709 006e 18010000 		.4byte	.LVL44
- 1710 0072 22010000 		.4byte	.LVL45
- 1711 0076 0100     		.2byte	0x1
- 1712 0078 50       		.byte	0x50
- 1713 0079 2E010000 		.4byte	.LVL48
- 1714 007d 30010000 		.4byte	.LVL49
- 1715 0081 0100     		.2byte	0x1
- 1716 0083 50       		.byte	0x50
- 1717 0084 4E010000 		.4byte	.LVL53
- 1718 0088 58010000 		.4byte	.LVL54
- 1719 008c 0100     		.2byte	0x1
- 1720 008e 50       		.byte	0x50
- 1721 008f 64010000 		.4byte	.LVL57
- 1722 0093 66010000 		.4byte	.LVL58
- 1723 0097 0100     		.2byte	0x1
- 1724 0099 50       		.byte	0x50
- 1725 009a 98010000 		.4byte	.LVL61
- 1726 009e C4010000 		.4byte	.LVL64
- 1727 00a2 0100     		.2byte	0x1
- 1728 00a4 50       		.byte	0x50
- 1729 00a5 00000000 		.4byte	0
- 1730 00a9 00000000 		.4byte	0
- 1731              	.LLST1:
- 1732 00ad AC010000 		.4byte	.LVL62
- 1733 00b1 D4010000 		.4byte	.LVL66
- 1734 00b5 0100     		.2byte	0x1
- 1735 00b7 51       		.byte	0x51
- 1736 00b8 D4010000 		.4byte	.LVL66
- 1737 00bc F9010000 		.4byte	.LVL70-1
- 1738 00c0 1900     		.2byte	0x19
- 1739 00c2 91       		.byte	0x91
- 1740 00c3 B17F     		.sleb128 -79
- 1741 00c5 94       		.byte	0x94
- 1742 00c6 01       		.byte	0x1
- 1743 00c7 08       		.byte	0x8
- 1744 00c8 FF       		.byte	0xff
- 1745 00c9 1A       		.byte	0x1a
- 1746 00ca 38       		.byte	0x38
- 1747 00cb 24       		.byte	0x24
- 1748 00cc 7D       		.byte	0x7d
- 1749 00cd 00       		.sleb128 0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 37
-
-
- 1750 00ce 94       		.byte	0x94
- 1751 00cf 01       		.byte	0x1
- 1752 00d0 08       		.byte	0x8
- 1753 00d1 FF       		.byte	0xff
- 1754 00d2 1A       		.byte	0x1a
- 1755 00d3 21       		.byte	0x21
- 1756 00d4 09       		.byte	0x9
- 1757 00d5 F4       		.byte	0xf4
- 1758 00d6 24       		.byte	0x24
- 1759 00d7 09       		.byte	0x9
- 1760 00d8 FA       		.byte	0xfa
- 1761 00d9 26       		.byte	0x26
- 1762 00da 9F       		.byte	0x9f
- 1763 00db 00000000 		.4byte	0
- 1764 00df 00000000 		.4byte	0
- 1765              	.LLST2:
- 1766 00e3 BC010000 		.4byte	.LVL63
- 1767 00e7 E0010000 		.4byte	.LVL67
- 1768 00eb 0100     		.2byte	0x1
- 1769 00ed 52       		.byte	0x52
- 1770 00ee E0010000 		.4byte	.LVL67
- 1771 00f2 F9010000 		.4byte	.LVL70-1
- 1772 00f6 1A00     		.2byte	0x1a
- 1773 00f8 91       		.byte	0x91
- 1774 00f9 B37F     		.sleb128 -77
- 1775 00fb 94       		.byte	0x94
- 1776 00fc 01       		.byte	0x1
- 1777 00fd 08       		.byte	0x8
- 1778 00fe FF       		.byte	0xff
- 1779 00ff 1A       		.byte	0x1a
- 1780 0100 38       		.byte	0x38
- 1781 0101 24       		.byte	0x24
- 1782 0102 91       		.byte	0x91
- 1783 0103 B27F     		.sleb128 -78
- 1784 0105 94       		.byte	0x94
- 1785 0106 01       		.byte	0x1
- 1786 0107 08       		.byte	0x8
- 1787 0108 FF       		.byte	0xff
- 1788 0109 1A       		.byte	0x1a
- 1789 010a 21       		.byte	0x21
- 1790 010b 09       		.byte	0x9
- 1791 010c F4       		.byte	0xf4
- 1792 010d 24       		.byte	0x24
- 1793 010e 09       		.byte	0x9
- 1794 010f FA       		.byte	0xfa
- 1795 0110 26       		.byte	0x26
- 1796 0111 9F       		.byte	0x9f
- 1797 0112 00000000 		.4byte	0
- 1798 0116 00000000 		.4byte	0
- 1799              	.LLST3:
- 1800 011a CC010000 		.4byte	.LVL65
- 1801 011e EC010000 		.4byte	.LVL68
- 1802 0122 0100     		.2byte	0x1
- 1803 0124 53       		.byte	0x53
- 1804 0125 EC010000 		.4byte	.LVL68
- 1805 0129 F6010000 		.4byte	.LVL69
- 1806 012d 1400     		.2byte	0x14
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 38
-
-
- 1807 012f 70       		.byte	0x70
- 1808 0130 00       		.sleb128 0
- 1809 0131 38       		.byte	0x38
- 1810 0132 24       		.byte	0x24
- 1811 0133 91       		.byte	0x91
- 1812 0134 B47F     		.sleb128 -76
- 1813 0136 94       		.byte	0x94
- 1814 0137 01       		.byte	0x1
- 1815 0138 08       		.byte	0x8
- 1816 0139 FF       		.byte	0xff
- 1817 013a 1A       		.byte	0x1a
- 1818 013b 21       		.byte	0x21
- 1819 013c 09       		.byte	0x9
- 1820 013d F4       		.byte	0xf4
- 1821 013e 24       		.byte	0x24
- 1822 013f 09       		.byte	0x9
- 1823 0140 FA       		.byte	0xfa
- 1824 0141 26       		.byte	0x26
- 1825 0142 9F       		.byte	0x9f
- 1826 0143 F6010000 		.4byte	.LVL69
- 1827 0147 F9010000 		.4byte	.LVL70-1
- 1828 014b 1A00     		.2byte	0x1a
- 1829 014d 91       		.byte	0x91
- 1830 014e B57F     		.sleb128 -75
- 1831 0150 94       		.byte	0x94
- 1832 0151 01       		.byte	0x1
- 1833 0152 08       		.byte	0x8
- 1834 0153 FF       		.byte	0xff
- 1835 0154 1A       		.byte	0x1a
- 1836 0155 38       		.byte	0x38
- 1837 0156 24       		.byte	0x24
- 1838 0157 91       		.byte	0x91
- 1839 0158 B47F     		.sleb128 -76
- 1840 015a 94       		.byte	0x94
- 1841 015b 01       		.byte	0x1
- 1842 015c 08       		.byte	0x8
- 1843 015d FF       		.byte	0xff
- 1844 015e 1A       		.byte	0x1a
- 1845 015f 21       		.byte	0x21
- 1846 0160 09       		.byte	0x9
- 1847 0161 F4       		.byte	0xf4
- 1848 0162 24       		.byte	0x24
- 1849 0163 09       		.byte	0x9
- 1850 0164 FA       		.byte	0xfa
- 1851 0165 26       		.byte	0x26
- 1852 0166 9F       		.byte	0x9f
- 1853 0167 00000000 		.4byte	0
- 1854 016b 00000000 		.4byte	0
- 1855              	.LLST4:
- 1856 016f 14000000 		.4byte	.LVL2
- 1857 0173 18000000 		.4byte	.LVL3
- 1858 0177 0200     		.2byte	0x2
- 1859 0179 30       		.byte	0x30
- 1860 017a 9F       		.byte	0x9f
- 1861 017b 18000000 		.4byte	.LVL3
- 1862 017f 38010000 		.4byte	.LVL51
- 1863 0183 0100     		.2byte	0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 39
-
-
- 1864 0185 54       		.byte	0x54
- 1865 0186 00000000 		.4byte	0
- 1866 018a 00000000 		.4byte	0
- 1867              		.section	.debug_aranges,"",%progbits
- 1868 0000 1C000000 		.4byte	0x1c
- 1869 0004 0200     		.2byte	0x2
- 1870 0006 00000000 		.4byte	.Ldebug_info0
- 1871 000a 04       		.byte	0x4
- 1872 000b 00       		.byte	0
- 1873 000c 0000     		.2byte	0
- 1874 000e 0000     		.2byte	0
- 1875 0010 00000000 		.4byte	.LFB64
- 1876 0014 34020000 		.4byte	.LFE64-.LFB64
- 1877 0018 00000000 		.4byte	0
- 1878 001c 00000000 		.4byte	0
- 1879              		.section	.debug_ranges,"",%progbits
- 1880              	.Ldebug_ranges0:
- 1881 0000 00000000 		.4byte	.LFB64
- 1882 0004 34020000 		.4byte	.LFE64
- 1883 0008 00000000 		.4byte	0
- 1884 000c 00000000 		.4byte	0
- 1885              		.section	.debug_line,"",%progbits
- 1886              	.Ldebug_line0:
- 1887 0000 64020000 		.section	.debug_str,"MS",%progbits,1
- 1887      0200FD01 
- 1887      00000201 
- 1887      FB0E0D00 
- 1887      01010101 
- 1888              	.LASF24:
- 1889 0000 6D657373 		.ascii	"message\000"
- 1889      61676500 
- 1890              	.LASF36:
- 1891 0008 68656164 		.ascii	"header\000"
- 1891      657200
- 1892              	.LASF2:
- 1893 000f 5F5F7569 		.ascii	"__uint8_t\000"
- 1893      6E74385F 
- 1893      7400
- 1894              	.LASF40:
- 1895 0019 55415254 		.ascii	"UART_Debug_PutString\000"
- 1895      5F446562 
- 1895      75675F50 
- 1895      75745374 
- 1895      72696E67 
- 1896              	.LASF38:
- 1897 002e 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
- 1897      50657269 
- 1897      70686572 
- 1897      616C5F49 
- 1897      73446576 
- 1898              	.LASF6:
- 1899 004f 5F5F696E 		.ascii	"__int32_t\000"
- 1899      7433325F 
- 1899      7400
- 1900              	.LASF7:
- 1901 0059 6C6F6E67 		.ascii	"long int\000"
- 1901      20696E74 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 40
-
-
- 1901      00
- 1902              	.LASF47:
- 1903 0062 55415254 		.ascii	"UART_Debug_PutArray\000"
- 1903      5F446562 
- 1903      75675F50 
- 1903      75744172 
- 1903      72617900 
- 1904              	.LASF21:
- 1905 0076 4572726F 		.ascii	"ErrorCode\000"
- 1905      72436F64 
- 1905      6500
- 1906              	.LASF14:
- 1907 0080 696E7433 		.ascii	"int32_t\000"
- 1907      325F7400 
- 1908              	.LASF16:
- 1909 0088 666C6F61 		.ascii	"float\000"
- 1909      7400
- 1910              	.LASF33:
- 1911 008e 4F757441 		.ascii	"OutArray\000"
- 1911      72726179 
- 1911      00
- 1912              	.LASF1:
- 1913 0097 756E7369 		.ascii	"unsigned char\000"
- 1913      676E6564 
- 1913      20636861 
- 1913      7200
- 1914              	.LASF48:
- 1915 00a5 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
- 1915      43313120 
- 1915      352E342E 
- 1915      31203230 
- 1915      31363036 
- 1916 00d8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
- 1916      20726576 
- 1916      6973696F 
- 1916      6E203233 
- 1916      37373135 
- 1917 010b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
- 1917      66756E63 
- 1917      74696F6E 
- 1917      2D736563 
- 1917      74696F6E 
- 1918              	.LASF15:
- 1919 0133 696E7431 		.ascii	"int16\000"
- 1919      3600
- 1920              	.LASF8:
- 1921 0139 6C6F6E67 		.ascii	"long unsigned int\000"
- 1921      20756E73 
- 1921      69676E65 
- 1921      6420696E 
- 1921      7400
- 1922              	.LASF5:
- 1923 014b 73686F72 		.ascii	"short unsigned int\000"
- 1923      7420756E 
- 1923      7369676E 
- 1923      65642069 
- 1923      6E7400
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 41
-
-
- 1924              	.LASF37:
- 1925 015e 666F6F74 		.ascii	"footer\000"
- 1925      657200
- 1926              	.LASF35:
- 1927 0165 41636344 		.ascii	"AccData\000"
- 1927      61746100 
- 1928              	.LASF17:
- 1929 016d 646F7562 		.ascii	"double\000"
- 1929      6C6500
- 1930              	.LASF46:
- 1931 0174 4932435F 		.ascii	"I2C_Peripheral_ReadRegisterMulti\000"
- 1931      50657269 
- 1931      70686572 
- 1931      616C5F52 
- 1931      65616452 
- 1932              	.LASF45:
- 1933 0195 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
- 1933      50657269 
- 1933      70686572 
- 1933      616C5F57 
- 1933      72697465 
- 1934              	.LASF51:
- 1935 01b2 6D61696E 		.ascii	"main\000"
- 1935      00
- 1936              	.LASF3:
- 1937 01b7 5F5F696E 		.ascii	"__int16_t\000"
- 1937      7431365F 
- 1937      7400
- 1938              	.LASF28:
- 1939 01c1 6374726C 		.ascii	"ctrl_reg1\000"
- 1939      5F726567 
- 1939      3100
- 1940              	.LASF29:
- 1941 01cb 6374726C 		.ascii	"ctrl_reg4\000"
- 1941      5F726567 
- 1941      3400
- 1942              	.LASF11:
- 1943 01d5 756E7369 		.ascii	"unsigned int\000"
- 1943      676E6564 
- 1943      20696E74 
- 1943      00
- 1944              	.LASF10:
- 1945 01e2 6C6F6E67 		.ascii	"long long unsigned int\000"
- 1945      206C6F6E 
- 1945      6720756E 
- 1945      7369676E 
- 1945      65642069 
- 1946              	.LASF12:
- 1947 01f9 75696E74 		.ascii	"uint8_t\000"
- 1947      385F7400 
- 1948              	.LASF30:
- 1949 0201 4F75745F 		.ascii	"Out_Acc_X\000"
- 1949      4163635F 
- 1949      5800
- 1950              	.LASF31:
- 1951 020b 4F75745F 		.ascii	"Out_Acc_Y\000"
- 1951      4163635F 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 42
-
-
- 1951      5900
- 1952              	.LASF32:
- 1953 0215 4F75745F 		.ascii	"Out_Acc_Z\000"
- 1953      4163635F 
- 1953      5A00
- 1954              	.LASF13:
- 1955 021f 696E7431 		.ascii	"int16_t\000"
- 1955      365F7400 
- 1956              	.LASF52:
- 1957 0227 49544D5F 		.ascii	"ITM_RxBuffer\000"
- 1957      52784275 
- 1957      66666572 
- 1957      00
- 1958              	.LASF34:
- 1959 0234 72656769 		.ascii	"register_count\000"
- 1959      73746572 
- 1959      5F636F75 
- 1959      6E7400
- 1960              	.LASF27:
- 1961 0243 73746174 		.ascii	"status_register\000"
- 1961      75735F72 
- 1961      65676973 
- 1961      74657200 
- 1962              	.LASF50:
- 1963 0253 433A5C55 		.ascii	"C:\\Users\\marco\\Desktop\\AY1920_II_HW_05_SINATRA_"
- 1963      73657273 
- 1963      5C6D6172 
- 1963      636F5C44 
- 1963      65736B74 
- 1964 0282 4D415243 		.ascii	"MARCO\\AY1920_II_HW_PROJ_2.cydsn\000"
- 1964      4F5C4159 
- 1964      31393230 
- 1964      5F49495F 
- 1964      48575F50 
- 1965              	.LASF23:
- 1966 02a2 73697A65 		.ascii	"sizetype\000"
- 1966      74797065 
- 1966      00
- 1967              	.LASF26:
- 1968 02ab 6572726F 		.ascii	"error\000"
- 1968      7200
- 1969              	.LASF9:
- 1970 02b1 6C6F6E67 		.ascii	"long long int\000"
- 1970      206C6F6E 
- 1970      6720696E 
- 1970      7400
- 1971              	.LASF42:
- 1972 02bf 55415254 		.ascii	"UART_Debug_Start\000"
- 1972      5F446562 
- 1972      75675F53 
- 1972      74617274 
- 1972      00
- 1973              	.LASF49:
- 1974 02d0 6D61696E 		.ascii	"main.c\000"
- 1974      2E6300
- 1975              	.LASF18:
- 1976 02d7 63686172 		.ascii	"char\000"
-ARM GAS  C:\Users\marco\AppData\Local\Temp\ccvaQNrg.s 			page 43
-
-
- 1976      00
- 1977              	.LASF44:
- 1978 02dc 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
- 1978      50657269 
- 1978      70686572 
- 1978      616C5F52 
- 1978      65616452 
- 1979              	.LASF4:
- 1980 02f8 73686F72 		.ascii	"short int\000"
- 1980      7420696E 
- 1980      7400
- 1981              	.LASF19:
- 1982 0302 4E4F5F45 		.ascii	"NO_ERROR\000"
- 1982      52524F52 
- 1982      00
- 1983              	.LASF20:
- 1984 030b 4552524F 		.ascii	"ERROR\000"
- 1984      5200
- 1985              	.LASF22:
- 1986 0311 6C6F6E67 		.ascii	"long double\000"
- 1986      20646F75 
- 1986      626C6500 
- 1987              	.LASF0:
- 1988 031d 7369676E 		.ascii	"signed char\000"
- 1988      65642063 
- 1988      68617200 
- 1989              	.LASF25:
- 1990 0329 77686F5F 		.ascii	"who_am_i_reg\000"
- 1990      616D5F69 
- 1990      5F726567 
- 1990      00
- 1991              	.LASF39:
- 1992 0336 73707269 		.ascii	"sprintf\000"
- 1992      6E746600 
- 1993              	.LASF43:
- 1994 033e 43794465 		.ascii	"CyDelay\000"
- 1994      6C617900 
- 1995              	.LASF41:
- 1996 0346 4932435F 		.ascii	"I2C_Peripheral_Start\000"
- 1996      50657269 
- 1996      70686572 
- 1996      616C5F53 
- 1996      74617274 
- 1997              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
+ 235:main.c        ****                 
+ 236:main.c        ****                 /*  Z-AXIS  */           
+ 237:main.c        ****                 Out_Acc_Z = (int16)((AccData[4] | (AccData[5]<<8)))>>6; //Right justified 16bit int
+ 364              		.loc 1 237 0
+ 365 01e0 9DF80430 		ldrb	r3, [sp, #4]	@ zero_extendqisi2
+ 366 01e4 9DF80510 		ldrb	r1, [sp, #5]	@ zero_extendqisi2
+ 367 01e8 43EA0123 		orr	r3, r3, r1, lsl #8
+ 368 01ec 43F38911 		sbfx	r1, r3, #6, #10
+ 369              	.LVL69:
+ 238:main.c        ****                 Out_Acc_Z = Out_Acc_Z * CONVERSION_FACTOR;
+ 370              		.loc 1 238 0
+ 371 01f0 4FF47A73 		mov	r3, #1000
+ 372 01f4 03FB01F3 		mul	r3, r3, r1
+ 373 01f8 002B     		cmp	r3, #0
+ 374 01fa 00DA     		bge	.L23
+ 375 01fc FF33     		adds	r3, r3, #255
+ 376              	.L23:
+ 377 01fe 1B12     		asrs	r3, r3, #8
+ 378              	.LVL70:
+ 239:main.c        ****                 
+ 240:main.c        ****                 OutArray[1] = (uint8_t)(Out_Acc_X & 0xFF); //LSB of accelerometer X-axis
+ 379              		.loc 1 240 0
+ 380 0200 8DF80900 		strb	r0, [sp, #9]
+ 241:main.c        ****                 OutArray[2] = (uint8_t)(Out_Acc_X >> 8);   //MSB of accelerometer X-axis
+ 381              		.loc 1 241 0
+ 382 0204 C4F30724 		ubfx	r4, r4, #8, #8
+ 383              	.LVL71:
+ 384 0208 8DF80A40 		strb	r4, [sp, #10]
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 12
+
+
+ 242:main.c        ****                 OutArray[3] = (uint8_t)(Out_Acc_Y & 0xFF); //LSB of accelerometer Y-axis
+ 385              		.loc 1 242 0
+ 386 020c 8DF80B20 		strb	r2, [sp, #11]
+ 243:main.c        ****                 OutArray[4] = (uint8_t)(Out_Acc_Y >> 8);   //LSB of accelerometer Y-axis
+ 387              		.loc 1 243 0
+ 388 0210 C5F30722 		ubfx	r2, r5, #8, #8
+ 389 0214 8DF80C20 		strb	r2, [sp, #12]
+ 244:main.c        ****                 OutArray[5] = (uint8_t)(Out_Acc_Z & 0xFF); //LSB of accelerometer Z-axis
+ 390              		.loc 1 244 0
+ 391 0218 8DF80D30 		strb	r3, [sp, #13]
+ 245:main.c        ****                 OutArray[6] = (uint8_t)(Out_Acc_Z >> 8);   //LSB of accelerometer Z-axis
+ 392              		.loc 1 245 0
+ 393 021c C3F30723 		ubfx	r3, r3, #8, #8
+ 394              	.LVL72:
+ 395 0220 8DF80E30 		strb	r3, [sp, #14]
+ 246:main.c        ****                 UART_Debug_PutArray(OutArray, TRANSMIT_BUFFER_SIZE);//Send information through UART
+ 396              		.loc 1 246 0
+ 397 0224 0821     		movs	r1, #8
+ 398 0226 0DEB0100 		add	r0, sp, r1
+ 399              	.LVL73:
+ 400 022a FFF7FEFF 		bl	UART_Debug_PutArray
+ 401              	.LVL74:
+ 402 022e A2E7     		b	.L19
+ 403              	.L27:
+ 404              		.align	2
+ 405              	.L26:
+ 406 0230 00000000 		.word	.LC0
+ 407 0234 20000000 		.word	.LC1
+ 408 0238 48000000 		.word	.LC2
+ 409 023c 6C000000 		.word	.LC3
+ 410 0240 88000000 		.word	.LC4
+ 411 0244 C4000000 		.word	.LC5
+ 412 0248 E4000000 		.word	.LC6
+ 413 024c 20010000 		.word	.LC7
+ 414 0250 3C010000 		.word	.LC8
+ 415 0254 74010000 		.word	.LC9
+ 416 0258 B0010000 		.word	.LC10
+ 417 025c E8010000 		.word	.LC11
+ 418 0260 08020000 		.word	.LC12
+ 419 0264 44020000 		.word	.LC13
+ 420              		.cfi_endproc
+ 421              	.LFE64:
+ 422              		.size	main, .-main
+ 423              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 424              		.align	2
+ 425              	.LC0:
+ 426 0000 44657669 		.ascii	"Device 0x%02X is connected\015\012\000"
+ 426      63652030 
+ 426      78253032 
+ 426      58206973 
+ 426      20636F6E 
+ 427 001d 000000   		.space	3
+ 428              	.LC1:
+ 429 0020 57484F20 		.ascii	"WHO AM I REG: 0x%02X [Expected: 0x33]\015\012\000"
+ 429      414D2049 
+ 429      20524547 
+ 429      3A203078 
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 13
+
+
+ 429      25303258 
+ 430              	.LC2:
+ 431 0048 4572726F 		.ascii	"Error occurred during I2C comm\015\012\000"
+ 431      72206F63 
+ 431      63757272 
+ 431      65642064 
+ 431      7572696E 
+ 432 0069 000000   		.space	3
+ 433              	.LC3:
+ 434 006c 53544154 		.ascii	"STATUS REGISTER: 0x%02X\015\012\000"
+ 434      55532052 
+ 434      45474953 
+ 434      5445523A 
+ 434      20307825 
+ 435 0086 0000     		.space	2
+ 436              	.LC4:
+ 437 0088 4572726F 		.ascii	"Error occurred during I2C comm to read status regis"
+ 437      72206F63 
+ 437      63757272 
+ 437      65642064 
+ 437      7572696E 
+ 438 00bb 7465720D 		.ascii	"ter\015\012\000"
+ 438      0A00
+ 439 00c1 000000   		.space	3
+ 440              	.LC5:
+ 441 00c4 434F4E54 		.ascii	"CONTROL REGISTER 1: 0x%02X\015\012\000"
+ 441      524F4C20 
+ 441      52454749 
+ 441      53544552 
+ 441      20313A20 
+ 442 00e1 000000   		.space	3
+ 443              	.LC6:
+ 444 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 444      72206F63 
+ 444      63757272 
+ 444      65642064 
+ 444      7572696E 
+ 445 0117 73746572 		.ascii	"ster 1\015\012\000"
+ 445      20310D0A 
+ 445      00
+ 446              	.LC7:
+ 447 0120 0D0A5772 		.ascii	"\015\012Writing new values..\015\012\000"
+ 447      6974696E 
+ 447      67206E65 
+ 447      77207661 
+ 447      6C756573 
+ 448 0139 000000   		.space	3
+ 449              	.LC8:
+ 450 013c 434F4E54 		.ascii	"CONTROL REGISTER 1 successfully written as: 0x%02X\015"
+ 450      524F4C20 
+ 450      52454749 
+ 450      53544552 
+ 450      20312073 
+ 451 016f 0A00     		.ascii	"\012\000"
+ 452 0171 000000   		.space	3
+ 453              	.LC9:
+ 454 0174 4572726F 		.ascii	"Error occurred during I2C comm to set control regis"
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 14
+
+
+ 454      72206F63 
+ 454      63757272 
+ 454      65642064 
+ 454      7572696E 
+ 455 01a7 74657220 		.ascii	"ter 1\015\012\000"
+ 455      310D0A00 
+ 456 01af 00       		.space	1
+ 457              	.LC10:
+ 458 01b0 434F4E54 		.ascii	"CONTROL REGISTER 1 after overwrite operation: 0x%02"
+ 458      524F4C20 
+ 458      52454749 
+ 458      53544552 
+ 458      20312061 
+ 459 01e3 580D0A00 		.ascii	"X\015\012\000"
+ 460 01e7 00       		.space	1
+ 461              	.LC11:
+ 462 01e8 434F4E54 		.ascii	"CONTROL REGISTER 4: 0x%02X\015\012\000"
+ 462      524F4C20 
+ 462      52454749 
+ 462      53544552 
+ 462      20343A20 
+ 463 0205 000000   		.space	3
+ 464              	.LC12:
+ 465 0208 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
+ 465      72206F63 
+ 465      63757272 
+ 465      65642064 
+ 465      7572696E 
+ 466 023b 73746572 		.ascii	"ster4\015\012\000"
+ 466      340D0A00 
+ 467 0243 00       		.space	1
+ 468              	.LC13:
+ 469 0244 434F4E54 		.ascii	"CONTROL REGISTER 4 after being updated: 0x%02X\015\012"
+ 469      524F4C20 
+ 469      52454749 
+ 469      53544552 
+ 469      20342061 
+ 470 0274 00       		.ascii	"\000"
+ 471              		.text
+ 472              	.Letext0:
+ 473              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 474              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 475              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 476              		.file 5 "ErrorCodes.h"
+ 477              		.file 6 "I2C_Interface.h"
+ 478              		.file 7 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 479              		.file 8 "Generated_Source\\PSoC5/UART_Debug.h"
+ 480              		.file 9 "Generated_Source\\PSoC5/CyLib.h"
+ 481              		.file 10 "Generated_Source\\PSoC5/core_cm3.h"
+ 482              		.section	.debug_info,"",%progbits
+ 483              	.Ldebug_info0:
+ 484 0000 8C060000 		.4byte	0x68c
+ 485 0004 0400     		.2byte	0x4
+ 486 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 487 000a 04       		.byte	0x4
+ 488 000b 01       		.uleb128 0x1
+ 489 000c EF000000 		.4byte	.LASF48
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 15
+
+
+ 490 0010 0C       		.byte	0xc
+ 491 0011 D3020000 		.4byte	.LASF49
+ 492 0015 80000000 		.4byte	.LASF50
+ 493 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 494 001d 00000000 		.4byte	0
+ 495 0021 00000000 		.4byte	.Ldebug_line0
+ 496 0025 02       		.uleb128 0x2
+ 497 0026 01       		.byte	0x1
+ 498 0027 06       		.byte	0x6
+ 499 0028 20030000 		.4byte	.LASF0
+ 500 002c 03       		.uleb128 0x3
+ 501 002d 0F000000 		.4byte	.LASF2
+ 502 0031 02       		.byte	0x2
+ 503 0032 1D       		.byte	0x1d
+ 504 0033 37000000 		.4byte	0x37
+ 505 0037 02       		.uleb128 0x2
+ 506 0038 01       		.byte	0x1
+ 507 0039 08       		.byte	0x8
+ 508 003a E1000000 		.4byte	.LASF1
+ 509 003e 03       		.uleb128 0x3
+ 510 003f 01020000 		.4byte	.LASF3
+ 511 0043 02       		.byte	0x2
+ 512 0044 29       		.byte	0x29
+ 513 0045 49000000 		.4byte	0x49
+ 514 0049 02       		.uleb128 0x2
+ 515 004a 02       		.byte	0x2
+ 516 004b 05       		.byte	0x5
+ 517 004c FB020000 		.4byte	.LASF4
+ 518 0050 02       		.uleb128 0x2
+ 519 0051 02       		.byte	0x2
+ 520 0052 07       		.byte	0x7
+ 521 0053 95010000 		.4byte	.LASF5
+ 522 0057 03       		.uleb128 0x3
+ 523 0058 4F000000 		.4byte	.LASF6
+ 524 005c 02       		.byte	0x2
+ 525 005d 3F       		.byte	0x3f
+ 526 005e 62000000 		.4byte	0x62
+ 527 0062 02       		.uleb128 0x2
+ 528 0063 04       		.byte	0x4
+ 529 0064 05       		.byte	0x5
+ 530 0065 59000000 		.4byte	.LASF7
+ 531 0069 02       		.uleb128 0x2
+ 532 006a 04       		.byte	0x4
+ 533 006b 07       		.byte	0x7
+ 534 006c 83010000 		.4byte	.LASF8
+ 535 0070 02       		.uleb128 0x2
+ 536 0071 08       		.byte	0x8
+ 537 0072 05       		.byte	0x5
+ 538 0073 B4020000 		.4byte	.LASF9
+ 539 0077 02       		.uleb128 0x2
+ 540 0078 08       		.byte	0x8
+ 541 0079 07       		.byte	0x7
+ 542 007a 2C020000 		.4byte	.LASF10
+ 543 007e 04       		.uleb128 0x4
+ 544 007f 04       		.byte	0x4
+ 545 0080 05       		.byte	0x5
+ 546 0081 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 16
+
+
+ 547 0085 02       		.uleb128 0x2
+ 548 0086 04       		.byte	0x4
+ 549 0087 07       		.byte	0x7
+ 550 0088 1F020000 		.4byte	.LASF11
+ 551 008c 03       		.uleb128 0x3
+ 552 008d 43020000 		.4byte	.LASF12
+ 553 0091 03       		.byte	0x3
+ 554 0092 18       		.byte	0x18
+ 555 0093 2C000000 		.4byte	0x2c
+ 556 0097 03       		.uleb128 0x3
+ 557 0098 69020000 		.4byte	.LASF13
+ 558 009c 03       		.byte	0x3
+ 559 009d 20       		.byte	0x20
+ 560 009e 3E000000 		.4byte	0x3e
+ 561 00a2 03       		.uleb128 0x3
+ 562 00a3 9D020000 		.4byte	.LASF14
+ 563 00a7 03       		.byte	0x3
+ 564 00a8 2C       		.byte	0x2c
+ 565 00a9 57000000 		.4byte	0x57
+ 566 00ad 05       		.uleb128 0x5
+ 567 00ae 7D010000 		.4byte	.LASF15
+ 568 00b2 04       		.byte	0x4
+ 569 00b3 E801     		.2byte	0x1e8
+ 570 00b5 49000000 		.4byte	0x49
+ 571 00b9 02       		.uleb128 0x2
+ 572 00ba 04       		.byte	0x4
+ 573 00bb 04       		.byte	0x4
+ 574 00bc D2000000 		.4byte	.LASF16
+ 575 00c0 02       		.uleb128 0x2
+ 576 00c1 08       		.byte	0x8
+ 577 00c2 04       		.byte	0x4
+ 578 00c3 B7010000 		.4byte	.LASF17
+ 579 00c7 02       		.uleb128 0x2
+ 580 00c8 01       		.byte	0x1
+ 581 00c9 08       		.byte	0x8
+ 582 00ca DA020000 		.4byte	.LASF18
+ 583 00ce 06       		.uleb128 0x6
+ 584 00cf 01       		.byte	0x1
+ 585 00d0 37000000 		.4byte	0x37
+ 586 00d4 05       		.byte	0x5
+ 587 00d5 15       		.byte	0x15
+ 588 00d6 E7000000 		.4byte	0xe7
+ 589 00da 07       		.uleb128 0x7
+ 590 00db 05030000 		.4byte	.LASF19
+ 591 00df 00       		.byte	0
+ 592 00e0 07       		.uleb128 0x7
+ 593 00e1 0E030000 		.4byte	.LASF20
+ 594 00e5 01       		.byte	0x1
+ 595 00e6 00       		.byte	0
+ 596 00e7 03       		.uleb128 0x3
+ 597 00e8 76000000 		.4byte	.LASF21
+ 598 00ec 05       		.byte	0x5
+ 599 00ed 18       		.byte	0x18
+ 600 00ee CE000000 		.4byte	0xce
+ 601 00f2 02       		.uleb128 0x2
+ 602 00f3 08       		.byte	0x8
+ 603 00f4 04       		.byte	0x4
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 17
+
+
+ 604 00f5 14030000 		.4byte	.LASF22
+ 605 00f9 02       		.uleb128 0x2
+ 606 00fa 04       		.byte	0x4
+ 607 00fb 07       		.byte	0x7
+ 608 00fc A5020000 		.4byte	.LASF23
+ 609 0100 08       		.uleb128 0x8
+ 610 0101 FC010000 		.4byte	.LASF51
+ 611 0105 01       		.byte	0x1
+ 612 0106 17       		.byte	0x17
+ 613 0107 7E000000 		.4byte	0x7e
+ 614 010b 00000000 		.4byte	.LFB64
+ 615 010f 68020000 		.4byte	.LFE64-.LFB64
+ 616 0113 01       		.uleb128 0x1
+ 617 0114 9C       		.byte	0x9c
+ 618 0115 E0050000 		.4byte	0x5e0
+ 619 0119 09       		.uleb128 0x9
+ 620 011a 00000000 		.4byte	.LASF24
+ 621 011e 01       		.byte	0x1
+ 622 011f 22       		.byte	0x22
+ 623 0120 E0050000 		.4byte	0x5e0
+ 624 0124 03       		.uleb128 0x3
+ 625 0125 91       		.byte	0x91
+ 626 0126 BC7F     		.sleb128 -68
+ 627 0128 09       		.uleb128 0x9
+ 628 0129 2C030000 		.4byte	.LASF25
+ 629 012d 01       		.byte	0x1
+ 630 012e 35       		.byte	0x35
+ 631 012f 8C000000 		.4byte	0x8c
+ 632 0133 03       		.uleb128 0x3
+ 633 0134 91       		.byte	0x91
+ 634 0135 BB7F     		.sleb128 -69
+ 635 0137 0A       		.uleb128 0xa
+ 636 0138 AE020000 		.4byte	.LASF26
+ 637 013c 01       		.byte	0x1
+ 638 013d 36       		.byte	0x36
+ 639 013e E7000000 		.4byte	0xe7
+ 640 0142 00000000 		.4byte	.LLST0
+ 641 0146 09       		.uleb128 0x9
+ 642 0147 8D020000 		.4byte	.LASF27
+ 643 014b 01       		.byte	0x1
+ 644 014c 45       		.byte	0x45
+ 645 014d 8C000000 		.4byte	0x8c
+ 646 0151 03       		.uleb128 0x3
+ 647 0152 91       		.byte	0x91
+ 648 0153 BA7F     		.sleb128 -70
+ 649 0155 09       		.uleb128 0x9
+ 650 0156 0B020000 		.4byte	.LASF28
+ 651 015a 01       		.byte	0x1
+ 652 015b 57       		.byte	0x57
+ 653 015c 8C000000 		.4byte	0x8c
+ 654 0160 03       		.uleb128 0x3
+ 655 0161 91       		.byte	0x91
+ 656 0162 B97F     		.sleb128 -71
+ 657 0164 09       		.uleb128 0x9
+ 658 0165 15020000 		.4byte	.LASF29
+ 659 0169 01       		.byte	0x1
+ 660 016a 94       		.byte	0x94
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 18
+
+
+ 661 016b 8C000000 		.4byte	0x8c
+ 662 016f 03       		.uleb128 0x3
+ 663 0170 91       		.byte	0x91
+ 664 0171 B87F     		.sleb128 -72
+ 665 0173 0A       		.uleb128 0xa
+ 666 0174 4B020000 		.4byte	.LASF30
+ 667 0178 01       		.byte	0x1
+ 668 0179 C0       		.byte	0xc0
+ 669 017a 97000000 		.4byte	0x97
+ 670 017e AD000000 		.4byte	.LLST1
+ 671 0182 0A       		.uleb128 0xa
+ 672 0183 55020000 		.4byte	.LASF31
+ 673 0187 01       		.byte	0x1
+ 674 0188 C1       		.byte	0xc1
+ 675 0189 97000000 		.4byte	0x97
+ 676 018d F9000000 		.4byte	.LLST2
+ 677 0191 0A       		.uleb128 0xa
+ 678 0192 5F020000 		.4byte	.LASF32
+ 679 0196 01       		.byte	0x1
+ 680 0197 C2       		.byte	0xc2
+ 681 0198 97000000 		.4byte	0x97
+ 682 019c 3B010000 		.4byte	.LLST3
+ 683 01a0 09       		.uleb128 0x9
+ 684 01a1 D8000000 		.4byte	.LASF33
+ 685 01a5 01       		.byte	0x1
+ 686 01a6 C3       		.byte	0xc3
+ 687 01a7 F0050000 		.4byte	0x5f0
+ 688 01ab 03       		.uleb128 0x3
+ 689 01ac 91       		.byte	0x91
+ 690 01ad B07F     		.sleb128 -80
+ 691 01af 0B       		.uleb128 0xb
+ 692 01b0 7E020000 		.4byte	.LASF34
+ 693 01b4 01       		.byte	0x1
+ 694 01b5 C4       		.byte	0xc4
+ 695 01b6 8C000000 		.4byte	0x8c
+ 696 01ba 05       		.byte	0x5
+ 697 01bb 09       		.uleb128 0x9
+ 698 01bc AF010000 		.4byte	.LASF35
+ 699 01c0 01       		.byte	0x1
+ 700 01c1 C5       		.byte	0xc5
+ 701 01c2 00060000 		.4byte	0x600
+ 702 01c6 03       		.uleb128 0x3
+ 703 01c7 91       		.byte	0x91
+ 704 01c8 A87F     		.sleb128 -88
+ 705 01ca 0C       		.uleb128 0xc
+ 706 01cb 08000000 		.4byte	.LASF36
+ 707 01cf 01       		.byte	0x1
+ 708 01d0 C6       		.byte	0xc6
+ 709 01d1 8C000000 		.4byte	0x8c
+ 710 01d5 A07F     		.sleb128 -96
+ 711 01d7 0C       		.uleb128 0xc
+ 712 01d8 A8010000 		.4byte	.LASF37
+ 713 01dc 01       		.byte	0x1
+ 714 01dd C7       		.byte	0xc7
+ 715 01de 8C000000 		.4byte	0x8c
+ 716 01e2 40       		.sleb128 -64
+ 717 01e3 0D       		.uleb128 0xd
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 19
+
+
+ 718 01e4 14000000 		.4byte	.LBB2
+ 719 01e8 22000000 		.4byte	.LBE2-.LBB2
+ 720 01ec 47020000 		.4byte	0x247
+ 721 01f0 0E       		.uleb128 0xe
+ 722 01f1 6900     		.ascii	"i\000"
+ 723 01f3 01       		.byte	0x1
+ 724 01f4 25       		.byte	0x25
+ 725 01f5 7E000000 		.4byte	0x7e
+ 726 01f9 59010000 		.4byte	.LLST4
+ 727 01fd 0F       		.uleb128 0xf
+ 728 01fe 1E000000 		.4byte	.LVL4
+ 729 0202 21060000 		.4byte	0x621
+ 730 0206 11020000 		.4byte	0x211
+ 731 020a 10       		.uleb128 0x10
+ 732 020b 01       		.uleb128 0x1
+ 733 020c 50       		.byte	0x50
+ 734 020d 02       		.uleb128 0x2
+ 735 020e 74       		.byte	0x74
+ 736 020f 00       		.sleb128 0
+ 737 0210 00       		.byte	0
+ 738 0211 0F       		.uleb128 0xf
+ 739 0212 2A000000 		.4byte	.LVL5
+ 740 0216 2C060000 		.4byte	0x62c
+ 741 021a 35020000 		.4byte	0x235
+ 742 021e 10       		.uleb128 0x10
+ 743 021f 01       		.uleb128 0x1
+ 744 0220 50       		.byte	0x50
+ 745 0221 03       		.uleb128 0x3
+ 746 0222 91       		.byte	0x91
+ 747 0223 BC7F     		.sleb128 -68
+ 748 0225 10       		.uleb128 0x10
+ 749 0226 01       		.uleb128 0x1
+ 750 0227 51       		.byte	0x51
+ 751 0228 05       		.uleb128 0x5
+ 752 0229 03       		.byte	0x3
+ 753 022a 00000000 		.4byte	.LC0
+ 754 022e 10       		.uleb128 0x10
+ 755 022f 01       		.uleb128 0x1
+ 756 0230 52       		.byte	0x52
+ 757 0231 02       		.uleb128 0x2
+ 758 0232 74       		.byte	0x74
+ 759 0233 00       		.sleb128 0
+ 760 0234 00       		.byte	0
+ 761 0235 11       		.uleb128 0x11
+ 762 0236 30000000 		.4byte	.LVL6
+ 763 023a 37060000 		.4byte	0x637
+ 764 023e 10       		.uleb128 0x10
+ 765 023f 01       		.uleb128 0x1
+ 766 0240 50       		.byte	0x50
+ 767 0241 03       		.uleb128 0x3
+ 768 0242 91       		.byte	0x91
+ 769 0243 BC7F     		.sleb128 -68
+ 770 0245 00       		.byte	0
+ 771 0246 00       		.byte	0
+ 772 0247 12       		.uleb128 0x12
+ 773 0248 0A000000 		.4byte	.LVL0
+ 774 024c 42060000 		.4byte	0x642
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 20
+
+
+ 775 0250 12       		.uleb128 0x12
+ 776 0251 0E000000 		.4byte	.LVL1
+ 777 0255 4D060000 		.4byte	0x64d
+ 778 0259 0F       		.uleb128 0xf
+ 779 025a 14000000 		.4byte	.LVL2
+ 780 025e 58060000 		.4byte	0x658
+ 781 0262 6C020000 		.4byte	0x26c
+ 782 0266 10       		.uleb128 0x10
+ 783 0267 01       		.uleb128 0x1
+ 784 0268 50       		.byte	0x50
+ 785 0269 01       		.uleb128 0x1
+ 786 026a 35       		.byte	0x35
+ 787 026b 00       		.byte	0
+ 788 026c 0F       		.uleb128 0xf
+ 789 026d 42000000 		.4byte	.LVL8
+ 790 0271 63060000 		.4byte	0x663
+ 791 0275 8B020000 		.4byte	0x28b
+ 792 0279 10       		.uleb128 0x10
+ 793 027a 01       		.uleb128 0x1
+ 794 027b 50       		.byte	0x50
+ 795 027c 01       		.uleb128 0x1
+ 796 027d 48       		.byte	0x48
+ 797 027e 10       		.uleb128 0x10
+ 798 027f 01       		.uleb128 0x1
+ 799 0280 51       		.byte	0x51
+ 800 0281 01       		.uleb128 0x1
+ 801 0282 3F       		.byte	0x3f
+ 802 0283 10       		.uleb128 0x10
+ 803 0284 01       		.uleb128 0x1
+ 804 0285 52       		.byte	0x52
+ 805 0286 03       		.uleb128 0x3
+ 806 0287 91       		.byte	0x91
+ 807 0288 BB7F     		.sleb128 -69
+ 808 028a 00       		.byte	0
+ 809 028b 0F       		.uleb128 0xf
+ 810 028c 50000000 		.4byte	.LVL10
+ 811 0290 2C060000 		.4byte	0x62c
+ 812 0294 A9020000 		.4byte	0x2a9
+ 813 0298 10       		.uleb128 0x10
+ 814 0299 01       		.uleb128 0x1
+ 815 029a 50       		.byte	0x50
+ 816 029b 03       		.uleb128 0x3
+ 817 029c 91       		.byte	0x91
+ 818 029d BC7F     		.sleb128 -68
+ 819 029f 10       		.uleb128 0x10
+ 820 02a0 01       		.uleb128 0x1
+ 821 02a1 51       		.byte	0x51
+ 822 02a2 05       		.uleb128 0x5
+ 823 02a3 03       		.byte	0x3
+ 824 02a4 20000000 		.4byte	.LC1
+ 825 02a8 00       		.byte	0
+ 826 02a9 0F       		.uleb128 0xf
+ 827 02aa 56000000 		.4byte	.LVL11
+ 828 02ae 37060000 		.4byte	0x637
+ 829 02b2 BE020000 		.4byte	0x2be
+ 830 02b6 10       		.uleb128 0x10
+ 831 02b7 01       		.uleb128 0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 21
+
+
+ 832 02b8 50       		.byte	0x50
+ 833 02b9 03       		.uleb128 0x3
+ 834 02ba 91       		.byte	0x91
+ 835 02bb BC7F     		.sleb128 -68
+ 836 02bd 00       		.byte	0
+ 837 02be 0F       		.uleb128 0xf
+ 838 02bf 5E000000 		.4byte	.LVL14
+ 839 02c3 37060000 		.4byte	0x637
+ 840 02c7 D5020000 		.4byte	0x2d5
+ 841 02cb 10       		.uleb128 0x10
+ 842 02cc 01       		.uleb128 0x1
+ 843 02cd 50       		.byte	0x50
+ 844 02ce 05       		.uleb128 0x5
+ 845 02cf 03       		.byte	0x3
+ 846 02d0 48000000 		.4byte	.LC2
+ 847 02d4 00       		.byte	0
+ 848 02d5 0F       		.uleb128 0xf
+ 849 02d6 6A000000 		.4byte	.LVL15
+ 850 02da 63060000 		.4byte	0x663
+ 851 02de F5020000 		.4byte	0x2f5
+ 852 02e2 10       		.uleb128 0x10
+ 853 02e3 01       		.uleb128 0x1
+ 854 02e4 50       		.byte	0x50
+ 855 02e5 01       		.uleb128 0x1
+ 856 02e6 48       		.byte	0x48
+ 857 02e7 10       		.uleb128 0x10
+ 858 02e8 01       		.uleb128 0x1
+ 859 02e9 51       		.byte	0x51
+ 860 02ea 02       		.uleb128 0x2
+ 861 02eb 08       		.byte	0x8
+ 862 02ec 27       		.byte	0x27
+ 863 02ed 10       		.uleb128 0x10
+ 864 02ee 01       		.uleb128 0x1
+ 865 02ef 52       		.byte	0x52
+ 866 02f0 03       		.uleb128 0x3
+ 867 02f1 91       		.byte	0x91
+ 868 02f2 BA7F     		.sleb128 -70
+ 869 02f4 00       		.byte	0
+ 870 02f5 0F       		.uleb128 0xf
+ 871 02f6 78000000 		.4byte	.LVL17
+ 872 02fa 2C060000 		.4byte	0x62c
+ 873 02fe 13030000 		.4byte	0x313
+ 874 0302 10       		.uleb128 0x10
+ 875 0303 01       		.uleb128 0x1
+ 876 0304 50       		.byte	0x50
+ 877 0305 03       		.uleb128 0x3
+ 878 0306 91       		.byte	0x91
+ 879 0307 BC7F     		.sleb128 -68
+ 880 0309 10       		.uleb128 0x10
+ 881 030a 01       		.uleb128 0x1
+ 882 030b 51       		.byte	0x51
+ 883 030c 05       		.uleb128 0x5
+ 884 030d 03       		.byte	0x3
+ 885 030e 6C000000 		.4byte	.LC3
+ 886 0312 00       		.byte	0
+ 887 0313 0F       		.uleb128 0xf
+ 888 0314 7E000000 		.4byte	.LVL18
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 22
+
+
+ 889 0318 37060000 		.4byte	0x637
+ 890 031c 28030000 		.4byte	0x328
+ 891 0320 10       		.uleb128 0x10
+ 892 0321 01       		.uleb128 0x1
+ 893 0322 50       		.byte	0x50
+ 894 0323 03       		.uleb128 0x3
+ 895 0324 91       		.byte	0x91
+ 896 0325 BC7F     		.sleb128 -68
+ 897 0327 00       		.byte	0
+ 898 0328 0F       		.uleb128 0xf
+ 899 0329 86000000 		.4byte	.LVL21
+ 900 032d 37060000 		.4byte	0x637
+ 901 0331 3F030000 		.4byte	0x33f
+ 902 0335 10       		.uleb128 0x10
+ 903 0336 01       		.uleb128 0x1
+ 904 0337 50       		.byte	0x50
+ 905 0338 05       		.uleb128 0x5
+ 906 0339 03       		.byte	0x3
+ 907 033a 88000000 		.4byte	.LC4
+ 908 033e 00       		.byte	0
+ 909 033f 0F       		.uleb128 0xf
+ 910 0340 92000000 		.4byte	.LVL22
+ 911 0344 63060000 		.4byte	0x663
+ 912 0348 5F030000 		.4byte	0x35f
+ 913 034c 10       		.uleb128 0x10
+ 914 034d 01       		.uleb128 0x1
+ 915 034e 50       		.byte	0x50
+ 916 034f 01       		.uleb128 0x1
+ 917 0350 48       		.byte	0x48
+ 918 0351 10       		.uleb128 0x10
+ 919 0352 01       		.uleb128 0x1
+ 920 0353 51       		.byte	0x51
+ 921 0354 02       		.uleb128 0x2
+ 922 0355 08       		.byte	0x8
+ 923 0356 20       		.byte	0x20
+ 924 0357 10       		.uleb128 0x10
+ 925 0358 01       		.uleb128 0x1
+ 926 0359 52       		.byte	0x52
+ 927 035a 03       		.uleb128 0x3
+ 928 035b 91       		.byte	0x91
+ 929 035c B97F     		.sleb128 -71
+ 930 035e 00       		.byte	0
+ 931 035f 0F       		.uleb128 0xf
+ 932 0360 A0000000 		.4byte	.LVL24
+ 933 0364 2C060000 		.4byte	0x62c
+ 934 0368 7D030000 		.4byte	0x37d
+ 935 036c 10       		.uleb128 0x10
+ 936 036d 01       		.uleb128 0x1
+ 937 036e 50       		.byte	0x50
+ 938 036f 03       		.uleb128 0x3
+ 939 0370 91       		.byte	0x91
+ 940 0371 BC7F     		.sleb128 -68
+ 941 0373 10       		.uleb128 0x10
+ 942 0374 01       		.uleb128 0x1
+ 943 0375 51       		.byte	0x51
+ 944 0376 05       		.uleb128 0x5
+ 945 0377 03       		.byte	0x3
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 23
+
+
+ 946 0378 C4000000 		.4byte	.LC5
+ 947 037c 00       		.byte	0
+ 948 037d 0F       		.uleb128 0xf
+ 949 037e A6000000 		.4byte	.LVL25
+ 950 0382 37060000 		.4byte	0x637
+ 951 0386 92030000 		.4byte	0x392
+ 952 038a 10       		.uleb128 0x10
+ 953 038b 01       		.uleb128 0x1
+ 954 038c 50       		.byte	0x50
+ 955 038d 03       		.uleb128 0x3
+ 956 038e 91       		.byte	0x91
+ 957 038f BC7F     		.sleb128 -68
+ 958 0391 00       		.byte	0
+ 959 0392 0F       		.uleb128 0xf
+ 960 0393 AE000000 		.4byte	.LVL28
+ 961 0397 37060000 		.4byte	0x637
+ 962 039b A9030000 		.4byte	0x3a9
+ 963 039f 10       		.uleb128 0x10
+ 964 03a0 01       		.uleb128 0x1
+ 965 03a1 50       		.byte	0x50
+ 966 03a2 05       		.uleb128 0x5
+ 967 03a3 03       		.byte	0x3
+ 968 03a4 E4000000 		.4byte	.LC6
+ 969 03a8 00       		.byte	0
+ 970 03a9 0F       		.uleb128 0xf
+ 971 03aa B4000000 		.4byte	.LVL29
+ 972 03ae 37060000 		.4byte	0x637
+ 973 03b2 C0030000 		.4byte	0x3c0
+ 974 03b6 10       		.uleb128 0x10
+ 975 03b7 01       		.uleb128 0x1
+ 976 03b8 50       		.byte	0x50
+ 977 03b9 05       		.uleb128 0x5
+ 978 03ba 03       		.byte	0x3
+ 979 03bb 20010000 		.4byte	.LC7
+ 980 03bf 00       		.byte	0
+ 981 03c0 0F       		.uleb128 0xf
+ 982 03c1 CA000000 		.4byte	.LVL30
+ 983 03c5 6E060000 		.4byte	0x66e
+ 984 03c9 DF030000 		.4byte	0x3df
+ 985 03cd 10       		.uleb128 0x10
+ 986 03ce 01       		.uleb128 0x1
+ 987 03cf 50       		.byte	0x50
+ 988 03d0 01       		.uleb128 0x1
+ 989 03d1 48       		.byte	0x48
+ 990 03d2 10       		.uleb128 0x10
+ 991 03d3 01       		.uleb128 0x1
+ 992 03d4 51       		.byte	0x51
+ 993 03d5 02       		.uleb128 0x2
+ 994 03d6 08       		.byte	0x8
+ 995 03d7 20       		.byte	0x20
+ 996 03d8 10       		.uleb128 0x10
+ 997 03d9 01       		.uleb128 0x1
+ 998 03da 52       		.byte	0x52
+ 999 03db 02       		.uleb128 0x2
+ 1000 03dc 08       		.byte	0x8
+ 1001 03dd 57       		.byte	0x57
+ 1002 03de 00       		.byte	0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 24
+
+
+ 1003 03df 0F       		.uleb128 0xf
+ 1004 03e0 D8000000 		.4byte	.LVL32
+ 1005 03e4 2C060000 		.4byte	0x62c
+ 1006 03e8 FD030000 		.4byte	0x3fd
+ 1007 03ec 10       		.uleb128 0x10
+ 1008 03ed 01       		.uleb128 0x1
+ 1009 03ee 50       		.byte	0x50
+ 1010 03ef 03       		.uleb128 0x3
+ 1011 03f0 91       		.byte	0x91
+ 1012 03f1 BC7F     		.sleb128 -68
+ 1013 03f3 10       		.uleb128 0x10
+ 1014 03f4 01       		.uleb128 0x1
+ 1015 03f5 51       		.byte	0x51
+ 1016 03f6 05       		.uleb128 0x5
+ 1017 03f7 03       		.byte	0x3
+ 1018 03f8 3C010000 		.4byte	.LC8
+ 1019 03fc 00       		.byte	0
+ 1020 03fd 0F       		.uleb128 0xf
+ 1021 03fe DE000000 		.4byte	.LVL33
+ 1022 0402 37060000 		.4byte	0x637
+ 1023 0406 12040000 		.4byte	0x412
+ 1024 040a 10       		.uleb128 0x10
+ 1025 040b 01       		.uleb128 0x1
+ 1026 040c 50       		.byte	0x50
+ 1027 040d 03       		.uleb128 0x3
+ 1028 040e 91       		.byte	0x91
+ 1029 040f BC7F     		.sleb128 -68
+ 1030 0411 00       		.byte	0
+ 1031 0412 0F       		.uleb128 0xf
+ 1032 0413 E6000000 		.4byte	.LVL36
+ 1033 0417 37060000 		.4byte	0x637
+ 1034 041b 29040000 		.4byte	0x429
+ 1035 041f 10       		.uleb128 0x10
+ 1036 0420 01       		.uleb128 0x1
+ 1037 0421 50       		.byte	0x50
+ 1038 0422 05       		.uleb128 0x5
+ 1039 0423 03       		.byte	0x3
+ 1040 0424 74010000 		.4byte	.LC9
+ 1041 0428 00       		.byte	0
+ 1042 0429 0F       		.uleb128 0xf
+ 1043 042a F2000000 		.4byte	.LVL37
+ 1044 042e 63060000 		.4byte	0x663
+ 1045 0432 49040000 		.4byte	0x449
+ 1046 0436 10       		.uleb128 0x10
+ 1047 0437 01       		.uleb128 0x1
+ 1048 0438 50       		.byte	0x50
+ 1049 0439 01       		.uleb128 0x1
+ 1050 043a 48       		.byte	0x48
+ 1051 043b 10       		.uleb128 0x10
+ 1052 043c 01       		.uleb128 0x1
+ 1053 043d 51       		.byte	0x51
+ 1054 043e 02       		.uleb128 0x2
+ 1055 043f 08       		.byte	0x8
+ 1056 0440 20       		.byte	0x20
+ 1057 0441 10       		.uleb128 0x10
+ 1058 0442 01       		.uleb128 0x1
+ 1059 0443 52       		.byte	0x52
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 25
+
+
+ 1060 0444 03       		.uleb128 0x3
+ 1061 0445 91       		.byte	0x91
+ 1062 0446 B97F     		.sleb128 -71
+ 1063 0448 00       		.byte	0
+ 1064 0449 0F       		.uleb128 0xf
+ 1065 044a 00010000 		.4byte	.LVL39
+ 1066 044e 2C060000 		.4byte	0x62c
+ 1067 0452 67040000 		.4byte	0x467
+ 1068 0456 10       		.uleb128 0x10
+ 1069 0457 01       		.uleb128 0x1
+ 1070 0458 50       		.byte	0x50
+ 1071 0459 03       		.uleb128 0x3
+ 1072 045a 91       		.byte	0x91
+ 1073 045b BC7F     		.sleb128 -68
+ 1074 045d 10       		.uleb128 0x10
+ 1075 045e 01       		.uleb128 0x1
+ 1076 045f 51       		.byte	0x51
+ 1077 0460 05       		.uleb128 0x5
+ 1078 0461 03       		.byte	0x3
+ 1079 0462 B0010000 		.4byte	.LC10
+ 1080 0466 00       		.byte	0
+ 1081 0467 0F       		.uleb128 0xf
+ 1082 0468 06010000 		.4byte	.LVL40
+ 1083 046c 37060000 		.4byte	0x637
+ 1084 0470 7C040000 		.4byte	0x47c
+ 1085 0474 10       		.uleb128 0x10
+ 1086 0475 01       		.uleb128 0x1
+ 1087 0476 50       		.byte	0x50
+ 1088 0477 03       		.uleb128 0x3
+ 1089 0478 91       		.byte	0x91
+ 1090 0479 BC7F     		.sleb128 -68
+ 1091 047b 00       		.byte	0
+ 1092 047c 0F       		.uleb128 0xf
+ 1093 047d 0E010000 		.4byte	.LVL43
+ 1094 0481 37060000 		.4byte	0x637
+ 1095 0485 93040000 		.4byte	0x493
+ 1096 0489 10       		.uleb128 0x10
+ 1097 048a 01       		.uleb128 0x1
+ 1098 048b 50       		.byte	0x50
+ 1099 048c 05       		.uleb128 0x5
+ 1100 048d 03       		.byte	0x3
+ 1101 048e E4000000 		.4byte	.LC6
+ 1102 0492 00       		.byte	0
+ 1103 0493 0F       		.uleb128 0xf
+ 1104 0494 18010000 		.4byte	.LVL44
+ 1105 0498 63060000 		.4byte	0x663
+ 1106 049c B3040000 		.4byte	0x4b3
+ 1107 04a0 10       		.uleb128 0x10
+ 1108 04a1 01       		.uleb128 0x1
+ 1109 04a2 50       		.byte	0x50
+ 1110 04a3 01       		.uleb128 0x1
+ 1111 04a4 48       		.byte	0x48
+ 1112 04a5 10       		.uleb128 0x10
+ 1113 04a6 01       		.uleb128 0x1
+ 1114 04a7 51       		.byte	0x51
+ 1115 04a8 02       		.uleb128 0x2
+ 1116 04a9 08       		.byte	0x8
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 26
+
+
+ 1117 04aa 23       		.byte	0x23
+ 1118 04ab 10       		.uleb128 0x10
+ 1119 04ac 01       		.uleb128 0x1
+ 1120 04ad 52       		.byte	0x52
+ 1121 04ae 03       		.uleb128 0x3
+ 1122 04af 91       		.byte	0x91
+ 1123 04b0 B87F     		.sleb128 -72
+ 1124 04b2 00       		.byte	0
+ 1125 04b3 0F       		.uleb128 0xf
+ 1126 04b4 26010000 		.4byte	.LVL46
+ 1127 04b8 2C060000 		.4byte	0x62c
+ 1128 04bc D1040000 		.4byte	0x4d1
+ 1129 04c0 10       		.uleb128 0x10
+ 1130 04c1 01       		.uleb128 0x1
+ 1131 04c2 50       		.byte	0x50
+ 1132 04c3 03       		.uleb128 0x3
+ 1133 04c4 91       		.byte	0x91
+ 1134 04c5 BC7F     		.sleb128 -68
+ 1135 04c7 10       		.uleb128 0x10
+ 1136 04c8 01       		.uleb128 0x1
+ 1137 04c9 51       		.byte	0x51
+ 1138 04ca 05       		.uleb128 0x5
+ 1139 04cb 03       		.byte	0x3
+ 1140 04cc E8010000 		.4byte	.LC11
+ 1141 04d0 00       		.byte	0
+ 1142 04d1 0F       		.uleb128 0xf
+ 1143 04d2 2C010000 		.4byte	.LVL47
+ 1144 04d6 37060000 		.4byte	0x637
+ 1145 04da E6040000 		.4byte	0x4e6
+ 1146 04de 10       		.uleb128 0x10
+ 1147 04df 01       		.uleb128 0x1
+ 1148 04e0 50       		.byte	0x50
+ 1149 04e1 03       		.uleb128 0x3
+ 1150 04e2 91       		.byte	0x91
+ 1151 04e3 BC7F     		.sleb128 -68
+ 1152 04e5 00       		.byte	0
+ 1153 04e6 0F       		.uleb128 0xf
+ 1154 04e7 34010000 		.4byte	.LVL50
+ 1155 04eb 37060000 		.4byte	0x637
+ 1156 04ef FD040000 		.4byte	0x4fd
+ 1157 04f3 10       		.uleb128 0x10
+ 1158 04f4 01       		.uleb128 0x1
+ 1159 04f5 50       		.byte	0x50
+ 1160 04f6 05       		.uleb128 0x5
+ 1161 04f7 03       		.byte	0x3
+ 1162 04f8 08020000 		.4byte	.LC12
+ 1163 04fc 00       		.byte	0
+ 1164 04fd 0F       		.uleb128 0xf
+ 1165 04fe 44010000 		.4byte	.LVL52
+ 1166 0502 6E060000 		.4byte	0x66e
+ 1167 0506 1C050000 		.4byte	0x51c
+ 1168 050a 10       		.uleb128 0x10
+ 1169 050b 01       		.uleb128 0x1
+ 1170 050c 50       		.byte	0x50
+ 1171 050d 01       		.uleb128 0x1
+ 1172 050e 48       		.byte	0x48
+ 1173 050f 10       		.uleb128 0x10
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 27
+
+
+ 1174 0510 01       		.uleb128 0x1
+ 1175 0511 51       		.byte	0x51
+ 1176 0512 02       		.uleb128 0x2
+ 1177 0513 08       		.byte	0x8
+ 1178 0514 23       		.byte	0x23
+ 1179 0515 10       		.uleb128 0x10
+ 1180 0516 01       		.uleb128 0x1
+ 1181 0517 52       		.byte	0x52
+ 1182 0518 02       		.uleb128 0x2
+ 1183 0519 09       		.byte	0x9
+ 1184 051a 80       		.byte	0x80
+ 1185 051b 00       		.byte	0
+ 1186 051c 0F       		.uleb128 0xf
+ 1187 051d 4E010000 		.4byte	.LVL53
+ 1188 0521 63060000 		.4byte	0x663
+ 1189 0525 3B050000 		.4byte	0x53b
+ 1190 0529 10       		.uleb128 0x10
+ 1191 052a 01       		.uleb128 0x1
+ 1192 052b 50       		.byte	0x50
+ 1193 052c 01       		.uleb128 0x1
+ 1194 052d 48       		.byte	0x48
+ 1195 052e 10       		.uleb128 0x10
+ 1196 052f 01       		.uleb128 0x1
+ 1197 0530 51       		.byte	0x51
+ 1198 0531 02       		.uleb128 0x2
+ 1199 0532 08       		.byte	0x8
+ 1200 0533 23       		.byte	0x23
+ 1201 0534 10       		.uleb128 0x10
+ 1202 0535 01       		.uleb128 0x1
+ 1203 0536 52       		.byte	0x52
+ 1204 0537 02       		.uleb128 0x2
+ 1205 0538 74       		.byte	0x74
+ 1206 0539 00       		.sleb128 0
+ 1207 053a 00       		.byte	0
+ 1208 053b 0F       		.uleb128 0xf
+ 1209 053c 5C010000 		.4byte	.LVL55
+ 1210 0540 2C060000 		.4byte	0x62c
+ 1211 0544 59050000 		.4byte	0x559
+ 1212 0548 10       		.uleb128 0x10
+ 1213 0549 01       		.uleb128 0x1
+ 1214 054a 50       		.byte	0x50
+ 1215 054b 03       		.uleb128 0x3
+ 1216 054c 91       		.byte	0x91
+ 1217 054d BC7F     		.sleb128 -68
+ 1218 054f 10       		.uleb128 0x10
+ 1219 0550 01       		.uleb128 0x1
+ 1220 0551 51       		.byte	0x51
+ 1221 0552 05       		.uleb128 0x5
+ 1222 0553 03       		.byte	0x3
+ 1223 0554 44020000 		.4byte	.LC13
+ 1224 0558 00       		.byte	0
+ 1225 0559 0F       		.uleb128 0xf
+ 1226 055a 62010000 		.4byte	.LVL56
+ 1227 055e 37060000 		.4byte	0x637
+ 1228 0562 6E050000 		.4byte	0x56e
+ 1229 0566 10       		.uleb128 0x10
+ 1230 0567 01       		.uleb128 0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 28
+
+
+ 1231 0568 50       		.byte	0x50
+ 1232 0569 03       		.uleb128 0x3
+ 1233 056a 91       		.byte	0x91
+ 1234 056b BC7F     		.sleb128 -68
+ 1235 056d 00       		.byte	0
+ 1236 056e 0F       		.uleb128 0xf
+ 1237 056f 6A010000 		.4byte	.LVL59
+ 1238 0573 37060000 		.4byte	0x637
+ 1239 0577 85050000 		.4byte	0x585
+ 1240 057b 10       		.uleb128 0x10
+ 1241 057c 01       		.uleb128 0x1
+ 1242 057d 50       		.byte	0x50
+ 1243 057e 05       		.uleb128 0x5
+ 1244 057f 03       		.byte	0x3
+ 1245 0580 08020000 		.4byte	.LC12
+ 1246 0584 00       		.byte	0
+ 1247 0585 0F       		.uleb128 0xf
+ 1248 0586 82010000 		.4byte	.LVL60
+ 1249 058a 63060000 		.4byte	0x663
+ 1250 058e A5050000 		.4byte	0x5a5
+ 1251 0592 10       		.uleb128 0x10
+ 1252 0593 01       		.uleb128 0x1
+ 1253 0594 50       		.byte	0x50
+ 1254 0595 01       		.uleb128 0x1
+ 1255 0596 48       		.byte	0x48
+ 1256 0597 10       		.uleb128 0x10
+ 1257 0598 01       		.uleb128 0x1
+ 1258 0599 51       		.byte	0x51
+ 1259 059a 02       		.uleb128 0x2
+ 1260 059b 08       		.byte	0x8
+ 1261 059c 27       		.byte	0x27
+ 1262 059d 10       		.uleb128 0x10
+ 1263 059e 01       		.uleb128 0x1
+ 1264 059f 52       		.byte	0x52
+ 1265 05a0 03       		.uleb128 0x3
+ 1266 05a1 91       		.byte	0x91
+ 1267 05a2 BA7F     		.sleb128 -70
+ 1268 05a4 00       		.byte	0
+ 1269 05a5 0F       		.uleb128 0xf
+ 1270 05a6 98010000 		.4byte	.LVL61
+ 1271 05aa 79060000 		.4byte	0x679
+ 1272 05ae C9050000 		.4byte	0x5c9
+ 1273 05b2 10       		.uleb128 0x10
+ 1274 05b3 01       		.uleb128 0x1
+ 1275 05b4 50       		.byte	0x50
+ 1276 05b5 01       		.uleb128 0x1
+ 1277 05b6 48       		.byte	0x48
+ 1278 05b7 10       		.uleb128 0x10
+ 1279 05b8 01       		.uleb128 0x1
+ 1280 05b9 51       		.byte	0x51
+ 1281 05ba 02       		.uleb128 0x2
+ 1282 05bb 08       		.byte	0x8
+ 1283 05bc 28       		.byte	0x28
+ 1284 05bd 10       		.uleb128 0x10
+ 1285 05be 01       		.uleb128 0x1
+ 1286 05bf 52       		.byte	0x52
+ 1287 05c0 01       		.uleb128 0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 29
+
+
+ 1288 05c1 35       		.byte	0x35
+ 1289 05c2 10       		.uleb128 0x10
+ 1290 05c3 01       		.uleb128 0x1
+ 1291 05c4 53       		.byte	0x53
+ 1292 05c5 02       		.uleb128 0x2
+ 1293 05c6 7D       		.byte	0x7d
+ 1294 05c7 00       		.sleb128 0
+ 1295 05c8 00       		.byte	0
+ 1296 05c9 11       		.uleb128 0x11
+ 1297 05ca 2E020000 		.4byte	.LVL74
+ 1298 05ce 84060000 		.4byte	0x684
+ 1299 05d2 10       		.uleb128 0x10
+ 1300 05d3 01       		.uleb128 0x1
+ 1301 05d4 50       		.byte	0x50
+ 1302 05d5 03       		.uleb128 0x3
+ 1303 05d6 91       		.byte	0x91
+ 1304 05d7 B07F     		.sleb128 -80
+ 1305 05d9 10       		.uleb128 0x10
+ 1306 05da 01       		.uleb128 0x1
+ 1307 05db 51       		.byte	0x51
+ 1308 05dc 01       		.uleb128 0x1
+ 1309 05dd 38       		.byte	0x38
+ 1310 05de 00       		.byte	0
+ 1311 05df 00       		.byte	0
+ 1312 05e0 13       		.uleb128 0x13
+ 1313 05e1 C7000000 		.4byte	0xc7
+ 1314 05e5 F0050000 		.4byte	0x5f0
+ 1315 05e9 14       		.uleb128 0x14
+ 1316 05ea F9000000 		.4byte	0xf9
+ 1317 05ee 31       		.byte	0x31
+ 1318 05ef 00       		.byte	0
+ 1319 05f0 13       		.uleb128 0x13
+ 1320 05f1 8C000000 		.4byte	0x8c
+ 1321 05f5 00060000 		.4byte	0x600
+ 1322 05f9 14       		.uleb128 0x14
+ 1323 05fa F9000000 		.4byte	0xf9
+ 1324 05fe 07       		.byte	0x7
+ 1325 05ff 00       		.byte	0
+ 1326 0600 13       		.uleb128 0x13
+ 1327 0601 8C000000 		.4byte	0x8c
+ 1328 0605 10060000 		.4byte	0x610
+ 1329 0609 14       		.uleb128 0x14
+ 1330 060a F9000000 		.4byte	0xf9
+ 1331 060e 05       		.byte	0x5
+ 1332 060f 00       		.byte	0
+ 1333 0610 15       		.uleb128 0x15
+ 1334 0611 71020000 		.4byte	.LASF52
+ 1335 0615 0A       		.byte	0xa
+ 1336 0616 1207     		.2byte	0x712
+ 1337 0618 1C060000 		.4byte	0x61c
+ 1338 061c 16       		.uleb128 0x16
+ 1339 061d A2000000 		.4byte	0xa2
+ 1340 0621 17       		.uleb128 0x17
+ 1341 0622 2E000000 		.4byte	.LASF38
+ 1342 0626 2E000000 		.4byte	.LASF38
+ 1343 062a 06       		.byte	0x6
+ 1344 062b 5D       		.byte	0x5d
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 30
+
+
+ 1345 062c 17       		.uleb128 0x17
+ 1346 062d 39030000 		.4byte	.LASF39
+ 1347 0631 39030000 		.4byte	.LASF39
+ 1348 0635 07       		.byte	0x7
+ 1349 0636 E7       		.byte	0xe7
+ 1350 0637 17       		.uleb128 0x17
+ 1351 0638 19000000 		.4byte	.LASF40
+ 1352 063c 19000000 		.4byte	.LASF40
+ 1353 0640 08       		.byte	0x8
+ 1354 0641 8B       		.byte	0x8b
+ 1355 0642 17       		.uleb128 0x17
+ 1356 0643 49030000 		.4byte	.LASF41
+ 1357 0647 49030000 		.4byte	.LASF41
+ 1358 064b 06       		.byte	0x6
+ 1359 064c 17       		.byte	0x17
+ 1360 064d 17       		.uleb128 0x17
+ 1361 064e C2020000 		.4byte	.LASF42
+ 1362 0652 C2020000 		.4byte	.LASF42
+ 1363 0656 08       		.byte	0x8
+ 1364 0657 54       		.byte	0x54
+ 1365 0658 17       		.uleb128 0x17
+ 1366 0659 41030000 		.4byte	.LASF43
+ 1367 065d 41030000 		.4byte	.LASF43
+ 1368 0661 09       		.byte	0x9
+ 1369 0662 76       		.byte	0x76
+ 1370 0663 17       		.uleb128 0x17
+ 1371 0664 DF020000 		.4byte	.LASF44
+ 1372 0668 DF020000 		.4byte	.LASF44
+ 1373 066c 06       		.byte	0x6
+ 1374 066d 28       		.byte	0x28
+ 1375 066e 17       		.uleb128 0x17
+ 1376 066f DF010000 		.4byte	.LASF45
+ 1377 0673 DF010000 		.4byte	.LASF45
+ 1378 0677 06       		.byte	0x6
+ 1379 0678 43       		.byte	0x43
+ 1380 0679 17       		.uleb128 0x17
+ 1381 067a BE010000 		.4byte	.LASF46
+ 1382 067e BE010000 		.4byte	.LASF46
+ 1383 0682 06       		.byte	0x6
+ 1384 0683 36       		.byte	0x36
+ 1385 0684 17       		.uleb128 0x17
+ 1386 0685 62000000 		.4byte	.LASF47
+ 1387 0689 62000000 		.4byte	.LASF47
+ 1388 068d 08       		.byte	0x8
+ 1389 068e 8C       		.byte	0x8c
+ 1390 068f 00       		.byte	0
+ 1391              		.section	.debug_abbrev,"",%progbits
+ 1392              	.Ldebug_abbrev0:
+ 1393 0000 01       		.uleb128 0x1
+ 1394 0001 11       		.uleb128 0x11
+ 1395 0002 01       		.byte	0x1
+ 1396 0003 25       		.uleb128 0x25
+ 1397 0004 0E       		.uleb128 0xe
+ 1398 0005 13       		.uleb128 0x13
+ 1399 0006 0B       		.uleb128 0xb
+ 1400 0007 03       		.uleb128 0x3
+ 1401 0008 0E       		.uleb128 0xe
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 31
+
+
+ 1402 0009 1B       		.uleb128 0x1b
+ 1403 000a 0E       		.uleb128 0xe
+ 1404 000b 55       		.uleb128 0x55
+ 1405 000c 17       		.uleb128 0x17
+ 1406 000d 11       		.uleb128 0x11
+ 1407 000e 01       		.uleb128 0x1
+ 1408 000f 10       		.uleb128 0x10
+ 1409 0010 17       		.uleb128 0x17
+ 1410 0011 00       		.byte	0
+ 1411 0012 00       		.byte	0
+ 1412 0013 02       		.uleb128 0x2
+ 1413 0014 24       		.uleb128 0x24
+ 1414 0015 00       		.byte	0
+ 1415 0016 0B       		.uleb128 0xb
+ 1416 0017 0B       		.uleb128 0xb
+ 1417 0018 3E       		.uleb128 0x3e
+ 1418 0019 0B       		.uleb128 0xb
+ 1419 001a 03       		.uleb128 0x3
+ 1420 001b 0E       		.uleb128 0xe
+ 1421 001c 00       		.byte	0
+ 1422 001d 00       		.byte	0
+ 1423 001e 03       		.uleb128 0x3
+ 1424 001f 16       		.uleb128 0x16
+ 1425 0020 00       		.byte	0
+ 1426 0021 03       		.uleb128 0x3
+ 1427 0022 0E       		.uleb128 0xe
+ 1428 0023 3A       		.uleb128 0x3a
+ 1429 0024 0B       		.uleb128 0xb
+ 1430 0025 3B       		.uleb128 0x3b
+ 1431 0026 0B       		.uleb128 0xb
+ 1432 0027 49       		.uleb128 0x49
+ 1433 0028 13       		.uleb128 0x13
+ 1434 0029 00       		.byte	0
+ 1435 002a 00       		.byte	0
+ 1436 002b 04       		.uleb128 0x4
+ 1437 002c 24       		.uleb128 0x24
+ 1438 002d 00       		.byte	0
+ 1439 002e 0B       		.uleb128 0xb
+ 1440 002f 0B       		.uleb128 0xb
+ 1441 0030 3E       		.uleb128 0x3e
+ 1442 0031 0B       		.uleb128 0xb
+ 1443 0032 03       		.uleb128 0x3
+ 1444 0033 08       		.uleb128 0x8
+ 1445 0034 00       		.byte	0
+ 1446 0035 00       		.byte	0
+ 1447 0036 05       		.uleb128 0x5
+ 1448 0037 16       		.uleb128 0x16
+ 1449 0038 00       		.byte	0
+ 1450 0039 03       		.uleb128 0x3
+ 1451 003a 0E       		.uleb128 0xe
+ 1452 003b 3A       		.uleb128 0x3a
+ 1453 003c 0B       		.uleb128 0xb
+ 1454 003d 3B       		.uleb128 0x3b
+ 1455 003e 05       		.uleb128 0x5
+ 1456 003f 49       		.uleb128 0x49
+ 1457 0040 13       		.uleb128 0x13
+ 1458 0041 00       		.byte	0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 32
+
+
+ 1459 0042 00       		.byte	0
+ 1460 0043 06       		.uleb128 0x6
+ 1461 0044 04       		.uleb128 0x4
+ 1462 0045 01       		.byte	0x1
+ 1463 0046 0B       		.uleb128 0xb
+ 1464 0047 0B       		.uleb128 0xb
+ 1465 0048 49       		.uleb128 0x49
+ 1466 0049 13       		.uleb128 0x13
+ 1467 004a 3A       		.uleb128 0x3a
+ 1468 004b 0B       		.uleb128 0xb
+ 1469 004c 3B       		.uleb128 0x3b
+ 1470 004d 0B       		.uleb128 0xb
+ 1471 004e 01       		.uleb128 0x1
+ 1472 004f 13       		.uleb128 0x13
+ 1473 0050 00       		.byte	0
+ 1474 0051 00       		.byte	0
+ 1475 0052 07       		.uleb128 0x7
+ 1476 0053 28       		.uleb128 0x28
+ 1477 0054 00       		.byte	0
+ 1478 0055 03       		.uleb128 0x3
+ 1479 0056 0E       		.uleb128 0xe
+ 1480 0057 1C       		.uleb128 0x1c
+ 1481 0058 0B       		.uleb128 0xb
+ 1482 0059 00       		.byte	0
+ 1483 005a 00       		.byte	0
+ 1484 005b 08       		.uleb128 0x8
+ 1485 005c 2E       		.uleb128 0x2e
+ 1486 005d 01       		.byte	0x1
+ 1487 005e 3F       		.uleb128 0x3f
+ 1488 005f 19       		.uleb128 0x19
+ 1489 0060 03       		.uleb128 0x3
+ 1490 0061 0E       		.uleb128 0xe
+ 1491 0062 3A       		.uleb128 0x3a
+ 1492 0063 0B       		.uleb128 0xb
+ 1493 0064 3B       		.uleb128 0x3b
+ 1494 0065 0B       		.uleb128 0xb
+ 1495 0066 27       		.uleb128 0x27
+ 1496 0067 19       		.uleb128 0x19
+ 1497 0068 49       		.uleb128 0x49
+ 1498 0069 13       		.uleb128 0x13
+ 1499 006a 8701     		.uleb128 0x87
+ 1500 006c 19       		.uleb128 0x19
+ 1501 006d 11       		.uleb128 0x11
+ 1502 006e 01       		.uleb128 0x1
+ 1503 006f 12       		.uleb128 0x12
+ 1504 0070 06       		.uleb128 0x6
+ 1505 0071 40       		.uleb128 0x40
+ 1506 0072 18       		.uleb128 0x18
+ 1507 0073 9742     		.uleb128 0x2117
+ 1508 0075 19       		.uleb128 0x19
+ 1509 0076 01       		.uleb128 0x1
+ 1510 0077 13       		.uleb128 0x13
+ 1511 0078 00       		.byte	0
+ 1512 0079 00       		.byte	0
+ 1513 007a 09       		.uleb128 0x9
+ 1514 007b 34       		.uleb128 0x34
+ 1515 007c 00       		.byte	0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 33
+
+
+ 1516 007d 03       		.uleb128 0x3
+ 1517 007e 0E       		.uleb128 0xe
+ 1518 007f 3A       		.uleb128 0x3a
+ 1519 0080 0B       		.uleb128 0xb
+ 1520 0081 3B       		.uleb128 0x3b
+ 1521 0082 0B       		.uleb128 0xb
+ 1522 0083 49       		.uleb128 0x49
+ 1523 0084 13       		.uleb128 0x13
+ 1524 0085 02       		.uleb128 0x2
+ 1525 0086 18       		.uleb128 0x18
+ 1526 0087 00       		.byte	0
+ 1527 0088 00       		.byte	0
+ 1528 0089 0A       		.uleb128 0xa
+ 1529 008a 34       		.uleb128 0x34
+ 1530 008b 00       		.byte	0
+ 1531 008c 03       		.uleb128 0x3
+ 1532 008d 0E       		.uleb128 0xe
+ 1533 008e 3A       		.uleb128 0x3a
+ 1534 008f 0B       		.uleb128 0xb
+ 1535 0090 3B       		.uleb128 0x3b
+ 1536 0091 0B       		.uleb128 0xb
+ 1537 0092 49       		.uleb128 0x49
+ 1538 0093 13       		.uleb128 0x13
+ 1539 0094 02       		.uleb128 0x2
+ 1540 0095 17       		.uleb128 0x17
+ 1541 0096 00       		.byte	0
+ 1542 0097 00       		.byte	0
+ 1543 0098 0B       		.uleb128 0xb
+ 1544 0099 34       		.uleb128 0x34
+ 1545 009a 00       		.byte	0
+ 1546 009b 03       		.uleb128 0x3
+ 1547 009c 0E       		.uleb128 0xe
+ 1548 009d 3A       		.uleb128 0x3a
+ 1549 009e 0B       		.uleb128 0xb
+ 1550 009f 3B       		.uleb128 0x3b
+ 1551 00a0 0B       		.uleb128 0xb
+ 1552 00a1 49       		.uleb128 0x49
+ 1553 00a2 13       		.uleb128 0x13
+ 1554 00a3 1C       		.uleb128 0x1c
+ 1555 00a4 0B       		.uleb128 0xb
+ 1556 00a5 00       		.byte	0
+ 1557 00a6 00       		.byte	0
+ 1558 00a7 0C       		.uleb128 0xc
+ 1559 00a8 34       		.uleb128 0x34
+ 1560 00a9 00       		.byte	0
+ 1561 00aa 03       		.uleb128 0x3
+ 1562 00ab 0E       		.uleb128 0xe
+ 1563 00ac 3A       		.uleb128 0x3a
+ 1564 00ad 0B       		.uleb128 0xb
+ 1565 00ae 3B       		.uleb128 0x3b
+ 1566 00af 0B       		.uleb128 0xb
+ 1567 00b0 49       		.uleb128 0x49
+ 1568 00b1 13       		.uleb128 0x13
+ 1569 00b2 1C       		.uleb128 0x1c
+ 1570 00b3 0D       		.uleb128 0xd
+ 1571 00b4 00       		.byte	0
+ 1572 00b5 00       		.byte	0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 34
+
+
+ 1573 00b6 0D       		.uleb128 0xd
+ 1574 00b7 0B       		.uleb128 0xb
+ 1575 00b8 01       		.byte	0x1
+ 1576 00b9 11       		.uleb128 0x11
+ 1577 00ba 01       		.uleb128 0x1
+ 1578 00bb 12       		.uleb128 0x12
+ 1579 00bc 06       		.uleb128 0x6
+ 1580 00bd 01       		.uleb128 0x1
+ 1581 00be 13       		.uleb128 0x13
+ 1582 00bf 00       		.byte	0
+ 1583 00c0 00       		.byte	0
+ 1584 00c1 0E       		.uleb128 0xe
+ 1585 00c2 34       		.uleb128 0x34
+ 1586 00c3 00       		.byte	0
+ 1587 00c4 03       		.uleb128 0x3
+ 1588 00c5 08       		.uleb128 0x8
+ 1589 00c6 3A       		.uleb128 0x3a
+ 1590 00c7 0B       		.uleb128 0xb
+ 1591 00c8 3B       		.uleb128 0x3b
+ 1592 00c9 0B       		.uleb128 0xb
+ 1593 00ca 49       		.uleb128 0x49
+ 1594 00cb 13       		.uleb128 0x13
+ 1595 00cc 02       		.uleb128 0x2
+ 1596 00cd 17       		.uleb128 0x17
+ 1597 00ce 00       		.byte	0
+ 1598 00cf 00       		.byte	0
+ 1599 00d0 0F       		.uleb128 0xf
+ 1600 00d1 898201   		.uleb128 0x4109
+ 1601 00d4 01       		.byte	0x1
+ 1602 00d5 11       		.uleb128 0x11
+ 1603 00d6 01       		.uleb128 0x1
+ 1604 00d7 31       		.uleb128 0x31
+ 1605 00d8 13       		.uleb128 0x13
+ 1606 00d9 01       		.uleb128 0x1
+ 1607 00da 13       		.uleb128 0x13
+ 1608 00db 00       		.byte	0
+ 1609 00dc 00       		.byte	0
+ 1610 00dd 10       		.uleb128 0x10
+ 1611 00de 8A8201   		.uleb128 0x410a
+ 1612 00e1 00       		.byte	0
+ 1613 00e2 02       		.uleb128 0x2
+ 1614 00e3 18       		.uleb128 0x18
+ 1615 00e4 9142     		.uleb128 0x2111
+ 1616 00e6 18       		.uleb128 0x18
+ 1617 00e7 00       		.byte	0
+ 1618 00e8 00       		.byte	0
+ 1619 00e9 11       		.uleb128 0x11
+ 1620 00ea 898201   		.uleb128 0x4109
+ 1621 00ed 01       		.byte	0x1
+ 1622 00ee 11       		.uleb128 0x11
+ 1623 00ef 01       		.uleb128 0x1
+ 1624 00f0 31       		.uleb128 0x31
+ 1625 00f1 13       		.uleb128 0x13
+ 1626 00f2 00       		.byte	0
+ 1627 00f3 00       		.byte	0
+ 1628 00f4 12       		.uleb128 0x12
+ 1629 00f5 898201   		.uleb128 0x4109
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 35
+
+
+ 1630 00f8 00       		.byte	0
+ 1631 00f9 11       		.uleb128 0x11
+ 1632 00fa 01       		.uleb128 0x1
+ 1633 00fb 31       		.uleb128 0x31
+ 1634 00fc 13       		.uleb128 0x13
+ 1635 00fd 00       		.byte	0
+ 1636 00fe 00       		.byte	0
+ 1637 00ff 13       		.uleb128 0x13
+ 1638 0100 01       		.uleb128 0x1
+ 1639 0101 01       		.byte	0x1
+ 1640 0102 49       		.uleb128 0x49
+ 1641 0103 13       		.uleb128 0x13
+ 1642 0104 01       		.uleb128 0x1
+ 1643 0105 13       		.uleb128 0x13
+ 1644 0106 00       		.byte	0
+ 1645 0107 00       		.byte	0
+ 1646 0108 14       		.uleb128 0x14
+ 1647 0109 21       		.uleb128 0x21
+ 1648 010a 00       		.byte	0
+ 1649 010b 49       		.uleb128 0x49
+ 1650 010c 13       		.uleb128 0x13
+ 1651 010d 2F       		.uleb128 0x2f
+ 1652 010e 0B       		.uleb128 0xb
+ 1653 010f 00       		.byte	0
+ 1654 0110 00       		.byte	0
+ 1655 0111 15       		.uleb128 0x15
+ 1656 0112 34       		.uleb128 0x34
+ 1657 0113 00       		.byte	0
+ 1658 0114 03       		.uleb128 0x3
+ 1659 0115 0E       		.uleb128 0xe
+ 1660 0116 3A       		.uleb128 0x3a
+ 1661 0117 0B       		.uleb128 0xb
+ 1662 0118 3B       		.uleb128 0x3b
+ 1663 0119 05       		.uleb128 0x5
+ 1664 011a 49       		.uleb128 0x49
+ 1665 011b 13       		.uleb128 0x13
+ 1666 011c 3F       		.uleb128 0x3f
+ 1667 011d 19       		.uleb128 0x19
+ 1668 011e 3C       		.uleb128 0x3c
+ 1669 011f 19       		.uleb128 0x19
+ 1670 0120 00       		.byte	0
+ 1671 0121 00       		.byte	0
+ 1672 0122 16       		.uleb128 0x16
+ 1673 0123 35       		.uleb128 0x35
+ 1674 0124 00       		.byte	0
+ 1675 0125 49       		.uleb128 0x49
+ 1676 0126 13       		.uleb128 0x13
+ 1677 0127 00       		.byte	0
+ 1678 0128 00       		.byte	0
+ 1679 0129 17       		.uleb128 0x17
+ 1680 012a 2E       		.uleb128 0x2e
+ 1681 012b 00       		.byte	0
+ 1682 012c 3F       		.uleb128 0x3f
+ 1683 012d 19       		.uleb128 0x19
+ 1684 012e 3C       		.uleb128 0x3c
+ 1685 012f 19       		.uleb128 0x19
+ 1686 0130 6E       		.uleb128 0x6e
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 36
+
+
+ 1687 0131 0E       		.uleb128 0xe
+ 1688 0132 03       		.uleb128 0x3
+ 1689 0133 0E       		.uleb128 0xe
+ 1690 0134 3A       		.uleb128 0x3a
+ 1691 0135 0B       		.uleb128 0xb
+ 1692 0136 3B       		.uleb128 0x3b
+ 1693 0137 0B       		.uleb128 0xb
+ 1694 0138 00       		.byte	0
+ 1695 0139 00       		.byte	0
+ 1696 013a 00       		.byte	0
+ 1697              		.section	.debug_loc,"",%progbits
+ 1698              	.Ldebug_loc0:
+ 1699              	.LLST0:
+ 1700 0000 42000000 		.4byte	.LVL8
+ 1701 0004 4C000000 		.4byte	.LVL9
+ 1702 0008 0100     		.2byte	0x1
+ 1703 000a 50       		.byte	0x50
+ 1704 000b 58000000 		.4byte	.LVL12
+ 1705 000f 5A000000 		.4byte	.LVL13
+ 1706 0013 0100     		.2byte	0x1
+ 1707 0015 50       		.byte	0x50
+ 1708 0016 6A000000 		.4byte	.LVL15
+ 1709 001a 74000000 		.4byte	.LVL16
+ 1710 001e 0100     		.2byte	0x1
+ 1711 0020 50       		.byte	0x50
+ 1712 0021 80000000 		.4byte	.LVL19
+ 1713 0025 82000000 		.4byte	.LVL20
+ 1714 0029 0100     		.2byte	0x1
+ 1715 002b 50       		.byte	0x50
+ 1716 002c 92000000 		.4byte	.LVL22
+ 1717 0030 9C000000 		.4byte	.LVL23
+ 1718 0034 0100     		.2byte	0x1
+ 1719 0036 50       		.byte	0x50
+ 1720 0037 A8000000 		.4byte	.LVL26
+ 1721 003b AA000000 		.4byte	.LVL27
+ 1722 003f 0100     		.2byte	0x1
+ 1723 0041 50       		.byte	0x50
+ 1724 0042 CA000000 		.4byte	.LVL30
+ 1725 0046 D4000000 		.4byte	.LVL31
+ 1726 004a 0100     		.2byte	0x1
+ 1727 004c 50       		.byte	0x50
+ 1728 004d E0000000 		.4byte	.LVL34
+ 1729 0051 E2000000 		.4byte	.LVL35
+ 1730 0055 0100     		.2byte	0x1
+ 1731 0057 50       		.byte	0x50
+ 1732 0058 F2000000 		.4byte	.LVL37
+ 1733 005c FC000000 		.4byte	.LVL38
+ 1734 0060 0100     		.2byte	0x1
+ 1735 0062 50       		.byte	0x50
+ 1736 0063 08010000 		.4byte	.LVL41
+ 1737 0067 0A010000 		.4byte	.LVL42
+ 1738 006b 0100     		.2byte	0x1
+ 1739 006d 50       		.byte	0x50
+ 1740 006e 18010000 		.4byte	.LVL44
+ 1741 0072 22010000 		.4byte	.LVL45
+ 1742 0076 0100     		.2byte	0x1
+ 1743 0078 50       		.byte	0x50
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 37
+
+
+ 1744 0079 2E010000 		.4byte	.LVL48
+ 1745 007d 30010000 		.4byte	.LVL49
+ 1746 0081 0100     		.2byte	0x1
+ 1747 0083 50       		.byte	0x50
+ 1748 0084 4E010000 		.4byte	.LVL53
+ 1749 0088 58010000 		.4byte	.LVL54
+ 1750 008c 0100     		.2byte	0x1
+ 1751 008e 50       		.byte	0x50
+ 1752 008f 64010000 		.4byte	.LVL57
+ 1753 0093 66010000 		.4byte	.LVL58
+ 1754 0097 0100     		.2byte	0x1
+ 1755 0099 50       		.byte	0x50
+ 1756 009a 98010000 		.4byte	.LVL61
+ 1757 009e BC010000 		.4byte	.LVL64
+ 1758 00a2 0100     		.2byte	0x1
+ 1759 00a4 50       		.byte	0x50
+ 1760 00a5 00000000 		.4byte	0
+ 1761 00a9 00000000 		.4byte	0
+ 1762              	.LLST1:
+ 1763 00ad AC010000 		.4byte	.LVL62
+ 1764 00b1 B4010000 		.4byte	.LVL63
+ 1765 00b5 0100     		.2byte	0x1
+ 1766 00b7 53       		.byte	0x53
+ 1767 00b8 B4010000 		.4byte	.LVL63
+ 1768 00bc BE010000 		.4byte	.LVL65
+ 1769 00c0 1900     		.2byte	0x19
+ 1770 00c2 91       		.byte	0x91
+ 1771 00c3 A97F     		.sleb128 -87
+ 1772 00c5 94       		.byte	0x94
+ 1773 00c6 01       		.byte	0x1
+ 1774 00c7 08       		.byte	0x8
+ 1775 00c8 FF       		.byte	0xff
+ 1776 00c9 1A       		.byte	0x1a
+ 1777 00ca 38       		.byte	0x38
+ 1778 00cb 24       		.byte	0x24
+ 1779 00cc 7D       		.byte	0x7d
+ 1780 00cd 00       		.sleb128 0
+ 1781 00ce 94       		.byte	0x94
+ 1782 00cf 01       		.byte	0x1
+ 1783 00d0 08       		.byte	0x8
+ 1784 00d1 FF       		.byte	0xff
+ 1785 00d2 1A       		.byte	0x1a
+ 1786 00d3 21       		.byte	0x21
+ 1787 00d4 09       		.byte	0x9
+ 1788 00d5 F4       		.byte	0xf4
+ 1789 00d6 24       		.byte	0x24
+ 1790 00d7 09       		.byte	0x9
+ 1791 00d8 FA       		.byte	0xfa
+ 1792 00d9 26       		.byte	0x26
+ 1793 00da 9F       		.byte	0x9f
+ 1794 00db BE010000 		.4byte	.LVL65
+ 1795 00df 08020000 		.4byte	.LVL71
+ 1796 00e3 0100     		.2byte	0x1
+ 1797 00e5 54       		.byte	0x54
+ 1798 00e6 08020000 		.4byte	.LVL71
+ 1799 00ea 2A020000 		.4byte	.LVL73
+ 1800 00ee 0100     		.2byte	0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 38
+
+
+ 1801 00f0 50       		.byte	0x50
+ 1802 00f1 00000000 		.4byte	0
+ 1803 00f5 00000000 		.4byte	0
+ 1804              	.LLST2:
+ 1805 00f9 CE010000 		.4byte	.LVL66
+ 1806 00fd DE010000 		.4byte	.LVL67
+ 1807 0101 0100     		.2byte	0x1
+ 1808 0103 52       		.byte	0x52
+ 1809 0104 DE010000 		.4byte	.LVL67
+ 1810 0108 E0010000 		.4byte	.LVL68
+ 1811 010c 1A00     		.2byte	0x1a
+ 1812 010e 91       		.byte	0x91
+ 1813 010f AB7F     		.sleb128 -85
+ 1814 0111 94       		.byte	0x94
+ 1815 0112 01       		.byte	0x1
+ 1816 0113 08       		.byte	0x8
+ 1817 0114 FF       		.byte	0xff
+ 1818 0115 1A       		.byte	0x1a
+ 1819 0116 38       		.byte	0x38
+ 1820 0117 24       		.byte	0x24
+ 1821 0118 91       		.byte	0x91
+ 1822 0119 AA7F     		.sleb128 -86
+ 1823 011b 94       		.byte	0x94
+ 1824 011c 01       		.byte	0x1
+ 1825 011d 08       		.byte	0x8
+ 1826 011e FF       		.byte	0xff
+ 1827 011f 1A       		.byte	0x1a
+ 1828 0120 21       		.byte	0x21
+ 1829 0121 09       		.byte	0x9
+ 1830 0122 F4       		.byte	0xf4
+ 1831 0123 24       		.byte	0x24
+ 1832 0124 09       		.byte	0x9
+ 1833 0125 FA       		.byte	0xfa
+ 1834 0126 26       		.byte	0x26
+ 1835 0127 9F       		.byte	0x9f
+ 1836 0128 E0010000 		.4byte	.LVL68
+ 1837 012c 68020000 		.4byte	.LFE64
+ 1838 0130 0100     		.2byte	0x1
+ 1839 0132 55       		.byte	0x55
+ 1840 0133 00000000 		.4byte	0
+ 1841 0137 00000000 		.4byte	0
+ 1842              	.LLST3:
+ 1843 013b F0010000 		.4byte	.LVL69
+ 1844 013f 00020000 		.4byte	.LVL70
+ 1845 0143 0100     		.2byte	0x1
+ 1846 0145 51       		.byte	0x51
+ 1847 0146 00020000 		.4byte	.LVL70
+ 1848 014a 20020000 		.4byte	.LVL72
+ 1849 014e 0100     		.2byte	0x1
+ 1850 0150 53       		.byte	0x53
+ 1851 0151 00000000 		.4byte	0
+ 1852 0155 00000000 		.4byte	0
+ 1853              	.LLST4:
+ 1854 0159 14000000 		.4byte	.LVL2
+ 1855 015d 18000000 		.4byte	.LVL3
+ 1856 0161 0200     		.2byte	0x2
+ 1857 0163 30       		.byte	0x30
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 39
+
+
+ 1858 0164 9F       		.byte	0x9f
+ 1859 0165 18000000 		.4byte	.LVL3
+ 1860 0169 38010000 		.4byte	.LVL51
+ 1861 016d 0100     		.2byte	0x1
+ 1862 016f 54       		.byte	0x54
+ 1863 0170 00000000 		.4byte	0
+ 1864 0174 00000000 		.4byte	0
+ 1865              		.section	.debug_aranges,"",%progbits
+ 1866 0000 1C000000 		.4byte	0x1c
+ 1867 0004 0200     		.2byte	0x2
+ 1868 0006 00000000 		.4byte	.Ldebug_info0
+ 1869 000a 04       		.byte	0x4
+ 1870 000b 00       		.byte	0
+ 1871 000c 0000     		.2byte	0
+ 1872 000e 0000     		.2byte	0
+ 1873 0010 00000000 		.4byte	.LFB64
+ 1874 0014 68020000 		.4byte	.LFE64-.LFB64
+ 1875 0018 00000000 		.4byte	0
+ 1876 001c 00000000 		.4byte	0
+ 1877              		.section	.debug_ranges,"",%progbits
+ 1878              	.Ldebug_ranges0:
+ 1879 0000 00000000 		.4byte	.LFB64
+ 1880 0004 68020000 		.4byte	.LFE64
+ 1881 0008 00000000 		.4byte	0
+ 1882 000c 00000000 		.4byte	0
+ 1883              		.section	.debug_line,"",%progbits
+ 1884              	.Ldebug_line0:
+ 1885 0000 67020000 		.section	.debug_str,"MS",%progbits,1
+ 1885      0200FD01 
+ 1885      00000201 
+ 1885      FB0E0D00 
+ 1885      01010101 
+ 1886              	.LASF24:
+ 1887 0000 6D657373 		.ascii	"message\000"
+ 1887      61676500 
+ 1888              	.LASF36:
+ 1889 0008 68656164 		.ascii	"header\000"
+ 1889      657200
+ 1890              	.LASF2:
+ 1891 000f 5F5F7569 		.ascii	"__uint8_t\000"
+ 1891      6E74385F 
+ 1891      7400
+ 1892              	.LASF40:
+ 1893 0019 55415254 		.ascii	"UART_Debug_PutString\000"
+ 1893      5F446562 
+ 1893      75675F50 
+ 1893      75745374 
+ 1893      72696E67 
+ 1894              	.LASF38:
+ 1895 002e 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
+ 1895      50657269 
+ 1895      70686572 
+ 1895      616C5F49 
+ 1895      73446576 
+ 1896              	.LASF6:
+ 1897 004f 5F5F696E 		.ascii	"__int32_t\000"
+ 1897      7433325F 
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 40
+
+
+ 1897      7400
+ 1898              	.LASF7:
+ 1899 0059 6C6F6E67 		.ascii	"long int\000"
+ 1899      20696E74 
+ 1899      00
+ 1900              	.LASF47:
+ 1901 0062 55415254 		.ascii	"UART_Debug_PutArray\000"
+ 1901      5F446562 
+ 1901      75675F50 
+ 1901      75744172 
+ 1901      72617900 
+ 1902              	.LASF21:
+ 1903 0076 4572726F 		.ascii	"ErrorCode\000"
+ 1903      72436F64 
+ 1903      6500
+ 1904              	.LASF50:
+ 1905 0080 433A5C55 		.ascii	"C:\\Users\\marco\\Desktop\\AY1920_II_HW_05_SINATRA_"
+ 1905      73657273 
+ 1905      5C6D6172 
+ 1905      636F5C44 
+ 1905      65736B74 
+ 1906 00af 4D415243 		.ascii	"MARCO\\AY1920_II_HW_05_PROJ_2.cydsn\000"
+ 1906      4F5C4159 
+ 1906      31393230 
+ 1906      5F49495F 
+ 1906      48575F30 
+ 1907              	.LASF16:
+ 1908 00d2 666C6F61 		.ascii	"float\000"
+ 1908      7400
+ 1909              	.LASF33:
+ 1910 00d8 4F757441 		.ascii	"OutArray\000"
+ 1910      72726179 
+ 1910      00
+ 1911              	.LASF1:
+ 1912 00e1 756E7369 		.ascii	"unsigned char\000"
+ 1912      676E6564 
+ 1912      20636861 
+ 1912      7200
+ 1913              	.LASF48:
+ 1914 00ef 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1914      43313120 
+ 1914      352E342E 
+ 1914      31203230 
+ 1914      31363036 
+ 1915 0122 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1915      20726576 
+ 1915      6973696F 
+ 1915      6E203233 
+ 1915      37373135 
+ 1916 0155 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1916      66756E63 
+ 1916      74696F6E 
+ 1916      2D736563 
+ 1916      74696F6E 
+ 1917              	.LASF15:
+ 1918 017d 696E7431 		.ascii	"int16\000"
+ 1918      3600
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 41
+
+
+ 1919              	.LASF8:
+ 1920 0183 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1920      20756E73 
+ 1920      69676E65 
+ 1920      6420696E 
+ 1920      7400
+ 1921              	.LASF5:
+ 1922 0195 73686F72 		.ascii	"short unsigned int\000"
+ 1922      7420756E 
+ 1922      7369676E 
+ 1922      65642069 
+ 1922      6E7400
+ 1923              	.LASF37:
+ 1924 01a8 666F6F74 		.ascii	"footer\000"
+ 1924      657200
+ 1925              	.LASF35:
+ 1926 01af 41636344 		.ascii	"AccData\000"
+ 1926      61746100 
+ 1927              	.LASF17:
+ 1928 01b7 646F7562 		.ascii	"double\000"
+ 1928      6C6500
+ 1929              	.LASF46:
+ 1930 01be 4932435F 		.ascii	"I2C_Peripheral_ReadRegisterMulti\000"
+ 1930      50657269 
+ 1930      70686572 
+ 1930      616C5F52 
+ 1930      65616452 
+ 1931              	.LASF45:
+ 1932 01df 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
+ 1932      50657269 
+ 1932      70686572 
+ 1932      616C5F57 
+ 1932      72697465 
+ 1933              	.LASF51:
+ 1934 01fc 6D61696E 		.ascii	"main\000"
+ 1934      00
+ 1935              	.LASF3:
+ 1936 0201 5F5F696E 		.ascii	"__int16_t\000"
+ 1936      7431365F 
+ 1936      7400
+ 1937              	.LASF28:
+ 1938 020b 6374726C 		.ascii	"ctrl_reg1\000"
+ 1938      5F726567 
+ 1938      3100
+ 1939              	.LASF29:
+ 1940 0215 6374726C 		.ascii	"ctrl_reg4\000"
+ 1940      5F726567 
+ 1940      3400
+ 1941              	.LASF11:
+ 1942 021f 756E7369 		.ascii	"unsigned int\000"
+ 1942      676E6564 
+ 1942      20696E74 
+ 1942      00
+ 1943              	.LASF10:
+ 1944 022c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1944      206C6F6E 
+ 1944      6720756E 
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 42
+
+
+ 1944      7369676E 
+ 1944      65642069 
+ 1945              	.LASF12:
+ 1946 0243 75696E74 		.ascii	"uint8_t\000"
+ 1946      385F7400 
+ 1947              	.LASF30:
+ 1948 024b 4F75745F 		.ascii	"Out_Acc_X\000"
+ 1948      4163635F 
+ 1948      5800
+ 1949              	.LASF31:
+ 1950 0255 4F75745F 		.ascii	"Out_Acc_Y\000"
+ 1950      4163635F 
+ 1950      5900
+ 1951              	.LASF32:
+ 1952 025f 4F75745F 		.ascii	"Out_Acc_Z\000"
+ 1952      4163635F 
+ 1952      5A00
+ 1953              	.LASF13:
+ 1954 0269 696E7431 		.ascii	"int16_t\000"
+ 1954      365F7400 
+ 1955              	.LASF52:
+ 1956 0271 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1956      52784275 
+ 1956      66666572 
+ 1956      00
+ 1957              	.LASF34:
+ 1958 027e 72656769 		.ascii	"register_count\000"
+ 1958      73746572 
+ 1958      5F636F75 
+ 1958      6E7400
+ 1959              	.LASF27:
+ 1960 028d 73746174 		.ascii	"status_register\000"
+ 1960      75735F72 
+ 1960      65676973 
+ 1960      74657200 
+ 1961              	.LASF14:
+ 1962 029d 696E7433 		.ascii	"int32_t\000"
+ 1962      325F7400 
+ 1963              	.LASF23:
+ 1964 02a5 73697A65 		.ascii	"sizetype\000"
+ 1964      74797065 
+ 1964      00
+ 1965              	.LASF26:
+ 1966 02ae 6572726F 		.ascii	"error\000"
+ 1966      7200
+ 1967              	.LASF9:
+ 1968 02b4 6C6F6E67 		.ascii	"long long int\000"
+ 1968      206C6F6E 
+ 1968      6720696E 
+ 1968      7400
+ 1969              	.LASF42:
+ 1970 02c2 55415254 		.ascii	"UART_Debug_Start\000"
+ 1970      5F446562 
+ 1970      75675F53 
+ 1970      74617274 
+ 1970      00
+ 1971              	.LASF49:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccdDjyDB.s 			page 43
+
+
+ 1972 02d3 6D61696E 		.ascii	"main.c\000"
+ 1972      2E6300
+ 1973              	.LASF18:
+ 1974 02da 63686172 		.ascii	"char\000"
+ 1974      00
+ 1975              	.LASF44:
+ 1976 02df 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
+ 1976      50657269 
+ 1976      70686572 
+ 1976      616C5F52 
+ 1976      65616452 
+ 1977              	.LASF4:
+ 1978 02fb 73686F72 		.ascii	"short int\000"
+ 1978      7420696E 
+ 1978      7400
+ 1979              	.LASF19:
+ 1980 0305 4E4F5F45 		.ascii	"NO_ERROR\000"
+ 1980      52524F52 
+ 1980      00
+ 1981              	.LASF20:
+ 1982 030e 4552524F 		.ascii	"ERROR\000"
+ 1982      5200
+ 1983              	.LASF22:
+ 1984 0314 6C6F6E67 		.ascii	"long double\000"
+ 1984      20646F75 
+ 1984      626C6500 
+ 1985              	.LASF0:
+ 1986 0320 7369676E 		.ascii	"signed char\000"
+ 1986      65642063 
+ 1986      68617200 
+ 1987              	.LASF25:
+ 1988 032c 77686F5F 		.ascii	"who_am_i_reg\000"
+ 1988      616D5F69 
+ 1988      5F726567 
+ 1988      00
+ 1989              	.LASF39:
+ 1990 0339 73707269 		.ascii	"sprintf\000"
+ 1990      6E746600 
+ 1991              	.LASF43:
+ 1992 0341 43794465 		.ascii	"CyDelay\000"
+ 1992      6C617900 
+ 1993              	.LASF41:
+ 1994 0349 4932435F 		.ascii	"I2C_Peripheral_Start\000"
+ 1994      50657269 
+ 1994      70686572 
+ 1994      616C5F53 
+ 1994      74617274 
+ 1995              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
