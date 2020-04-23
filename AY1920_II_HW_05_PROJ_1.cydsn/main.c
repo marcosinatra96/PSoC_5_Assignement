@@ -1,67 +1,22 @@
 /**
-* \brief Main source file for the I2C-Master project.
 *
-* In this project we set up a I2C master device with
+* \file main.c
+* In this project we set up a I2C master device
 * to understand the I2C protocol and communicate with a
-* a I2C Slave device (LIS3DH Accelerometer).
+* a I2C Slave device (LIS3DH Accelerometer). The adjacent registers 
+* are specifically read and written in sequence thanks to the 
+* implementation of multiread and multiwrite functions.
 *
-* \author Gabriele Belotti
-* \date , 2020
+* \Author Marco Sinatra
+* 
 */
 
 // Include required header files
 #include "I2C_Interface.h"
 #include "project.h"
 #include "stdio.h"
+#include "variable_definition.h"
 
-/**
-*   \brief 7-bit I2C address of the slave device.
-*/
-#define LIS3DH_DEVICE_ADDRESS 0x18
-
-/**
-*   \brief Address of the WHO AM I register
-*/
-#define LIS3DH_WHO_AM_I_REG_ADDR 0x0F
-
-/**
-*   \brief Address of the Status register
-*/
-#define LIS3DH_STATUS_REG 0x27
-
-/**
-*   \brief Address of the Control register 1
-*/
-#define LIS3DH_CTRL_REG1 0x20
-
-/**
-*   \brief Hex value to set normal mode to the accelerator
-*/
-#define LIS3DH_NORMAL_MODE_CTRL_REG1 0x47
-
-/**
-*   \brief  Address of the Temperature Sensor Configuration register
-*/
-#define LIS3DH_TEMP_CFG_REG 0x1F
-
-#define LIS3DH_TEMP_CFG_REG_ACTIVE 0xC0
-
-/**
-*   \brief Address of the Control register 4
-*/
-#define LIS3DH_CTRL_REG4 0x23
-
-#define LIS3DH_CTRL_REG4_BDU_ACTIVE 0x80
-
-/**
-*   \brief Address of the ADC output LSB register
-*/
-#define LIS3DH_OUT_ADC_3L 0x0C
-
-/**
-*   \brief Address of the ADC output MSB register
-*/
-#define LIS3DH_OUT_ADC_3H 0x0D
 
 int main(void)
 {
@@ -266,31 +221,85 @@ int main(void)
         UART_Debug_PutString("Error occurred during I2C comm to read control register4\r\n");   
     }
     
-    int16_t OutTemp;
+     /******************************************/
+     /* Test to verify the MultiWrite function */
+     /******************************************/    
+    uint8_t ctrl_reg23 [2];
+    
+    error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                        0x21,
+                                        2,
+                                        &ctrl_reg23[0]);
+    
+    if (error == NO_ERROR)
+    {
+        sprintf(message, "CONTROL REGISTER 2 and 3: 0x%02X\r\n and 0x%02X\r\n", ctrl_reg23 [0],ctrl_reg23 [1] );
+        UART_Debug_PutString(message); 
+    }
+    else
+    {
+        UART_Debug_PutString("Error occurred during I2C comm to read control register23\r\n");   
+    }
+    
+    
+    ctrl_reg23[0] = 0x50; // must be changed to the appropriate value
+    ctrl_reg23[1] = 0x51;
+    
+    error = I2C_Peripheral_WriteRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                         0x21,
+                                         1,
+                                         &ctrl_reg23[0]);
+    
+    error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
+                                        0x21,
+                                        1,
+                                        &ctrl_reg23[0]);
+    
+    
+    if (error == NO_ERROR)
+    {
+        sprintf(message, "CONTROL REGISTER 2 and 3 after being updated: 0x%02X\r\n and 0x%02X\r\n", ctrl_reg23 [0],ctrl_reg23 [1]);
+        UART_Debug_PutString(message); 
+    }
+    else
+    {
+        UART_Debug_PutString("Error occurred during I2C comm to read control register23\r\n");   
+    }
+    
+     /******************************************/
+     /*          Variable delcaration          */
+     /******************************************/      
+
+    int16_t OutTemp; 
     uint8_t header = 0xA0;
     uint8_t footer = 0xC0;
-    uint8_t OutArray[4]; 
-    uint8_t TemperatureData[2];
+    uint8_t OutArray[TRANSMIT_BUFFER_SIZE]; //Array of dimension 'TRANSMIT_BUFFER_SIZE' containing all the axis information
+    uint8_t TemperatureData[2]; //Array storing the info read from the 2 adjacent registers
+    uint8_t register_count = 1; //Number of registers to be read in sequence (exlcuding the one we start from)
     
-    OutArray[0] = header;
-    OutArray[3] = footer;
+    /* Setup header and tail */
+    OutArray[0] = header;//Header
+    OutArray[TRANSMIT_BUFFER_SIZE-1] = footer; //Tail
     
     for(;;)
     {
-        CyDelay(100);
-        error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
+        CyDelay(100); //Arbitrary delay (we do not need a high sampling from the temperature sensor)
+        
+        /********************************************************************/
+        /*    Read Auxiliary ADC register with ReadRegisterMulti function   */
+        /********************************************************************/
+        
+        error = I2C_Peripheral_ReadRegisterMulti(LIS3DH_DEVICE_ADDRESS,
                                             LIS3DH_OUT_ADC_3L,
+                                            register_count,
                                             &TemperatureData[0]);
         
-        error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
-                                            LIS3DH_OUT_ADC_3H,
-                                            &TemperatureData[1]);
         if(error == NO_ERROR)
         {
-            OutTemp = (int16)((TemperatureData[0] | (TemperatureData[1]<<8)))>>6;
-            OutArray[1] = (uint8_t)(OutTemp & 0xFF);
-            OutArray[2] = (uint8_t)(OutTemp >> 8);
-            UART_Debug_PutArray(OutArray, 4);
+            OutTemp = (int16)((TemperatureData[0] | (TemperatureData[1]<<8)))>>6; //Right justified 16bit integer
+            OutArray[1] = (uint8_t)(OutTemp & 0xFF); //LSB of temperature sensor data
+            OutArray[2] = (uint8_t)(OutTemp >> 8); //MSB of temperature sensor data
+            UART_Debug_PutArray(OutArray, TRANSMIT_BUFFER_SIZE); //Send information through UART communication protocol
         }
     }
 }
