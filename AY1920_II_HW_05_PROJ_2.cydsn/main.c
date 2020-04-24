@@ -9,7 +9,7 @@
 * function. The output values then, according to UART communication protocol,  
 * are sent to the Bridge Control Panel software in order to be plotted. The
 * BAUD rate is set to 9600 bps and it is sufficient since we are sending about
-* 6400 bps.
+* 6400 bps (see TopDesing for further details).
 *
 * \Author Marco Sinatra
 */
@@ -221,8 +221,8 @@ int main(void)
             
             if(error == NO_ERROR)
             {
-                /* Raw values coming from the accelerometerValues cover a full scale range that goes from 512 to -512 
-                (hence, in acceleration unit, ±2 mg). Dividing by a factor of 256 and multipliyng by 1000 we obtain a
+                /* Raw values coming from the accelerometer cover a full scale range that goes from 512 to -512 
+                (hence, in acceleration unit, ±2g). Dividing by a factor of 256 and multipliyng by 1000 we obtain a
                 new full scall range which goes from +2000 mg to -2000mg */
 
                 
