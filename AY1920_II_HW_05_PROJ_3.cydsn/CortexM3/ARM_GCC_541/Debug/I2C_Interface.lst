@@ -1,0 +1,2167 @@
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.syntax unified
+  15              		.file	"I2C_Interface.c"
+  16              		.text
+  17              	.Ltext0:
+  18              		.cfi_sections	.debug_frame
+  19              		.section	.text.I2C_Peripheral_Start,"ax",%progbits
+  20              		.align	2
+  21              		.global	I2C_Peripheral_Start
+  22              		.thumb
+  23              		.thumb_func
+  24              		.type	I2C_Peripheral_Start, %function
+  25              	I2C_Peripheral_Start:
+  26              	.LFB63:
+  27              		.file 1 "I2C_Interface.c"
+   1:I2C_Interface.c **** /*
+   2:I2C_Interface.c **** * This file includes all the required source code to interface
+   3:I2C_Interface.c **** * the I2C peripheral.
+   4:I2C_Interface.c **** */
+   5:I2C_Interface.c **** 
+   6:I2C_Interface.c **** /**
+   7:I2C_Interface.c **** *   \brief Value returned if device present on I2C bus.
+   8:I2C_Interface.c **** */
+   9:I2C_Interface.c **** #ifndef DEVICE_CONNECTED
+  10:I2C_Interface.c ****     #define DEVICE_CONNECTED 1
+  11:I2C_Interface.c **** #endif
+  12:I2C_Interface.c **** 
+  13:I2C_Interface.c **** /**
+  14:I2C_Interface.c **** *   \brief Value returned if device not present on I2C bus.
+  15:I2C_Interface.c **** */
+  16:I2C_Interface.c **** #ifndef DEVICE_UNCONNECTED
+  17:I2C_Interface.c ****     #define DEVICE_UNCONNECTED 0
+  18:I2C_Interface.c **** #endif
+  19:I2C_Interface.c **** 
+  20:I2C_Interface.c **** #include "I2C_Interface.h" 
+  21:I2C_Interface.c **** #include "I2C_Master.h"
+  22:I2C_Interface.c **** #include "project.h"
+  23:I2C_Interface.c **** 
+  24:I2C_Interface.c ****     ErrorCode I2C_Peripheral_Start(void) 
+  25:I2C_Interface.c ****     {
+  28              		.loc 1 25 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 2
+
+
+  33              		.cfi_def_cfa_offset 8
+  34              		.cfi_offset 3, -8
+  35              		.cfi_offset 14, -4
+  26:I2C_Interface.c ****         // Start I2C peripheral
+  27:I2C_Interface.c ****         I2C_Master_Start();  
+  36              		.loc 1 27 0
+  37 0002 FFF7FEFF 		bl	I2C_Master_Start
+  38              	.LVL0:
+  28:I2C_Interface.c ****         
+  29:I2C_Interface.c ****         // Return no error since start function does not return any error
+  30:I2C_Interface.c ****         return NO_ERROR;
+  31:I2C_Interface.c ****     }
+  39              		.loc 1 31 0
+  40 0006 0020     		movs	r0, #0
+  41 0008 08BD     		pop	{r3, pc}
+  42              		.cfi_endproc
+  43              	.LFE63:
+  44              		.size	I2C_Peripheral_Start, .-I2C_Peripheral_Start
+  45 000a 00BF     		.section	.text.I2C_Peripheral_Stop,"ax",%progbits
+  46              		.align	2
+  47              		.global	I2C_Peripheral_Stop
+  48              		.thumb
+  49              		.thumb_func
+  50              		.type	I2C_Peripheral_Stop, %function
+  51              	I2C_Peripheral_Stop:
+  52              	.LFB64:
+  32:I2C_Interface.c ****     
+  33:I2C_Interface.c ****     
+  34:I2C_Interface.c ****     
+  35:I2C_Interface.c ****     ErrorCode I2C_Peripheral_Stop(void)
+  36:I2C_Interface.c ****     {
+  53              		.loc 1 36 0
+  54              		.cfi_startproc
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57 0000 08B5     		push	{r3, lr}
+  58              		.cfi_def_cfa_offset 8
+  59              		.cfi_offset 3, -8
+  60              		.cfi_offset 14, -4
+  37:I2C_Interface.c ****         // Stop I2C peripheral
+  38:I2C_Interface.c ****         I2C_Master_Stop();
+  61              		.loc 1 38 0
+  62 0002 FFF7FEFF 		bl	I2C_Master_Stop
+  63              	.LVL1:
+  39:I2C_Interface.c ****         // Return no error since stop function does not return any error
+  40:I2C_Interface.c ****         return NO_ERROR;
+  41:I2C_Interface.c ****     }
+  64              		.loc 1 41 0
+  65 0006 0020     		movs	r0, #0
+  66 0008 08BD     		pop	{r3, pc}
+  67              		.cfi_endproc
+  68              	.LFE64:
+  69              		.size	I2C_Peripheral_Stop, .-I2C_Peripheral_Stop
+  70 000a 00BF     		.section	.text.I2C_Peripheral_ReadRegister,"ax",%progbits
+  71              		.align	2
+  72              		.global	I2C_Peripheral_ReadRegister
+  73              		.thumb
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 3
+
+
+  74              		.thumb_func
+  75              		.type	I2C_Peripheral_ReadRegister, %function
+  76              	I2C_Peripheral_ReadRegister:
+  77              	.LFB65:
+  42:I2C_Interface.c **** 
+  43:I2C_Interface.c ****     
+  44:I2C_Interface.c ****     
+  45:I2C_Interface.c ****     ErrorCode I2C_Peripheral_ReadRegister(uint8_t device_address, 
+  46:I2C_Interface.c ****                                             uint8_t register_address,
+  47:I2C_Interface.c ****                                             uint8_t* data)
+  48:I2C_Interface.c ****     {
+  78              		.loc 1 48 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              	.LVL2:
+  83 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+  84              		.cfi_def_cfa_offset 24
+  85              		.cfi_offset 3, -24
+  86              		.cfi_offset 4, -20
+  87              		.cfi_offset 5, -16
+  88              		.cfi_offset 6, -12
+  89              		.cfi_offset 7, -8
+  90              		.cfi_offset 14, -4
+  91 0002 0646     		mov	r6, r0
+  92 0004 0D46     		mov	r5, r1
+  93 0006 1746     		mov	r7, r2
+  49:I2C_Interface.c ****         // Send start condition
+  50:I2C_Interface.c ****         uint8_t error = I2C_Master_MasterSendStart(device_address,I2C_Master_WRITE_XFER_MODE);
+  94              		.loc 1 50 0
+  95 0008 0021     		movs	r1, #0
+  96              	.LVL3:
+  97 000a FFF7FEFF 		bl	I2C_Master_MasterSendStart
+  98              	.LVL4:
+  51:I2C_Interface.c ****         if (error == I2C_Master_MSTR_NO_ERROR)
+  99              		.loc 1 51 0
+ 100 000e 0446     		mov	r4, r0
+ 101 0010 68B9     		cbnz	r0, .L6
+  52:I2C_Interface.c ****         {
+  53:I2C_Interface.c ****             // Write address of register to be read
+  54:I2C_Interface.c ****             error = I2C_Master_MasterWriteByte(register_address);
+ 102              		.loc 1 54 0
+ 103 0012 2846     		mov	r0, r5
+ 104              	.LVL5:
+ 105 0014 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 106              	.LVL6:
+  55:I2C_Interface.c ****             if (error == I2C_Master_MSTR_NO_ERROR)
+ 107              		.loc 1 55 0
+ 108 0018 0446     		mov	r4, r0
+ 109 001a 40B9     		cbnz	r0, .L6
+  56:I2C_Interface.c ****             {
+  57:I2C_Interface.c ****                 // Send restart condition
+  58:I2C_Interface.c ****                 error = I2C_Master_MasterSendRestart(device_address, I2C_Master_READ_XFER_MODE);
+ 110              		.loc 1 58 0
+ 111 001c 0121     		movs	r1, #1
+ 112 001e 3046     		mov	r0, r6
+ 113              	.LVL7:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 4
+
+
+ 114 0020 FFF7FEFF 		bl	I2C_Master_MasterSendRestart
+ 115              	.LVL8:
+  59:I2C_Interface.c ****                 if (error == I2C_Master_MSTR_NO_ERROR)
+ 116              		.loc 1 59 0
+ 117 0024 0446     		mov	r4, r0
+ 118 0026 10B9     		cbnz	r0, .L6
+  60:I2C_Interface.c ****                 {
+  61:I2C_Interface.c ****                     // Read data without acknowledgement
+  62:I2C_Interface.c ****                     *data = I2C_Master_MasterReadByte(I2C_Master_NAK_DATA);
+ 119              		.loc 1 62 0
+ 120 0028 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+ 121              	.LVL9:
+ 122 002c 3870     		strb	r0, [r7]
+ 123              	.L6:
+ 124              	.LVL10:
+  63:I2C_Interface.c ****                 }
+  64:I2C_Interface.c ****             }
+  65:I2C_Interface.c ****         }
+  66:I2C_Interface.c ****         // Send stop condition
+  67:I2C_Interface.c ****         I2C_Master_MasterSendStop();
+ 125              		.loc 1 67 0
+ 126 002e FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 127              	.LVL11:
+  68:I2C_Interface.c ****         // Return error code
+  69:I2C_Interface.c ****         return error ? ERROR : NO_ERROR;
+  70:I2C_Interface.c ****     }
+ 128              		.loc 1 70 0
+ 129 0032 201C     		adds	r0, r4, #0
+ 130 0034 18BF     		it	ne
+ 131 0036 0120     		movne	r0, #1
+ 132 0038 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 133              		.cfi_endproc
+ 134              	.LFE65:
+ 135              		.size	I2C_Peripheral_ReadRegister, .-I2C_Peripheral_ReadRegister
+ 136 003a 00BF     		.section	.text.I2C_Peripheral_ReadRegisterMulti,"ax",%progbits
+ 137              		.align	2
+ 138              		.global	I2C_Peripheral_ReadRegisterMulti
+ 139              		.thumb
+ 140              		.thumb_func
+ 141              		.type	I2C_Peripheral_ReadRegisterMulti, %function
+ 142              	I2C_Peripheral_ReadRegisterMulti:
+ 143              	.LFB66:
+  71:I2C_Interface.c **** 
+  72:I2C_Interface.c ****     
+  73:I2C_Interface.c ****     
+  74:I2C_Interface.c ****     ErrorCode I2C_Peripheral_ReadRegisterMulti(uint8_t device_address,
+  75:I2C_Interface.c ****                                                 uint8_t register_address,
+  76:I2C_Interface.c ****                                                 uint8_t register_count,
+  77:I2C_Interface.c ****                                                 uint8_t* data)
+  78:I2C_Interface.c ****     {
+ 144              		.loc 1 78 0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              	.LVL12:
+ 149 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 150              		.cfi_def_cfa_offset 24
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 5
+
+
+ 151              		.cfi_offset 4, -24
+ 152              		.cfi_offset 5, -20
+ 153              		.cfi_offset 6, -16
+ 154              		.cfi_offset 7, -12
+ 155              		.cfi_offset 8, -8
+ 156              		.cfi_offset 14, -4
+ 157 0004 8046     		mov	r8, r0
+ 158 0006 1746     		mov	r7, r2
+ 159 0008 1E46     		mov	r6, r3
+ 160              	.LVL13:
+  79:I2C_Interface.c ****         uint8 i =0 ;
+  80:I2C_Interface.c ****         
+  81:I2C_Interface.c ****         /*Datasheet specifies to set the MSB equal to 1 in order to enable 
+  82:I2C_Interface.c ****         the reading/writing of multiple adjacent registers*/ 
+  83:I2C_Interface.c ****         register_address = register_address | 0x80; 
+ 161              		.loc 1 83 0
+ 162 000a 41F08004 		orr	r4, r1, #128
+ 163              	.LVL14:
+  84:I2C_Interface.c ****         
+  85:I2C_Interface.c ****         // Send start condition
+  86:I2C_Interface.c ****         uint8_t error = I2C_Master_MasterSendStart(device_address,I2C_Master_WRITE_XFER_MODE);
+ 164              		.loc 1 86 0
+ 165 000e 0021     		movs	r1, #0
+ 166 0010 FFF7FEFF 		bl	I2C_Master_MasterSendStart
+ 167              	.LVL15:
+  87:I2C_Interface.c ****         if (error == I2C_Master_MSTR_NO_ERROR)
+ 168              		.loc 1 87 0
+ 169 0014 0546     		mov	r5, r0
+ 170 0016 C8B9     		cbnz	r0, .L9
+  88:I2C_Interface.c ****         {   
+  89:I2C_Interface.c ****             // Write address of register to be read
+  90:I2C_Interface.c ****             error = I2C_Master_MasterWriteByte(register_address);
+ 171              		.loc 1 90 0
+ 172 0018 2046     		mov	r0, r4
+ 173              	.LVL16:
+ 174 001a FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 175              	.LVL17:
+  91:I2C_Interface.c ****             if (error == I2C_Master_MSTR_NO_ERROR)
+ 176              		.loc 1 91 0
+ 177 001e 0546     		mov	r5, r0
+ 178 0020 A0B9     		cbnz	r0, .L9
+  92:I2C_Interface.c ****             {
+  93:I2C_Interface.c ****                 // Send restart condition
+  94:I2C_Interface.c ****                 error = I2C_Master_MasterSendRestart(device_address, I2C_Master_READ_XFER_MODE);
+ 179              		.loc 1 94 0
+ 180 0022 0121     		movs	r1, #1
+ 181 0024 4046     		mov	r0, r8
+ 182              	.LVL18:
+ 183 0026 FFF7FEFF 		bl	I2C_Master_MasterSendRestart
+ 184              	.LVL19:
+  95:I2C_Interface.c ****                 if (error == I2C_Master_MSTR_NO_ERROR)
+ 185              		.loc 1 95 0
+ 186 002a 0546     		mov	r5, r0
+ 187 002c 38B1     		cbz	r0, .L12
+ 188 002e 0DE0     		b	.L9
+ 189              	.LVL20:
+ 190              	.L11:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 6
+
+
+  96:I2C_Interface.c ****                 {
+  97:I2C_Interface.c ****                     /*Read multiple adjacent registers*/
+  98:I2C_Interface.c ****                    
+  99:I2C_Interface.c ****                     for (i = 0; i< register_count; i++)
+ 100:I2C_Interface.c ****                     {
+ 101:I2C_Interface.c ****                     // Read data with acknowledgement
+ 102:I2C_Interface.c ****                     *(data+i) = I2C_Master_MasterReadByte(I2C_Master_ACK_DATA); //qui metto ACK al 
+ 191              		.loc 1 102 0 discriminator 3
+ 192 0030 0120     		movs	r0, #1
+ 193 0032 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+ 194              	.LVL21:
+ 195 0036 3055     		strb	r0, [r6, r4]
+  99:I2C_Interface.c ****                     {
+ 196              		.loc 1 99 0 discriminator 3
+ 197 0038 0134     		adds	r4, r4, #1
+ 198              	.LVL22:
+ 199 003a E4B2     		uxtb	r4, r4
+ 200              	.LVL23:
+ 201 003c 00E0     		b	.L10
+ 202              	.LVL24:
+ 203              	.L12:
+ 204 003e 0024     		movs	r4, #0
+ 205              	.LVL25:
+ 206              	.L10:
+  99:I2C_Interface.c ****                     {
+ 207              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 208 0040 BC42     		cmp	r4, r7
+ 209 0042 F5D3     		bcc	.L11
+ 103:I2C_Interface.c **** 
+ 104:I2C_Interface.c ****                     }
+ 105:I2C_Interface.c ****                     // Read data without acknowledgement
+ 106:I2C_Interface.c ****                     *(data+i) = I2C_Master_MasterReadByte(I2C_Master_NAK_DATA);
+ 210              		.loc 1 106 0 is_stmt 1
+ 211 0044 0020     		movs	r0, #0
+ 212 0046 FFF7FEFF 		bl	I2C_Master_MasterReadByte
+ 213              	.LVL26:
+ 214 004a 3055     		strb	r0, [r6, r4]
+ 215              	.LVL27:
+ 216              	.L9:
+ 107:I2C_Interface.c ****                 }
+ 108:I2C_Interface.c ****             }
+ 109:I2C_Interface.c ****         }
+ 110:I2C_Interface.c ****        
+ 111:I2C_Interface.c ****         // Send stop condition
+ 112:I2C_Interface.c ****         I2C_Master_MasterSendStop();
+ 217              		.loc 1 112 0
+ 218 004c FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 219              	.LVL28:
+ 113:I2C_Interface.c ****         // Return error code
+ 114:I2C_Interface.c ****         return error ? ERROR : NO_ERROR;
+ 115:I2C_Interface.c ****     }
+ 220              		.loc 1 115 0
+ 221 0050 281C     		adds	r0, r5, #0
+ 222 0052 18BF     		it	ne
+ 223 0054 0120     		movne	r0, #1
+ 224 0056 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 225              		.cfi_endproc
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 7
+
+
+ 226              	.LFE66:
+ 227              		.size	I2C_Peripheral_ReadRegisterMulti, .-I2C_Peripheral_ReadRegisterMulti
+ 228 005a 00BF     		.section	.text.I2C_Peripheral_WriteRegister,"ax",%progbits
+ 229              		.align	2
+ 230              		.global	I2C_Peripheral_WriteRegister
+ 231              		.thumb
+ 232              		.thumb_func
+ 233              		.type	I2C_Peripheral_WriteRegister, %function
+ 234              	I2C_Peripheral_WriteRegister:
+ 235              	.LFB67:
+ 116:I2C_Interface.c ****     
+ 117:I2C_Interface.c ****     
+ 118:I2C_Interface.c ****     
+ 119:I2C_Interface.c ****     ErrorCode I2C_Peripheral_WriteRegister(uint8_t device_address,
+ 120:I2C_Interface.c ****                                             uint8_t register_address,
+ 121:I2C_Interface.c ****                                             uint8_t data)
+ 122:I2C_Interface.c ****     {
+ 236              		.loc 1 122 0
+ 237              		.cfi_startproc
+ 238              		@ args = 0, pretend = 0, frame = 0
+ 239              		@ frame_needed = 0, uses_anonymous_args = 0
+ 240              	.LVL29:
+ 241 0000 70B5     		push	{r4, r5, r6, lr}
+ 242              		.cfi_def_cfa_offset 16
+ 243              		.cfi_offset 4, -16
+ 244              		.cfi_offset 5, -12
+ 245              		.cfi_offset 6, -8
+ 246              		.cfi_offset 14, -4
+ 247 0002 0D46     		mov	r5, r1
+ 248 0004 1646     		mov	r6, r2
+ 123:I2C_Interface.c ****         // Send start condition
+ 124:I2C_Interface.c ****         uint8_t error = I2C_Master_MasterSendStart(device_address, I2C_Master_WRITE_XFER_MODE);
+ 249              		.loc 1 124 0
+ 250 0006 0021     		movs	r1, #0
+ 251              	.LVL30:
+ 252 0008 FFF7FEFF 		bl	I2C_Master_MasterSendStart
+ 253              	.LVL31:
+ 125:I2C_Interface.c ****         if (error == I2C_Master_MSTR_NO_ERROR)
+ 254              		.loc 1 125 0
+ 255 000c 0446     		mov	r4, r0
+ 256 000e 40B9     		cbnz	r0, .L15
+ 126:I2C_Interface.c ****         {
+ 127:I2C_Interface.c ****             // Write register address
+ 128:I2C_Interface.c ****             error = I2C_Master_MasterWriteByte(register_address);
+ 257              		.loc 1 128 0
+ 258 0010 2846     		mov	r0, r5
+ 259              	.LVL32:
+ 260 0012 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 261              	.LVL33:
+ 129:I2C_Interface.c ****             if (error == I2C_Master_MSTR_NO_ERROR)
+ 262              		.loc 1 129 0
+ 263 0016 0446     		mov	r4, r0
+ 264 0018 18B9     		cbnz	r0, .L15
+ 130:I2C_Interface.c ****             {
+ 131:I2C_Interface.c ****                 // Write byte of interest
+ 132:I2C_Interface.c ****                 error = I2C_Master_MasterWriteByte(data);
+ 265              		.loc 1 132 0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 8
+
+
+ 266 001a 3046     		mov	r0, r6
+ 267              	.LVL34:
+ 268 001c FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 269              	.LVL35:
+ 270 0020 0446     		mov	r4, r0
+ 271              	.LVL36:
+ 272              	.L15:
+ 133:I2C_Interface.c ****             }
+ 134:I2C_Interface.c ****         }
+ 135:I2C_Interface.c ****         // Send stop condition
+ 136:I2C_Interface.c ****         I2C_Master_MasterSendStop();
+ 273              		.loc 1 136 0
+ 274 0022 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 275              	.LVL37:
+ 137:I2C_Interface.c ****         // Return error code
+ 138:I2C_Interface.c ****         return error ? ERROR : NO_ERROR;
+ 139:I2C_Interface.c ****     }
+ 276              		.loc 1 139 0
+ 277 0026 201C     		adds	r0, r4, #0
+ 278 0028 18BF     		it	ne
+ 279 002a 0120     		movne	r0, #1
+ 280 002c 70BD     		pop	{r4, r5, r6, pc}
+ 281              		.cfi_endproc
+ 282              	.LFE67:
+ 283              		.size	I2C_Peripheral_WriteRegister, .-I2C_Peripheral_WriteRegister
+ 284 002e 00BF     		.section	.text.I2C_Peripheral_WriteRegisterMulti,"ax",%progbits
+ 285              		.align	2
+ 286              		.global	I2C_Peripheral_WriteRegisterMulti
+ 287              		.thumb
+ 288              		.thumb_func
+ 289              		.type	I2C_Peripheral_WriteRegisterMulti, %function
+ 290              	I2C_Peripheral_WriteRegisterMulti:
+ 291              	.LFB68:
+ 140:I2C_Interface.c ****     
+ 141:I2C_Interface.c ****     
+ 142:I2C_Interface.c ****     
+ 143:I2C_Interface.c ****     ErrorCode I2C_Peripheral_WriteRegisterMulti(uint8_t device_address,
+ 144:I2C_Interface.c ****                                             uint8_t register_address,
+ 145:I2C_Interface.c ****                                             uint8_t register_count,
+ 146:I2C_Interface.c ****                                             uint8_t* data)
+ 147:I2C_Interface.c ****     {
+ 292              		.loc 1 147 0
+ 293              		.cfi_startproc
+ 294              		@ args = 0, pretend = 0, frame = 0
+ 295              		@ frame_needed = 0, uses_anonymous_args = 0
+ 296              	.LVL38:
+ 297 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 298              		.cfi_def_cfa_offset 24
+ 299              		.cfi_offset 3, -24
+ 300              		.cfi_offset 4, -20
+ 301              		.cfi_offset 5, -16
+ 302              		.cfi_offset 6, -12
+ 303              		.cfi_offset 7, -8
+ 304              		.cfi_offset 14, -4
+ 305 0002 1646     		mov	r6, r2
+ 306 0004 1F46     		mov	r7, r3
+ 307              	.LVL39:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 9
+
+
+ 148:I2C_Interface.c ****         uint8 i =0 ;
+ 149:I2C_Interface.c ****         
+ 150:I2C_Interface.c ****         /*Datasheet specifies to set the MSB equal to 1 in order to enable 
+ 151:I2C_Interface.c ****         the reading/writing of multiple adjacent registers*/ 
+ 152:I2C_Interface.c ****         register_address = register_address | 0x80;
+ 308              		.loc 1 152 0
+ 309 0006 41F08004 		orr	r4, r1, #128
+ 310              	.LVL40:
+ 153:I2C_Interface.c ****         
+ 154:I2C_Interface.c ****         // Send start condition
+ 155:I2C_Interface.c ****         uint8_t error = I2C_Master_MasterSendStart(device_address, I2C_Master_WRITE_XFER_MODE);
+ 311              		.loc 1 155 0
+ 312 000a 0021     		movs	r1, #0
+ 313 000c FFF7FEFF 		bl	I2C_Master_MasterSendStart
+ 314              	.LVL41:
+ 156:I2C_Interface.c ****         if (error == I2C_Master_MSTR_NO_ERROR)
+ 315              		.loc 1 156 0
+ 316 0010 0546     		mov	r5, r0
+ 317 0012 78B9     		cbnz	r0, .L18
+ 157:I2C_Interface.c ****         {
+ 158:I2C_Interface.c ****             // Write register address
+ 159:I2C_Interface.c ****             error = I2C_Master_MasterWriteByte(register_address);
+ 318              		.loc 1 159 0
+ 319 0014 2046     		mov	r0, r4
+ 320              	.LVL42:
+ 321 0016 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 322              	.LVL43:
+ 160:I2C_Interface.c ****             if (error == I2C_Master_MSTR_NO_ERROR)
+ 323              		.loc 1 160 0
+ 324 001a 0546     		mov	r5, r0
+ 325 001c 38B1     		cbz	r0, .L21
+ 326 001e 09E0     		b	.L18
+ 327              	.LVL44:
+ 328              	.L20:
+ 161:I2C_Interface.c ****             {
+ 162:I2C_Interface.c ****                 /*Write in multiple adjacent registers*/
+ 163:I2C_Interface.c ****                 for (i = 0; i<= register_count; i++) 
+ 164:I2C_Interface.c ****                 {
+ 165:I2C_Interface.c ****                 // Write byte of interest
+ 166:I2C_Interface.c ****                 error = I2C_Master_MasterWriteByte(*(data+i));
+ 329              		.loc 1 166 0 discriminator 3
+ 330 0020 385D     		ldrb	r0, [r7, r4]	@ zero_extendqisi2
+ 331 0022 FFF7FEFF 		bl	I2C_Master_MasterWriteByte
+ 332              	.LVL45:
+ 333 0026 0546     		mov	r5, r0
+ 334              	.LVL46:
+ 163:I2C_Interface.c ****                 {
+ 335              		.loc 1 163 0 discriminator 3
+ 336 0028 0134     		adds	r4, r4, #1
+ 337              	.LVL47:
+ 338 002a E4B2     		uxtb	r4, r4
+ 339              	.LVL48:
+ 340 002c 00E0     		b	.L19
+ 341              	.LVL49:
+ 342              	.L21:
+ 343 002e 0024     		movs	r4, #0
+ 344              	.LVL50:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 10
+
+
+ 345              	.L19:
+ 163:I2C_Interface.c ****                 {
+ 346              		.loc 1 163 0 is_stmt 0 discriminator 1
+ 347 0030 B442     		cmp	r4, r6
+ 348 0032 F5D9     		bls	.L20
+ 349              	.LVL51:
+ 350              	.L18:
+ 167:I2C_Interface.c ****                 }
+ 168:I2C_Interface.c ****             }
+ 169:I2C_Interface.c ****         }
+ 170:I2C_Interface.c ****         // Send stop condition
+ 171:I2C_Interface.c ****         I2C_Master_MasterSendStop();
+ 351              		.loc 1 171 0 is_stmt 1
+ 352 0034 FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 353              	.LVL52:
+ 172:I2C_Interface.c ****         // Return error code
+ 173:I2C_Interface.c ****         return error ? ERROR : NO_ERROR;
+ 174:I2C_Interface.c ****     }
+ 354              		.loc 1 174 0
+ 355 0038 281C     		adds	r0, r5, #0
+ 356 003a 18BF     		it	ne
+ 357 003c 0120     		movne	r0, #1
+ 358 003e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 359              		.cfi_endproc
+ 360              	.LFE68:
+ 361              		.size	I2C_Peripheral_WriteRegisterMulti, .-I2C_Peripheral_WriteRegisterMulti
+ 362              		.section	.text.I2C_Peripheral_IsDeviceConnected,"ax",%progbits
+ 363              		.align	2
+ 364              		.global	I2C_Peripheral_IsDeviceConnected
+ 365              		.thumb
+ 366              		.thumb_func
+ 367              		.type	I2C_Peripheral_IsDeviceConnected, %function
+ 368              	I2C_Peripheral_IsDeviceConnected:
+ 369              	.LFB69:
+ 175:I2C_Interface.c ****     
+ 176:I2C_Interface.c ****     
+ 177:I2C_Interface.c ****     
+ 178:I2C_Interface.c ****     uint8_t I2C_Peripheral_IsDeviceConnected(uint8_t device_address)
+ 179:I2C_Interface.c ****     {
+ 370              		.loc 1 179 0
+ 371              		.cfi_startproc
+ 372              		@ args = 0, pretend = 0, frame = 0
+ 373              		@ frame_needed = 0, uses_anonymous_args = 0
+ 374              	.LVL53:
+ 375 0000 10B5     		push	{r4, lr}
+ 376              		.cfi_def_cfa_offset 8
+ 377              		.cfi_offset 4, -8
+ 378              		.cfi_offset 14, -4
+ 180:I2C_Interface.c ****         // Send a start condition followed by a stop condition
+ 181:I2C_Interface.c ****         uint8_t error = I2C_Master_MasterSendStart(device_address, I2C_Master_WRITE_XFER_MODE);
+ 379              		.loc 1 181 0
+ 380 0002 0021     		movs	r1, #0
+ 381 0004 FFF7FEFF 		bl	I2C_Master_MasterSendStart
+ 382              	.LVL54:
+ 383 0008 0446     		mov	r4, r0
+ 384              	.LVL55:
+ 182:I2C_Interface.c ****         I2C_Master_MasterSendStop();
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 11
+
+
+ 385              		.loc 1 182 0
+ 386 000a FFF7FEFF 		bl	I2C_Master_MasterSendStop
+ 387              	.LVL56:
+ 183:I2C_Interface.c ****         // If no error generated during stop, device is connected
+ 184:I2C_Interface.c ****         if (error == I2C_Master_MSTR_NO_ERROR)
+ 388              		.loc 1 184 0
+ 389 000e 0CB9     		cbnz	r4, .L25
+ 185:I2C_Interface.c ****         {
+ 186:I2C_Interface.c ****             return DEVICE_CONNECTED;
+ 390              		.loc 1 186 0
+ 391 0010 0120     		movs	r0, #1
+ 392 0012 10BD     		pop	{r4, pc}
+ 393              	.LVL57:
+ 394              	.L25:
+ 187:I2C_Interface.c ****         }
+ 188:I2C_Interface.c ****         return DEVICE_UNCONNECTED;
+ 395              		.loc 1 188 0
+ 396 0014 0020     		movs	r0, #0
+ 189:I2C_Interface.c ****     }
+ 397              		.loc 1 189 0
+ 398 0016 10BD     		pop	{r4, pc}
+ 399              		.cfi_endproc
+ 400              	.LFE69:
+ 401              		.size	I2C_Peripheral_IsDeviceConnected, .-I2C_Peripheral_IsDeviceConnected
+ 402              		.text
+ 403              	.Letext0:
+ 404              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 405              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\4.3\\psoc creator\\import\\gnu\\arm\\5.4.
+ 406              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 407              		.file 5 "ErrorCodes.h"
+ 408              		.file 6 "Generated_Source\\PSoC5/I2C_Master.h"
+ 409              		.file 7 "Generated_Source\\PSoC5/core_cm3.h"
+ 410              		.section	.debug_info,"",%progbits
+ 411              	.Ldebug_info0:
+ 412 0000 C8040000 		.4byte	0x4c8
+ 413 0004 0400     		.2byte	0x4
+ 414 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 415 000a 04       		.byte	0x4
+ 416 000b 01       		.uleb128 0x1
+ 417 000c A5000000 		.4byte	.LASF41
+ 418 0010 0C       		.byte	0xc
+ 419 0011 91020000 		.4byte	.LASF42
+ 420 0015 33010000 		.4byte	.LASF43
+ 421 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 422 001d 00000000 		.4byte	0
+ 423 0021 00000000 		.4byte	.Ldebug_line0
+ 424 0025 02       		.uleb128 0x2
+ 425 0026 01       		.byte	0x1
+ 426 0027 06       		.byte	0x6
+ 427 0028 72030000 		.4byte	.LASF0
+ 428 002c 03       		.uleb128 0x3
+ 429 002d 00000000 		.4byte	.LASF4
+ 430 0031 02       		.byte	0x2
+ 431 0032 1D       		.byte	0x1d
+ 432 0033 37000000 		.4byte	0x37
+ 433 0037 02       		.uleb128 0x2
+ 434 0038 01       		.byte	0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 12
+
+
+ 435 0039 08       		.byte	0x8
+ 436 003a D8010000 		.4byte	.LASF1
+ 437 003e 02       		.uleb128 0x2
+ 438 003f 02       		.byte	0x2
+ 439 0040 05       		.byte	0x5
+ 440 0041 1D030000 		.4byte	.LASF2
+ 441 0045 02       		.uleb128 0x2
+ 442 0046 02       		.byte	0x2
+ 443 0047 07       		.byte	0x7
+ 444 0048 A7010000 		.4byte	.LASF3
+ 445 004c 03       		.uleb128 0x3
+ 446 004d 45000000 		.4byte	.LASF5
+ 447 0051 02       		.byte	0x2
+ 448 0052 3F       		.byte	0x3f
+ 449 0053 57000000 		.4byte	0x57
+ 450 0057 02       		.uleb128 0x2
+ 451 0058 04       		.byte	0x4
+ 452 0059 05       		.byte	0x5
+ 453 005a 4F000000 		.4byte	.LASF6
+ 454 005e 02       		.uleb128 0x2
+ 455 005f 04       		.byte	0x4
+ 456 0060 07       		.byte	0x7
+ 457 0061 F7010000 		.4byte	.LASF7
+ 458 0065 02       		.uleb128 0x2
+ 459 0066 08       		.byte	0x8
+ 460 0067 05       		.byte	0x5
+ 461 0068 DA020000 		.4byte	.LASF8
+ 462 006c 02       		.uleb128 0x2
+ 463 006d 08       		.byte	0x8
+ 464 006e 07       		.byte	0x7
+ 465 006f 60020000 		.4byte	.LASF9
+ 466 0073 04       		.uleb128 0x4
+ 467 0074 04       		.byte	0x4
+ 468 0075 05       		.byte	0x5
+ 469 0076 696E7400 		.ascii	"int\000"
+ 470 007a 02       		.uleb128 0x2
+ 471 007b 04       		.byte	0x4
+ 472 007c 07       		.byte	0x7
+ 473 007d 53020000 		.4byte	.LASF10
+ 474 0081 03       		.uleb128 0x3
+ 475 0082 58000000 		.4byte	.LASF11
+ 476 0086 03       		.byte	0x3
+ 477 0087 18       		.byte	0x18
+ 478 0088 2C000000 		.4byte	0x2c
+ 479 008c 03       		.uleb128 0x3
+ 480 008d 71000000 		.4byte	.LASF12
+ 481 0091 03       		.byte	0x3
+ 482 0092 2C       		.byte	0x2c
+ 483 0093 4C000000 		.4byte	0x4c
+ 484 0097 05       		.uleb128 0x5
+ 485 0098 84000000 		.4byte	.LASF13
+ 486 009c 04       		.byte	0x4
+ 487 009d E401     		.2byte	0x1e4
+ 488 009f 37000000 		.4byte	0x37
+ 489 00a3 02       		.uleb128 0x2
+ 490 00a4 04       		.byte	0x4
+ 491 00a5 04       		.byte	0x4
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 13
+
+
+ 492 00a6 79000000 		.4byte	.LASF14
+ 493 00aa 02       		.uleb128 0x2
+ 494 00ab 08       		.byte	0x8
+ 495 00ac 04       		.byte	0x4
+ 496 00ad 6A000000 		.4byte	.LASF15
+ 497 00b1 02       		.uleb128 0x2
+ 498 00b2 01       		.byte	0x1
+ 499 00b3 08       		.byte	0x8
+ 500 00b4 E8020000 		.4byte	.LASF16
+ 501 00b8 06       		.uleb128 0x6
+ 502 00b9 01       		.byte	0x1
+ 503 00ba 37000000 		.4byte	0x37
+ 504 00be 05       		.byte	0x5
+ 505 00bf 15       		.byte	0x15
+ 506 00c0 D1000000 		.4byte	0xd1
+ 507 00c4 07       		.uleb128 0x7
+ 508 00c5 46030000 		.4byte	.LASF17
+ 509 00c9 00       		.byte	0
+ 510 00ca 07       		.uleb128 0x7
+ 511 00cb 4F030000 		.4byte	.LASF18
+ 512 00cf 01       		.byte	0x1
+ 513 00d0 00       		.byte	0
+ 514 00d1 03       		.uleb128 0x3
+ 515 00d2 60000000 		.4byte	.LASF19
+ 516 00d6 05       		.byte	0x5
+ 517 00d7 18       		.byte	0x18
+ 518 00d8 B8000000 		.4byte	0xb8
+ 519 00dc 02       		.uleb128 0x2
+ 520 00dd 08       		.byte	0x8
+ 521 00de 04       		.byte	0x4
+ 522 00df 2A020000 		.4byte	.LASF20
+ 523 00e3 02       		.uleb128 0x2
+ 524 00e4 04       		.byte	0x4
+ 525 00e5 07       		.byte	0x7
+ 526 00e6 CB020000 		.4byte	.LASF21
+ 527 00ea 08       		.uleb128 0x8
+ 528 00eb 7E030000 		.4byte	.LASF22
+ 529 00ef 01       		.byte	0x1
+ 530 00f0 18       		.byte	0x18
+ 531 00f1 D1000000 		.4byte	0xd1
+ 532 00f5 00000000 		.4byte	.LFB63
+ 533 00f9 0A000000 		.4byte	.LFE63-.LFB63
+ 534 00fd 01       		.uleb128 0x1
+ 535 00fe 9C       		.byte	0x9c
+ 536 00ff 0D010000 		.4byte	0x10d
+ 537 0103 09       		.uleb128 0x9
+ 538 0104 06000000 		.4byte	.LVL0
+ 539 0108 7E040000 		.4byte	0x47e
+ 540 010c 00       		.byte	0
+ 541 010d 08       		.uleb128 0x8
+ 542 010e ED020000 		.4byte	.LASF23
+ 543 0112 01       		.byte	0x1
+ 544 0113 23       		.byte	0x23
+ 545 0114 D1000000 		.4byte	0xd1
+ 546 0118 00000000 		.4byte	.LFB64
+ 547 011c 0A000000 		.4byte	.LFE64-.LFB64
+ 548 0120 01       		.uleb128 0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 14
+
+
+ 549 0121 9C       		.byte	0x9c
+ 550 0122 30010000 		.4byte	0x130
+ 551 0126 09       		.uleb128 0x9
+ 552 0127 06000000 		.4byte	.LVL1
+ 553 012b 89040000 		.4byte	0x489
+ 554 012f 00       		.byte	0
+ 555 0130 08       		.uleb128 0x8
+ 556 0131 01030000 		.4byte	.LASF24
+ 557 0135 01       		.byte	0x1
+ 558 0136 2D       		.byte	0x2d
+ 559 0137 D1000000 		.4byte	0xd1
+ 560 013b 00000000 		.4byte	.LFB65
+ 561 013f 3A000000 		.4byte	.LFE65-.LFB65
+ 562 0143 01       		.uleb128 0x1
+ 563 0144 9C       		.byte	0x9c
+ 564 0145 E9010000 		.4byte	0x1e9
+ 565 0149 0A       		.uleb128 0xa
+ 566 014a 27030000 		.4byte	.LASF25
+ 567 014e 01       		.byte	0x1
+ 568 014f 2D       		.byte	0x2d
+ 569 0150 81000000 		.4byte	0x81
+ 570 0154 00000000 		.4byte	.LLST0
+ 571 0158 0A       		.uleb128 0xa
+ 572 0159 BA010000 		.4byte	.LASF26
+ 573 015d 01       		.byte	0x1
+ 574 015e 2E       		.byte	0x2e
+ 575 015f 81000000 		.4byte	0x81
+ 576 0163 21000000 		.4byte	.LLST1
+ 577 0167 0A       		.uleb128 0xa
+ 578 0168 7F000000 		.4byte	.LASF27
+ 579 016c 01       		.byte	0x1
+ 580 016d 2F       		.byte	0x2f
+ 581 016e E9010000 		.4byte	0x1e9
+ 582 0172 42000000 		.4byte	.LLST2
+ 583 0176 0B       		.uleb128 0xb
+ 584 0177 D4020000 		.4byte	.LASF30
+ 585 017b 01       		.byte	0x1
+ 586 017c 32       		.byte	0x32
+ 587 017d 81000000 		.4byte	0x81
+ 588 0181 60000000 		.4byte	.LLST3
+ 589 0185 0C       		.uleb128 0xc
+ 590 0186 0E000000 		.4byte	.LVL4
+ 591 018a 94040000 		.4byte	0x494
+ 592 018e 9E010000 		.4byte	0x19e
+ 593 0192 0D       		.uleb128 0xd
+ 594 0193 01       		.uleb128 0x1
+ 595 0194 50       		.byte	0x50
+ 596 0195 02       		.uleb128 0x2
+ 597 0196 76       		.byte	0x76
+ 598 0197 00       		.sleb128 0
+ 599 0198 0D       		.uleb128 0xd
+ 600 0199 01       		.uleb128 0x1
+ 601 019a 51       		.byte	0x51
+ 602 019b 01       		.uleb128 0x1
+ 603 019c 30       		.byte	0x30
+ 604 019d 00       		.byte	0
+ 605 019e 0C       		.uleb128 0xc
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 15
+
+
+ 606 019f 18000000 		.4byte	.LVL6
+ 607 01a3 9F040000 		.4byte	0x49f
+ 608 01a7 B2010000 		.4byte	0x1b2
+ 609 01ab 0D       		.uleb128 0xd
+ 610 01ac 01       		.uleb128 0x1
+ 611 01ad 50       		.byte	0x50
+ 612 01ae 02       		.uleb128 0x2
+ 613 01af 75       		.byte	0x75
+ 614 01b0 00       		.sleb128 0
+ 615 01b1 00       		.byte	0
+ 616 01b2 0C       		.uleb128 0xc
+ 617 01b3 24000000 		.4byte	.LVL8
+ 618 01b7 AA040000 		.4byte	0x4aa
+ 619 01bb CB010000 		.4byte	0x1cb
+ 620 01bf 0D       		.uleb128 0xd
+ 621 01c0 01       		.uleb128 0x1
+ 622 01c1 50       		.byte	0x50
+ 623 01c2 02       		.uleb128 0x2
+ 624 01c3 76       		.byte	0x76
+ 625 01c4 00       		.sleb128 0
+ 626 01c5 0D       		.uleb128 0xd
+ 627 01c6 01       		.uleb128 0x1
+ 628 01c7 51       		.byte	0x51
+ 629 01c8 01       		.uleb128 0x1
+ 630 01c9 31       		.byte	0x31
+ 631 01ca 00       		.byte	0
+ 632 01cb 0C       		.uleb128 0xc
+ 633 01cc 2C000000 		.4byte	.LVL9
+ 634 01d0 B5040000 		.4byte	0x4b5
+ 635 01d4 DF010000 		.4byte	0x1df
+ 636 01d8 0D       		.uleb128 0xd
+ 637 01d9 01       		.uleb128 0x1
+ 638 01da 50       		.byte	0x50
+ 639 01db 02       		.uleb128 0x2
+ 640 01dc 74       		.byte	0x74
+ 641 01dd 00       		.sleb128 0
+ 642 01de 00       		.byte	0
+ 643 01df 09       		.uleb128 0x9
+ 644 01e0 32000000 		.4byte	.LVL11
+ 645 01e4 C0040000 		.4byte	0x4c0
+ 646 01e8 00       		.byte	0
+ 647 01e9 0E       		.uleb128 0xe
+ 648 01ea 04       		.byte	0x4
+ 649 01eb 81000000 		.4byte	0x81
+ 650 01ef 08       		.uleb128 0x8
+ 651 01f0 09020000 		.4byte	.LASF28
+ 652 01f4 01       		.byte	0x1
+ 653 01f5 4A       		.byte	0x4a
+ 654 01f6 D1000000 		.4byte	0xd1
+ 655 01fa 00000000 		.4byte	.LFB66
+ 656 01fe 5A000000 		.4byte	.LFE66-.LFB66
+ 657 0202 01       		.uleb128 0x1
+ 658 0203 9C       		.byte	0x9c
+ 659 0204 D6020000 		.4byte	0x2d6
+ 660 0208 0A       		.uleb128 0xa
+ 661 0209 27030000 		.4byte	.LASF25
+ 662 020d 01       		.byte	0x1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 16
+
+
+ 663 020e 4A       		.byte	0x4a
+ 664 020f 81000000 		.4byte	0x81
+ 665 0213 94000000 		.4byte	.LLST4
+ 666 0217 0A       		.uleb128 0xa
+ 667 0218 BA010000 		.4byte	.LASF26
+ 668 021c 01       		.byte	0x1
+ 669 021d 4B       		.byte	0x4b
+ 670 021e 81000000 		.4byte	0x81
+ 671 0222 B5000000 		.4byte	.LLST5
+ 672 0226 0A       		.uleb128 0xa
+ 673 0227 A1020000 		.4byte	.LASF29
+ 674 022b 01       		.byte	0x1
+ 675 022c 4C       		.byte	0x4c
+ 676 022d 81000000 		.4byte	0x81
+ 677 0231 DE000000 		.4byte	.LLST6
+ 678 0235 0A       		.uleb128 0xa
+ 679 0236 7F000000 		.4byte	.LASF27
+ 680 023a 01       		.byte	0x1
+ 681 023b 4D       		.byte	0x4d
+ 682 023c E9010000 		.4byte	0x1e9
+ 683 0240 FF000000 		.4byte	.LLST7
+ 684 0244 0F       		.uleb128 0xf
+ 685 0245 6900     		.ascii	"i\000"
+ 686 0247 01       		.byte	0x1
+ 687 0248 4F       		.byte	0x4f
+ 688 0249 97000000 		.4byte	0x97
+ 689 024d 1D010000 		.4byte	.LLST8
+ 690 0251 0B       		.uleb128 0xb
+ 691 0252 D4020000 		.4byte	.LASF30
+ 692 0256 01       		.byte	0x1
+ 693 0257 56       		.byte	0x56
+ 694 0258 81000000 		.4byte	0x81
+ 695 025c 5E010000 		.4byte	.LLST9
+ 696 0260 0C       		.uleb128 0xc
+ 697 0261 14000000 		.4byte	.LVL15
+ 698 0265 94040000 		.4byte	0x494
+ 699 0269 79020000 		.4byte	0x279
+ 700 026d 0D       		.uleb128 0xd
+ 701 026e 01       		.uleb128 0x1
+ 702 026f 50       		.byte	0x50
+ 703 0270 02       		.uleb128 0x2
+ 704 0271 78       		.byte	0x78
+ 705 0272 00       		.sleb128 0
+ 706 0273 0D       		.uleb128 0xd
+ 707 0274 01       		.uleb128 0x1
+ 708 0275 51       		.byte	0x51
+ 709 0276 01       		.uleb128 0x1
+ 710 0277 30       		.byte	0x30
+ 711 0278 00       		.byte	0
+ 712 0279 0C       		.uleb128 0xc
+ 713 027a 1E000000 		.4byte	.LVL17
+ 714 027e 9F040000 		.4byte	0x49f
+ 715 0282 8D020000 		.4byte	0x28d
+ 716 0286 0D       		.uleb128 0xd
+ 717 0287 01       		.uleb128 0x1
+ 718 0288 50       		.byte	0x50
+ 719 0289 02       		.uleb128 0x2
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 17
+
+
+ 720 028a 74       		.byte	0x74
+ 721 028b 00       		.sleb128 0
+ 722 028c 00       		.byte	0
+ 723 028d 0C       		.uleb128 0xc
+ 724 028e 2A000000 		.4byte	.LVL19
+ 725 0292 AA040000 		.4byte	0x4aa
+ 726 0296 A6020000 		.4byte	0x2a6
+ 727 029a 0D       		.uleb128 0xd
+ 728 029b 01       		.uleb128 0x1
+ 729 029c 50       		.byte	0x50
+ 730 029d 02       		.uleb128 0x2
+ 731 029e 78       		.byte	0x78
+ 732 029f 00       		.sleb128 0
+ 733 02a0 0D       		.uleb128 0xd
+ 734 02a1 01       		.uleb128 0x1
+ 735 02a2 51       		.byte	0x51
+ 736 02a3 01       		.uleb128 0x1
+ 737 02a4 31       		.byte	0x31
+ 738 02a5 00       		.byte	0
+ 739 02a6 0C       		.uleb128 0xc
+ 740 02a7 36000000 		.4byte	.LVL21
+ 741 02ab B5040000 		.4byte	0x4b5
+ 742 02af B9020000 		.4byte	0x2b9
+ 743 02b3 0D       		.uleb128 0xd
+ 744 02b4 01       		.uleb128 0x1
+ 745 02b5 50       		.byte	0x50
+ 746 02b6 01       		.uleb128 0x1
+ 747 02b7 31       		.byte	0x31
+ 748 02b8 00       		.byte	0
+ 749 02b9 0C       		.uleb128 0xc
+ 750 02ba 4A000000 		.4byte	.LVL26
+ 751 02be B5040000 		.4byte	0x4b5
+ 752 02c2 CC020000 		.4byte	0x2cc
+ 753 02c6 0D       		.uleb128 0xd
+ 754 02c7 01       		.uleb128 0x1
+ 755 02c8 50       		.byte	0x50
+ 756 02c9 01       		.uleb128 0x1
+ 757 02ca 30       		.byte	0x30
+ 758 02cb 00       		.byte	0
+ 759 02cc 09       		.uleb128 0x9
+ 760 02cd 50000000 		.4byte	.LVL28
+ 761 02d1 C0040000 		.4byte	0x4c0
+ 762 02d5 00       		.byte	0
+ 763 02d6 08       		.uleb128 0x8
+ 764 02d7 36020000 		.4byte	.LASF31
+ 765 02db 01       		.byte	0x1
+ 766 02dc 77       		.byte	0x77
+ 767 02dd D1000000 		.4byte	0xd1
+ 768 02e1 00000000 		.4byte	.LFB67
+ 769 02e5 2E000000 		.4byte	.LFE67-.LFB67
+ 770 02e9 01       		.uleb128 0x1
+ 771 02ea 9C       		.byte	0x9c
+ 772 02eb 70030000 		.4byte	0x370
+ 773 02ef 0A       		.uleb128 0xa
+ 774 02f0 27030000 		.4byte	.LASF25
+ 775 02f4 01       		.byte	0x1
+ 776 02f5 77       		.byte	0x77
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 18
+
+
+ 777 02f6 81000000 		.4byte	0x81
+ 778 02fa 9D010000 		.4byte	.LLST10
+ 779 02fe 0A       		.uleb128 0xa
+ 780 02ff BA010000 		.4byte	.LASF26
+ 781 0303 01       		.byte	0x1
+ 782 0304 78       		.byte	0x78
+ 783 0305 81000000 		.4byte	0x81
+ 784 0309 BE010000 		.4byte	.LLST11
+ 785 030d 0A       		.uleb128 0xa
+ 786 030e 7F000000 		.4byte	.LASF27
+ 787 0312 01       		.byte	0x1
+ 788 0313 79       		.byte	0x79
+ 789 0314 81000000 		.4byte	0x81
+ 790 0318 DF010000 		.4byte	.LLST12
+ 791 031c 0B       		.uleb128 0xb
+ 792 031d D4020000 		.4byte	.LASF30
+ 793 0321 01       		.byte	0x1
+ 794 0322 7C       		.byte	0x7c
+ 795 0323 81000000 		.4byte	0x81
+ 796 0327 00020000 		.4byte	.LLST13
+ 797 032b 0C       		.uleb128 0xc
+ 798 032c 0C000000 		.4byte	.LVL31
+ 799 0330 94040000 		.4byte	0x494
+ 800 0334 3E030000 		.4byte	0x33e
+ 801 0338 0D       		.uleb128 0xd
+ 802 0339 01       		.uleb128 0x1
+ 803 033a 51       		.byte	0x51
+ 804 033b 01       		.uleb128 0x1
+ 805 033c 30       		.byte	0x30
+ 806 033d 00       		.byte	0
+ 807 033e 0C       		.uleb128 0xc
+ 808 033f 16000000 		.4byte	.LVL33
+ 809 0343 9F040000 		.4byte	0x49f
+ 810 0347 52030000 		.4byte	0x352
+ 811 034b 0D       		.uleb128 0xd
+ 812 034c 01       		.uleb128 0x1
+ 813 034d 50       		.byte	0x50
+ 814 034e 02       		.uleb128 0x2
+ 815 034f 75       		.byte	0x75
+ 816 0350 00       		.sleb128 0
+ 817 0351 00       		.byte	0
+ 818 0352 0C       		.uleb128 0xc
+ 819 0353 20000000 		.4byte	.LVL35
+ 820 0357 9F040000 		.4byte	0x49f
+ 821 035b 66030000 		.4byte	0x366
+ 822 035f 0D       		.uleb128 0xd
+ 823 0360 01       		.uleb128 0x1
+ 824 0361 50       		.byte	0x50
+ 825 0362 02       		.uleb128 0x2
+ 826 0363 76       		.byte	0x76
+ 827 0364 00       		.sleb128 0
+ 828 0365 00       		.byte	0
+ 829 0366 09       		.uleb128 0x9
+ 830 0367 26000000 		.4byte	.LVL37
+ 831 036b C0040000 		.4byte	0x4c0
+ 832 036f 00       		.byte	0
+ 833 0370 08       		.uleb128 0x8
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 19
+
+
+ 834 0371 85010000 		.4byte	.LASF32
+ 835 0375 01       		.byte	0x1
+ 836 0376 8F       		.byte	0x8f
+ 837 0377 D1000000 		.4byte	0xd1
+ 838 037b 00000000 		.4byte	.LFB68
+ 839 037f 40000000 		.4byte	.LFE68-.LFB68
+ 840 0383 01       		.uleb128 0x1
+ 841 0384 9C       		.byte	0x9c
+ 842 0385 1B040000 		.4byte	0x41b
+ 843 0389 0A       		.uleb128 0xa
+ 844 038a 27030000 		.4byte	.LASF25
+ 845 038e 01       		.byte	0x1
+ 846 038f 8F       		.byte	0x8f
+ 847 0390 81000000 		.4byte	0x81
+ 848 0394 29020000 		.4byte	.LLST14
+ 849 0398 0A       		.uleb128 0xa
+ 850 0399 BA010000 		.4byte	.LASF26
+ 851 039d 01       		.byte	0x1
+ 852 039e 90       		.byte	0x90
+ 853 039f 81000000 		.4byte	0x81
+ 854 03a3 4A020000 		.4byte	.LLST15
+ 855 03a7 0A       		.uleb128 0xa
+ 856 03a8 A1020000 		.4byte	.LASF29
+ 857 03ac 01       		.byte	0x1
+ 858 03ad 91       		.byte	0x91
+ 859 03ae 81000000 		.4byte	0x81
+ 860 03b2 73020000 		.4byte	.LLST16
+ 861 03b6 0A       		.uleb128 0xa
+ 862 03b7 7F000000 		.4byte	.LASF27
+ 863 03bb 01       		.byte	0x1
+ 864 03bc 92       		.byte	0x92
+ 865 03bd E9010000 		.4byte	0x1e9
+ 866 03c1 94020000 		.4byte	.LLST17
+ 867 03c5 0F       		.uleb128 0xf
+ 868 03c6 6900     		.ascii	"i\000"
+ 869 03c8 01       		.byte	0x1
+ 870 03c9 94       		.byte	0x94
+ 871 03ca 97000000 		.4byte	0x97
+ 872 03ce B2020000 		.4byte	.LLST18
+ 873 03d2 0B       		.uleb128 0xb
+ 874 03d3 D4020000 		.4byte	.LASF30
+ 875 03d7 01       		.byte	0x1
+ 876 03d8 9B       		.byte	0x9b
+ 877 03d9 81000000 		.4byte	0x81
+ 878 03dd F3020000 		.4byte	.LLST19
+ 879 03e1 0C       		.uleb128 0xc
+ 880 03e2 10000000 		.4byte	.LVL41
+ 881 03e6 94040000 		.4byte	0x494
+ 882 03ea F4030000 		.4byte	0x3f4
+ 883 03ee 0D       		.uleb128 0xd
+ 884 03ef 01       		.uleb128 0x1
+ 885 03f0 51       		.byte	0x51
+ 886 03f1 01       		.uleb128 0x1
+ 887 03f2 30       		.byte	0x30
+ 888 03f3 00       		.byte	0
+ 889 03f4 0C       		.uleb128 0xc
+ 890 03f5 1A000000 		.4byte	.LVL43
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 20
+
+
+ 891 03f9 9F040000 		.4byte	0x49f
+ 892 03fd 08040000 		.4byte	0x408
+ 893 0401 0D       		.uleb128 0xd
+ 894 0402 01       		.uleb128 0x1
+ 895 0403 50       		.byte	0x50
+ 896 0404 02       		.uleb128 0x2
+ 897 0405 74       		.byte	0x74
+ 898 0406 00       		.sleb128 0
+ 899 0407 00       		.byte	0
+ 900 0408 09       		.uleb128 0x9
+ 901 0409 26000000 		.4byte	.LVL45
+ 902 040d 9F040000 		.4byte	0x49f
+ 903 0411 09       		.uleb128 0x9
+ 904 0412 38000000 		.4byte	.LVL52
+ 905 0416 C0040000 		.4byte	0x4c0
+ 906 041a 00       		.byte	0
+ 907 041b 08       		.uleb128 0x8
+ 908 041c 24000000 		.4byte	.LASF33
+ 909 0420 01       		.byte	0x1
+ 910 0421 B2       		.byte	0xb2
+ 911 0422 81000000 		.4byte	0x81
+ 912 0426 00000000 		.4byte	.LFB69
+ 913 042a 18000000 		.4byte	.LFE69-.LFB69
+ 914 042e 01       		.uleb128 0x1
+ 915 042f 9C       		.byte	0x9c
+ 916 0430 6D040000 		.4byte	0x46d
+ 917 0434 0A       		.uleb128 0xa
+ 918 0435 27030000 		.4byte	.LASF25
+ 919 0439 01       		.byte	0x1
+ 920 043a B2       		.byte	0xb2
+ 921 043b 81000000 		.4byte	0x81
+ 922 043f 32030000 		.4byte	.LLST20
+ 923 0443 10       		.uleb128 0x10
+ 924 0444 D4020000 		.4byte	.LASF30
+ 925 0448 01       		.byte	0x1
+ 926 0449 B5       		.byte	0xb5
+ 927 044a 81000000 		.4byte	0x81
+ 928 044e 01       		.uleb128 0x1
+ 929 044f 54       		.byte	0x54
+ 930 0450 0C       		.uleb128 0xc
+ 931 0451 08000000 		.4byte	.LVL54
+ 932 0455 94040000 		.4byte	0x494
+ 933 0459 63040000 		.4byte	0x463
+ 934 045d 0D       		.uleb128 0xd
+ 935 045e 01       		.uleb128 0x1
+ 936 045f 51       		.byte	0x51
+ 937 0460 01       		.uleb128 0x1
+ 938 0461 30       		.byte	0x30
+ 939 0462 00       		.byte	0
+ 940 0463 09       		.uleb128 0x9
+ 941 0464 0E000000 		.4byte	.LVL56
+ 942 0468 C0040000 		.4byte	0x4c0
+ 943 046c 00       		.byte	0
+ 944 046d 11       		.uleb128 0x11
+ 945 046e CB010000 		.4byte	.LASF44
+ 946 0472 07       		.byte	0x7
+ 947 0473 1207     		.2byte	0x712
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 21
+
+
+ 948 0475 79040000 		.4byte	0x479
+ 949 0479 12       		.uleb128 0x12
+ 950 047a 8C000000 		.4byte	0x8c
+ 951 047e 13       		.uleb128 0x13
+ 952 047f E6010000 		.4byte	.LASF34
+ 953 0483 E6010000 		.4byte	.LASF34
+ 954 0487 06       		.byte	0x6
+ 955 0488 93       		.byte	0x93
+ 956 0489 13       		.uleb128 0x13
+ 957 048a 36030000 		.4byte	.LASF35
+ 958 048e 36030000 		.4byte	.LASF35
+ 959 0492 06       		.byte	0x6
+ 960 0493 94       		.byte	0x94
+ 961 0494 13       		.uleb128 0x13
+ 962 0495 B0020000 		.4byte	.LASF36
+ 963 0499 B0020000 		.4byte	.LASF36
+ 964 049d 06       		.byte	0x6
+ 965 049e B1       		.byte	0xb1
+ 966 049f 13       		.uleb128 0x13
+ 967 04a0 8A000000 		.4byte	.LASF37
+ 968 04a4 8A000000 		.4byte	.LASF37
+ 969 04a8 06       		.byte	0x6
+ 970 04a9 B6       		.byte	0xb6
+ 971 04aa 13       		.uleb128 0x13
+ 972 04ab 55030000 		.4byte	.LASF38
+ 973 04af 55030000 		.4byte	.LASF38
+ 974 04b3 06       		.byte	0x6
+ 975 04b4 B3       		.byte	0xb3
+ 976 04b5 13       		.uleb128 0x13
+ 977 04b6 77020000 		.4byte	.LASF39
+ 978 04ba 77020000 		.4byte	.LASF39
+ 979 04be 06       		.byte	0x6
+ 980 04bf B7       		.byte	0xb7
+ 981 04c0 13       		.uleb128 0x13
+ 982 04c1 0A000000 		.4byte	.LASF40
+ 983 04c5 0A000000 		.4byte	.LASF40
+ 984 04c9 06       		.byte	0x6
+ 985 04ca B5       		.byte	0xb5
+ 986 04cb 00       		.byte	0
+ 987              		.section	.debug_abbrev,"",%progbits
+ 988              	.Ldebug_abbrev0:
+ 989 0000 01       		.uleb128 0x1
+ 990 0001 11       		.uleb128 0x11
+ 991 0002 01       		.byte	0x1
+ 992 0003 25       		.uleb128 0x25
+ 993 0004 0E       		.uleb128 0xe
+ 994 0005 13       		.uleb128 0x13
+ 995 0006 0B       		.uleb128 0xb
+ 996 0007 03       		.uleb128 0x3
+ 997 0008 0E       		.uleb128 0xe
+ 998 0009 1B       		.uleb128 0x1b
+ 999 000a 0E       		.uleb128 0xe
+ 1000 000b 55       		.uleb128 0x55
+ 1001 000c 17       		.uleb128 0x17
+ 1002 000d 11       		.uleb128 0x11
+ 1003 000e 01       		.uleb128 0x1
+ 1004 000f 10       		.uleb128 0x10
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 22
+
+
+ 1005 0010 17       		.uleb128 0x17
+ 1006 0011 00       		.byte	0
+ 1007 0012 00       		.byte	0
+ 1008 0013 02       		.uleb128 0x2
+ 1009 0014 24       		.uleb128 0x24
+ 1010 0015 00       		.byte	0
+ 1011 0016 0B       		.uleb128 0xb
+ 1012 0017 0B       		.uleb128 0xb
+ 1013 0018 3E       		.uleb128 0x3e
+ 1014 0019 0B       		.uleb128 0xb
+ 1015 001a 03       		.uleb128 0x3
+ 1016 001b 0E       		.uleb128 0xe
+ 1017 001c 00       		.byte	0
+ 1018 001d 00       		.byte	0
+ 1019 001e 03       		.uleb128 0x3
+ 1020 001f 16       		.uleb128 0x16
+ 1021 0020 00       		.byte	0
+ 1022 0021 03       		.uleb128 0x3
+ 1023 0022 0E       		.uleb128 0xe
+ 1024 0023 3A       		.uleb128 0x3a
+ 1025 0024 0B       		.uleb128 0xb
+ 1026 0025 3B       		.uleb128 0x3b
+ 1027 0026 0B       		.uleb128 0xb
+ 1028 0027 49       		.uleb128 0x49
+ 1029 0028 13       		.uleb128 0x13
+ 1030 0029 00       		.byte	0
+ 1031 002a 00       		.byte	0
+ 1032 002b 04       		.uleb128 0x4
+ 1033 002c 24       		.uleb128 0x24
+ 1034 002d 00       		.byte	0
+ 1035 002e 0B       		.uleb128 0xb
+ 1036 002f 0B       		.uleb128 0xb
+ 1037 0030 3E       		.uleb128 0x3e
+ 1038 0031 0B       		.uleb128 0xb
+ 1039 0032 03       		.uleb128 0x3
+ 1040 0033 08       		.uleb128 0x8
+ 1041 0034 00       		.byte	0
+ 1042 0035 00       		.byte	0
+ 1043 0036 05       		.uleb128 0x5
+ 1044 0037 16       		.uleb128 0x16
+ 1045 0038 00       		.byte	0
+ 1046 0039 03       		.uleb128 0x3
+ 1047 003a 0E       		.uleb128 0xe
+ 1048 003b 3A       		.uleb128 0x3a
+ 1049 003c 0B       		.uleb128 0xb
+ 1050 003d 3B       		.uleb128 0x3b
+ 1051 003e 05       		.uleb128 0x5
+ 1052 003f 49       		.uleb128 0x49
+ 1053 0040 13       		.uleb128 0x13
+ 1054 0041 00       		.byte	0
+ 1055 0042 00       		.byte	0
+ 1056 0043 06       		.uleb128 0x6
+ 1057 0044 04       		.uleb128 0x4
+ 1058 0045 01       		.byte	0x1
+ 1059 0046 0B       		.uleb128 0xb
+ 1060 0047 0B       		.uleb128 0xb
+ 1061 0048 49       		.uleb128 0x49
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 23
+
+
+ 1062 0049 13       		.uleb128 0x13
+ 1063 004a 3A       		.uleb128 0x3a
+ 1064 004b 0B       		.uleb128 0xb
+ 1065 004c 3B       		.uleb128 0x3b
+ 1066 004d 0B       		.uleb128 0xb
+ 1067 004e 01       		.uleb128 0x1
+ 1068 004f 13       		.uleb128 0x13
+ 1069 0050 00       		.byte	0
+ 1070 0051 00       		.byte	0
+ 1071 0052 07       		.uleb128 0x7
+ 1072 0053 28       		.uleb128 0x28
+ 1073 0054 00       		.byte	0
+ 1074 0055 03       		.uleb128 0x3
+ 1075 0056 0E       		.uleb128 0xe
+ 1076 0057 1C       		.uleb128 0x1c
+ 1077 0058 0B       		.uleb128 0xb
+ 1078 0059 00       		.byte	0
+ 1079 005a 00       		.byte	0
+ 1080 005b 08       		.uleb128 0x8
+ 1081 005c 2E       		.uleb128 0x2e
+ 1082 005d 01       		.byte	0x1
+ 1083 005e 3F       		.uleb128 0x3f
+ 1084 005f 19       		.uleb128 0x19
+ 1085 0060 03       		.uleb128 0x3
+ 1086 0061 0E       		.uleb128 0xe
+ 1087 0062 3A       		.uleb128 0x3a
+ 1088 0063 0B       		.uleb128 0xb
+ 1089 0064 3B       		.uleb128 0x3b
+ 1090 0065 0B       		.uleb128 0xb
+ 1091 0066 27       		.uleb128 0x27
+ 1092 0067 19       		.uleb128 0x19
+ 1093 0068 49       		.uleb128 0x49
+ 1094 0069 13       		.uleb128 0x13
+ 1095 006a 11       		.uleb128 0x11
+ 1096 006b 01       		.uleb128 0x1
+ 1097 006c 12       		.uleb128 0x12
+ 1098 006d 06       		.uleb128 0x6
+ 1099 006e 40       		.uleb128 0x40
+ 1100 006f 18       		.uleb128 0x18
+ 1101 0070 9742     		.uleb128 0x2117
+ 1102 0072 19       		.uleb128 0x19
+ 1103 0073 01       		.uleb128 0x1
+ 1104 0074 13       		.uleb128 0x13
+ 1105 0075 00       		.byte	0
+ 1106 0076 00       		.byte	0
+ 1107 0077 09       		.uleb128 0x9
+ 1108 0078 898201   		.uleb128 0x4109
+ 1109 007b 00       		.byte	0
+ 1110 007c 11       		.uleb128 0x11
+ 1111 007d 01       		.uleb128 0x1
+ 1112 007e 31       		.uleb128 0x31
+ 1113 007f 13       		.uleb128 0x13
+ 1114 0080 00       		.byte	0
+ 1115 0081 00       		.byte	0
+ 1116 0082 0A       		.uleb128 0xa
+ 1117 0083 05       		.uleb128 0x5
+ 1118 0084 00       		.byte	0
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 24
+
+
+ 1119 0085 03       		.uleb128 0x3
+ 1120 0086 0E       		.uleb128 0xe
+ 1121 0087 3A       		.uleb128 0x3a
+ 1122 0088 0B       		.uleb128 0xb
+ 1123 0089 3B       		.uleb128 0x3b
+ 1124 008a 0B       		.uleb128 0xb
+ 1125 008b 49       		.uleb128 0x49
+ 1126 008c 13       		.uleb128 0x13
+ 1127 008d 02       		.uleb128 0x2
+ 1128 008e 17       		.uleb128 0x17
+ 1129 008f 00       		.byte	0
+ 1130 0090 00       		.byte	0
+ 1131 0091 0B       		.uleb128 0xb
+ 1132 0092 34       		.uleb128 0x34
+ 1133 0093 00       		.byte	0
+ 1134 0094 03       		.uleb128 0x3
+ 1135 0095 0E       		.uleb128 0xe
+ 1136 0096 3A       		.uleb128 0x3a
+ 1137 0097 0B       		.uleb128 0xb
+ 1138 0098 3B       		.uleb128 0x3b
+ 1139 0099 0B       		.uleb128 0xb
+ 1140 009a 49       		.uleb128 0x49
+ 1141 009b 13       		.uleb128 0x13
+ 1142 009c 02       		.uleb128 0x2
+ 1143 009d 17       		.uleb128 0x17
+ 1144 009e 00       		.byte	0
+ 1145 009f 00       		.byte	0
+ 1146 00a0 0C       		.uleb128 0xc
+ 1147 00a1 898201   		.uleb128 0x4109
+ 1148 00a4 01       		.byte	0x1
+ 1149 00a5 11       		.uleb128 0x11
+ 1150 00a6 01       		.uleb128 0x1
+ 1151 00a7 31       		.uleb128 0x31
+ 1152 00a8 13       		.uleb128 0x13
+ 1153 00a9 01       		.uleb128 0x1
+ 1154 00aa 13       		.uleb128 0x13
+ 1155 00ab 00       		.byte	0
+ 1156 00ac 00       		.byte	0
+ 1157 00ad 0D       		.uleb128 0xd
+ 1158 00ae 8A8201   		.uleb128 0x410a
+ 1159 00b1 00       		.byte	0
+ 1160 00b2 02       		.uleb128 0x2
+ 1161 00b3 18       		.uleb128 0x18
+ 1162 00b4 9142     		.uleb128 0x2111
+ 1163 00b6 18       		.uleb128 0x18
+ 1164 00b7 00       		.byte	0
+ 1165 00b8 00       		.byte	0
+ 1166 00b9 0E       		.uleb128 0xe
+ 1167 00ba 0F       		.uleb128 0xf
+ 1168 00bb 00       		.byte	0
+ 1169 00bc 0B       		.uleb128 0xb
+ 1170 00bd 0B       		.uleb128 0xb
+ 1171 00be 49       		.uleb128 0x49
+ 1172 00bf 13       		.uleb128 0x13
+ 1173 00c0 00       		.byte	0
+ 1174 00c1 00       		.byte	0
+ 1175 00c2 0F       		.uleb128 0xf
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 25
+
+
+ 1176 00c3 34       		.uleb128 0x34
+ 1177 00c4 00       		.byte	0
+ 1178 00c5 03       		.uleb128 0x3
+ 1179 00c6 08       		.uleb128 0x8
+ 1180 00c7 3A       		.uleb128 0x3a
+ 1181 00c8 0B       		.uleb128 0xb
+ 1182 00c9 3B       		.uleb128 0x3b
+ 1183 00ca 0B       		.uleb128 0xb
+ 1184 00cb 49       		.uleb128 0x49
+ 1185 00cc 13       		.uleb128 0x13
+ 1186 00cd 02       		.uleb128 0x2
+ 1187 00ce 17       		.uleb128 0x17
+ 1188 00cf 00       		.byte	0
+ 1189 00d0 00       		.byte	0
+ 1190 00d1 10       		.uleb128 0x10
+ 1191 00d2 34       		.uleb128 0x34
+ 1192 00d3 00       		.byte	0
+ 1193 00d4 03       		.uleb128 0x3
+ 1194 00d5 0E       		.uleb128 0xe
+ 1195 00d6 3A       		.uleb128 0x3a
+ 1196 00d7 0B       		.uleb128 0xb
+ 1197 00d8 3B       		.uleb128 0x3b
+ 1198 00d9 0B       		.uleb128 0xb
+ 1199 00da 49       		.uleb128 0x49
+ 1200 00db 13       		.uleb128 0x13
+ 1201 00dc 02       		.uleb128 0x2
+ 1202 00dd 18       		.uleb128 0x18
+ 1203 00de 00       		.byte	0
+ 1204 00df 00       		.byte	0
+ 1205 00e0 11       		.uleb128 0x11
+ 1206 00e1 34       		.uleb128 0x34
+ 1207 00e2 00       		.byte	0
+ 1208 00e3 03       		.uleb128 0x3
+ 1209 00e4 0E       		.uleb128 0xe
+ 1210 00e5 3A       		.uleb128 0x3a
+ 1211 00e6 0B       		.uleb128 0xb
+ 1212 00e7 3B       		.uleb128 0x3b
+ 1213 00e8 05       		.uleb128 0x5
+ 1214 00e9 49       		.uleb128 0x49
+ 1215 00ea 13       		.uleb128 0x13
+ 1216 00eb 3F       		.uleb128 0x3f
+ 1217 00ec 19       		.uleb128 0x19
+ 1218 00ed 3C       		.uleb128 0x3c
+ 1219 00ee 19       		.uleb128 0x19
+ 1220 00ef 00       		.byte	0
+ 1221 00f0 00       		.byte	0
+ 1222 00f1 12       		.uleb128 0x12
+ 1223 00f2 35       		.uleb128 0x35
+ 1224 00f3 00       		.byte	0
+ 1225 00f4 49       		.uleb128 0x49
+ 1226 00f5 13       		.uleb128 0x13
+ 1227 00f6 00       		.byte	0
+ 1228 00f7 00       		.byte	0
+ 1229 00f8 13       		.uleb128 0x13
+ 1230 00f9 2E       		.uleb128 0x2e
+ 1231 00fa 00       		.byte	0
+ 1232 00fb 3F       		.uleb128 0x3f
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 26
+
+
+ 1233 00fc 19       		.uleb128 0x19
+ 1234 00fd 3C       		.uleb128 0x3c
+ 1235 00fe 19       		.uleb128 0x19
+ 1236 00ff 6E       		.uleb128 0x6e
+ 1237 0100 0E       		.uleb128 0xe
+ 1238 0101 03       		.uleb128 0x3
+ 1239 0102 0E       		.uleb128 0xe
+ 1240 0103 3A       		.uleb128 0x3a
+ 1241 0104 0B       		.uleb128 0xb
+ 1242 0105 3B       		.uleb128 0x3b
+ 1243 0106 0B       		.uleb128 0xb
+ 1244 0107 00       		.byte	0
+ 1245 0108 00       		.byte	0
+ 1246 0109 00       		.byte	0
+ 1247              		.section	.debug_loc,"",%progbits
+ 1248              	.Ldebug_loc0:
+ 1249              	.LLST0:
+ 1250 0000 00000000 		.4byte	.LVL2
+ 1251 0004 0D000000 		.4byte	.LVL4-1
+ 1252 0008 0100     		.2byte	0x1
+ 1253 000a 50       		.byte	0x50
+ 1254 000b 0D000000 		.4byte	.LVL4-1
+ 1255 000f 3A000000 		.4byte	.LFE65
+ 1256 0013 0400     		.2byte	0x4
+ 1257 0015 F3       		.byte	0xf3
+ 1258 0016 01       		.uleb128 0x1
+ 1259 0017 50       		.byte	0x50
+ 1260 0018 9F       		.byte	0x9f
+ 1261 0019 00000000 		.4byte	0
+ 1262 001d 00000000 		.4byte	0
+ 1263              	.LLST1:
+ 1264 0021 00000000 		.4byte	.LVL2
+ 1265 0025 0A000000 		.4byte	.LVL3
+ 1266 0029 0100     		.2byte	0x1
+ 1267 002b 51       		.byte	0x51
+ 1268 002c 0A000000 		.4byte	.LVL3
+ 1269 0030 3A000000 		.4byte	.LFE65
+ 1270 0034 0400     		.2byte	0x4
+ 1271 0036 F3       		.byte	0xf3
+ 1272 0037 01       		.uleb128 0x1
+ 1273 0038 51       		.byte	0x51
+ 1274 0039 9F       		.byte	0x9f
+ 1275 003a 00000000 		.4byte	0
+ 1276 003e 00000000 		.4byte	0
+ 1277              	.LLST2:
+ 1278 0042 00000000 		.4byte	.LVL2
+ 1279 0046 0D000000 		.4byte	.LVL4-1
+ 1280 004a 0100     		.2byte	0x1
+ 1281 004c 52       		.byte	0x52
+ 1282 004d 0D000000 		.4byte	.LVL4-1
+ 1283 0051 3A000000 		.4byte	.LFE65
+ 1284 0055 0100     		.2byte	0x1
+ 1285 0057 57       		.byte	0x57
+ 1286 0058 00000000 		.4byte	0
+ 1287 005c 00000000 		.4byte	0
+ 1288              	.LLST3:
+ 1289 0060 0E000000 		.4byte	.LVL4
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 27
+
+
+ 1290 0064 14000000 		.4byte	.LVL5
+ 1291 0068 0100     		.2byte	0x1
+ 1292 006a 50       		.byte	0x50
+ 1293 006b 18000000 		.4byte	.LVL6
+ 1294 006f 20000000 		.4byte	.LVL7
+ 1295 0073 0100     		.2byte	0x1
+ 1296 0075 50       		.byte	0x50
+ 1297 0076 24000000 		.4byte	.LVL8
+ 1298 007a 2B000000 		.4byte	.LVL9-1
+ 1299 007e 0100     		.2byte	0x1
+ 1300 0080 50       		.byte	0x50
+ 1301 0081 2E000000 		.4byte	.LVL10
+ 1302 0085 3A000000 		.4byte	.LFE65
+ 1303 0089 0100     		.2byte	0x1
+ 1304 008b 54       		.byte	0x54
+ 1305 008c 00000000 		.4byte	0
+ 1306 0090 00000000 		.4byte	0
+ 1307              	.LLST4:
+ 1308 0094 00000000 		.4byte	.LVL12
+ 1309 0098 13000000 		.4byte	.LVL15-1
+ 1310 009c 0100     		.2byte	0x1
+ 1311 009e 50       		.byte	0x50
+ 1312 009f 13000000 		.4byte	.LVL15-1
+ 1313 00a3 5A000000 		.4byte	.LFE66
+ 1314 00a7 0400     		.2byte	0x4
+ 1315 00a9 F3       		.byte	0xf3
+ 1316 00aa 01       		.uleb128 0x1
+ 1317 00ab 50       		.byte	0x50
+ 1318 00ac 9F       		.byte	0x9f
+ 1319 00ad 00000000 		.4byte	0
+ 1320 00b1 00000000 		.4byte	0
+ 1321              	.LLST5:
+ 1322 00b5 00000000 		.4byte	.LVL12
+ 1323 00b9 0E000000 		.4byte	.LVL14
+ 1324 00bd 0100     		.2byte	0x1
+ 1325 00bf 51       		.byte	0x51
+ 1326 00c0 0E000000 		.4byte	.LVL14
+ 1327 00c4 30000000 		.4byte	.LVL20
+ 1328 00c8 0100     		.2byte	0x1
+ 1329 00ca 54       		.byte	0x54
+ 1330 00cb 3E000000 		.4byte	.LVL24
+ 1331 00cf 40000000 		.4byte	.LVL25
+ 1332 00d3 0100     		.2byte	0x1
+ 1333 00d5 54       		.byte	0x54
+ 1334 00d6 00000000 		.4byte	0
+ 1335 00da 00000000 		.4byte	0
+ 1336              	.LLST6:
+ 1337 00de 00000000 		.4byte	.LVL12
+ 1338 00e2 13000000 		.4byte	.LVL15-1
+ 1339 00e6 0100     		.2byte	0x1
+ 1340 00e8 52       		.byte	0x52
+ 1341 00e9 13000000 		.4byte	.LVL15-1
+ 1342 00ed 5A000000 		.4byte	.LFE66
+ 1343 00f1 0400     		.2byte	0x4
+ 1344 00f3 F3       		.byte	0xf3
+ 1345 00f4 01       		.uleb128 0x1
+ 1346 00f5 52       		.byte	0x52
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 28
+
+
+ 1347 00f6 9F       		.byte	0x9f
+ 1348 00f7 00000000 		.4byte	0
+ 1349 00fb 00000000 		.4byte	0
+ 1350              	.LLST7:
+ 1351 00ff 00000000 		.4byte	.LVL12
+ 1352 0103 13000000 		.4byte	.LVL15-1
+ 1353 0107 0100     		.2byte	0x1
+ 1354 0109 53       		.byte	0x53
+ 1355 010a 13000000 		.4byte	.LVL15-1
+ 1356 010e 5A000000 		.4byte	.LFE66
+ 1357 0112 0100     		.2byte	0x1
+ 1358 0114 56       		.byte	0x56
+ 1359 0115 00000000 		.4byte	0
+ 1360 0119 00000000 		.4byte	0
+ 1361              	.LLST8:
+ 1362 011d 0A000000 		.4byte	.LVL13
+ 1363 0121 30000000 		.4byte	.LVL20
+ 1364 0125 0200     		.2byte	0x2
+ 1365 0127 30       		.byte	0x30
+ 1366 0128 9F       		.byte	0x9f
+ 1367 0129 30000000 		.4byte	.LVL20
+ 1368 012d 3A000000 		.4byte	.LVL22
+ 1369 0131 0100     		.2byte	0x1
+ 1370 0133 54       		.byte	0x54
+ 1371 0134 3C000000 		.4byte	.LVL23
+ 1372 0138 3E000000 		.4byte	.LVL24
+ 1373 013c 0100     		.2byte	0x1
+ 1374 013e 54       		.byte	0x54
+ 1375 013f 3E000000 		.4byte	.LVL24
+ 1376 0143 40000000 		.4byte	.LVL25
+ 1377 0147 0200     		.2byte	0x2
+ 1378 0149 30       		.byte	0x30
+ 1379 014a 9F       		.byte	0x9f
+ 1380 014b 40000000 		.4byte	.LVL25
+ 1381 014f 4C000000 		.4byte	.LVL27
+ 1382 0153 0100     		.2byte	0x1
+ 1383 0155 54       		.byte	0x54
+ 1384 0156 00000000 		.4byte	0
+ 1385 015a 00000000 		.4byte	0
+ 1386              	.LLST9:
+ 1387 015e 14000000 		.4byte	.LVL15
+ 1388 0162 1A000000 		.4byte	.LVL16
+ 1389 0166 0100     		.2byte	0x1
+ 1390 0168 50       		.byte	0x50
+ 1391 0169 1E000000 		.4byte	.LVL17
+ 1392 016d 26000000 		.4byte	.LVL18
+ 1393 0171 0100     		.2byte	0x1
+ 1394 0173 50       		.byte	0x50
+ 1395 0174 2A000000 		.4byte	.LVL19
+ 1396 0178 30000000 		.4byte	.LVL20
+ 1397 017c 0100     		.2byte	0x1
+ 1398 017e 50       		.byte	0x50
+ 1399 017f 3E000000 		.4byte	.LVL24
+ 1400 0183 40000000 		.4byte	.LVL25
+ 1401 0187 0100     		.2byte	0x1
+ 1402 0189 50       		.byte	0x50
+ 1403 018a 4C000000 		.4byte	.LVL27
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 29
+
+
+ 1404 018e 5A000000 		.4byte	.LFE66
+ 1405 0192 0100     		.2byte	0x1
+ 1406 0194 55       		.byte	0x55
+ 1407 0195 00000000 		.4byte	0
+ 1408 0199 00000000 		.4byte	0
+ 1409              	.LLST10:
+ 1410 019d 00000000 		.4byte	.LVL29
+ 1411 01a1 0B000000 		.4byte	.LVL31-1
+ 1412 01a5 0100     		.2byte	0x1
+ 1413 01a7 50       		.byte	0x50
+ 1414 01a8 0B000000 		.4byte	.LVL31-1
+ 1415 01ac 2E000000 		.4byte	.LFE67
+ 1416 01b0 0400     		.2byte	0x4
+ 1417 01b2 F3       		.byte	0xf3
+ 1418 01b3 01       		.uleb128 0x1
+ 1419 01b4 50       		.byte	0x50
+ 1420 01b5 9F       		.byte	0x9f
+ 1421 01b6 00000000 		.4byte	0
+ 1422 01ba 00000000 		.4byte	0
+ 1423              	.LLST11:
+ 1424 01be 00000000 		.4byte	.LVL29
+ 1425 01c2 08000000 		.4byte	.LVL30
+ 1426 01c6 0100     		.2byte	0x1
+ 1427 01c8 51       		.byte	0x51
+ 1428 01c9 08000000 		.4byte	.LVL30
+ 1429 01cd 2E000000 		.4byte	.LFE67
+ 1430 01d1 0400     		.2byte	0x4
+ 1431 01d3 F3       		.byte	0xf3
+ 1432 01d4 01       		.uleb128 0x1
+ 1433 01d5 51       		.byte	0x51
+ 1434 01d6 9F       		.byte	0x9f
+ 1435 01d7 00000000 		.4byte	0
+ 1436 01db 00000000 		.4byte	0
+ 1437              	.LLST12:
+ 1438 01df 00000000 		.4byte	.LVL29
+ 1439 01e3 0B000000 		.4byte	.LVL31-1
+ 1440 01e7 0100     		.2byte	0x1
+ 1441 01e9 52       		.byte	0x52
+ 1442 01ea 0B000000 		.4byte	.LVL31-1
+ 1443 01ee 2E000000 		.4byte	.LFE67
+ 1444 01f2 0400     		.2byte	0x4
+ 1445 01f4 F3       		.byte	0xf3
+ 1446 01f5 01       		.uleb128 0x1
+ 1447 01f6 52       		.byte	0x52
+ 1448 01f7 9F       		.byte	0x9f
+ 1449 01f8 00000000 		.4byte	0
+ 1450 01fc 00000000 		.4byte	0
+ 1451              	.LLST13:
+ 1452 0200 0C000000 		.4byte	.LVL31
+ 1453 0204 12000000 		.4byte	.LVL32
+ 1454 0208 0100     		.2byte	0x1
+ 1455 020a 50       		.byte	0x50
+ 1456 020b 16000000 		.4byte	.LVL33
+ 1457 020f 1C000000 		.4byte	.LVL34
+ 1458 0213 0100     		.2byte	0x1
+ 1459 0215 50       		.byte	0x50
+ 1460 0216 22000000 		.4byte	.LVL36
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 30
+
+
+ 1461 021a 2E000000 		.4byte	.LFE67
+ 1462 021e 0100     		.2byte	0x1
+ 1463 0220 54       		.byte	0x54
+ 1464 0221 00000000 		.4byte	0
+ 1465 0225 00000000 		.4byte	0
+ 1466              	.LLST14:
+ 1467 0229 00000000 		.4byte	.LVL38
+ 1468 022d 0F000000 		.4byte	.LVL41-1
+ 1469 0231 0100     		.2byte	0x1
+ 1470 0233 50       		.byte	0x50
+ 1471 0234 0F000000 		.4byte	.LVL41-1
+ 1472 0238 40000000 		.4byte	.LFE68
+ 1473 023c 0400     		.2byte	0x4
+ 1474 023e F3       		.byte	0xf3
+ 1475 023f 01       		.uleb128 0x1
+ 1476 0240 50       		.byte	0x50
+ 1477 0241 9F       		.byte	0x9f
+ 1478 0242 00000000 		.4byte	0
+ 1479 0246 00000000 		.4byte	0
+ 1480              	.LLST15:
+ 1481 024a 00000000 		.4byte	.LVL38
+ 1482 024e 0A000000 		.4byte	.LVL40
+ 1483 0252 0100     		.2byte	0x1
+ 1484 0254 51       		.byte	0x51
+ 1485 0255 0A000000 		.4byte	.LVL40
+ 1486 0259 20000000 		.4byte	.LVL44
+ 1487 025d 0100     		.2byte	0x1
+ 1488 025f 54       		.byte	0x54
+ 1489 0260 2E000000 		.4byte	.LVL49
+ 1490 0264 30000000 		.4byte	.LVL50
+ 1491 0268 0100     		.2byte	0x1
+ 1492 026a 54       		.byte	0x54
+ 1493 026b 00000000 		.4byte	0
+ 1494 026f 00000000 		.4byte	0
+ 1495              	.LLST16:
+ 1496 0273 00000000 		.4byte	.LVL38
+ 1497 0277 0F000000 		.4byte	.LVL41-1
+ 1498 027b 0100     		.2byte	0x1
+ 1499 027d 52       		.byte	0x52
+ 1500 027e 0F000000 		.4byte	.LVL41-1
+ 1501 0282 40000000 		.4byte	.LFE68
+ 1502 0286 0400     		.2byte	0x4
+ 1503 0288 F3       		.byte	0xf3
+ 1504 0289 01       		.uleb128 0x1
+ 1505 028a 52       		.byte	0x52
+ 1506 028b 9F       		.byte	0x9f
+ 1507 028c 00000000 		.4byte	0
+ 1508 0290 00000000 		.4byte	0
+ 1509              	.LLST17:
+ 1510 0294 00000000 		.4byte	.LVL38
+ 1511 0298 0F000000 		.4byte	.LVL41-1
+ 1512 029c 0100     		.2byte	0x1
+ 1513 029e 53       		.byte	0x53
+ 1514 029f 0F000000 		.4byte	.LVL41-1
+ 1515 02a3 40000000 		.4byte	.LFE68
+ 1516 02a7 0100     		.2byte	0x1
+ 1517 02a9 57       		.byte	0x57
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 31
+
+
+ 1518 02aa 00000000 		.4byte	0
+ 1519 02ae 00000000 		.4byte	0
+ 1520              	.LLST18:
+ 1521 02b2 06000000 		.4byte	.LVL39
+ 1522 02b6 20000000 		.4byte	.LVL44
+ 1523 02ba 0200     		.2byte	0x2
+ 1524 02bc 30       		.byte	0x30
+ 1525 02bd 9F       		.byte	0x9f
+ 1526 02be 20000000 		.4byte	.LVL44
+ 1527 02c2 2A000000 		.4byte	.LVL47
+ 1528 02c6 0100     		.2byte	0x1
+ 1529 02c8 54       		.byte	0x54
+ 1530 02c9 2C000000 		.4byte	.LVL48
+ 1531 02cd 2E000000 		.4byte	.LVL49
+ 1532 02d1 0100     		.2byte	0x1
+ 1533 02d3 54       		.byte	0x54
+ 1534 02d4 2E000000 		.4byte	.LVL49
+ 1535 02d8 30000000 		.4byte	.LVL50
+ 1536 02dc 0200     		.2byte	0x2
+ 1537 02de 30       		.byte	0x30
+ 1538 02df 9F       		.byte	0x9f
+ 1539 02e0 30000000 		.4byte	.LVL50
+ 1540 02e4 34000000 		.4byte	.LVL51
+ 1541 02e8 0100     		.2byte	0x1
+ 1542 02ea 54       		.byte	0x54
+ 1543 02eb 00000000 		.4byte	0
+ 1544 02ef 00000000 		.4byte	0
+ 1545              	.LLST19:
+ 1546 02f3 10000000 		.4byte	.LVL41
+ 1547 02f7 16000000 		.4byte	.LVL42
+ 1548 02fb 0100     		.2byte	0x1
+ 1549 02fd 50       		.byte	0x50
+ 1550 02fe 1A000000 		.4byte	.LVL43
+ 1551 0302 20000000 		.4byte	.LVL44
+ 1552 0306 0100     		.2byte	0x1
+ 1553 0308 50       		.byte	0x50
+ 1554 0309 20000000 		.4byte	.LVL44
+ 1555 030d 2E000000 		.4byte	.LVL49
+ 1556 0311 0100     		.2byte	0x1
+ 1557 0313 55       		.byte	0x55
+ 1558 0314 2E000000 		.4byte	.LVL49
+ 1559 0318 30000000 		.4byte	.LVL50
+ 1560 031c 0100     		.2byte	0x1
+ 1561 031e 50       		.byte	0x50
+ 1562 031f 30000000 		.4byte	.LVL50
+ 1563 0323 40000000 		.4byte	.LFE68
+ 1564 0327 0100     		.2byte	0x1
+ 1565 0329 55       		.byte	0x55
+ 1566 032a 00000000 		.4byte	0
+ 1567 032e 00000000 		.4byte	0
+ 1568              	.LLST20:
+ 1569 0332 00000000 		.4byte	.LVL53
+ 1570 0336 07000000 		.4byte	.LVL54-1
+ 1571 033a 0100     		.2byte	0x1
+ 1572 033c 50       		.byte	0x50
+ 1573 033d 07000000 		.4byte	.LVL54-1
+ 1574 0341 18000000 		.4byte	.LFE69
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 32
+
+
+ 1575 0345 0400     		.2byte	0x4
+ 1576 0347 F3       		.byte	0xf3
+ 1577 0348 01       		.uleb128 0x1
+ 1578 0349 50       		.byte	0x50
+ 1579 034a 9F       		.byte	0x9f
+ 1580 034b 00000000 		.4byte	0
+ 1581 034f 00000000 		.4byte	0
+ 1582              		.section	.debug_aranges,"",%progbits
+ 1583 0000 4C000000 		.4byte	0x4c
+ 1584 0004 0200     		.2byte	0x2
+ 1585 0006 00000000 		.4byte	.Ldebug_info0
+ 1586 000a 04       		.byte	0x4
+ 1587 000b 00       		.byte	0
+ 1588 000c 0000     		.2byte	0
+ 1589 000e 0000     		.2byte	0
+ 1590 0010 00000000 		.4byte	.LFB63
+ 1591 0014 0A000000 		.4byte	.LFE63-.LFB63
+ 1592 0018 00000000 		.4byte	.LFB64
+ 1593 001c 0A000000 		.4byte	.LFE64-.LFB64
+ 1594 0020 00000000 		.4byte	.LFB65
+ 1595 0024 3A000000 		.4byte	.LFE65-.LFB65
+ 1596 0028 00000000 		.4byte	.LFB66
+ 1597 002c 5A000000 		.4byte	.LFE66-.LFB66
+ 1598 0030 00000000 		.4byte	.LFB67
+ 1599 0034 2E000000 		.4byte	.LFE67-.LFB67
+ 1600 0038 00000000 		.4byte	.LFB68
+ 1601 003c 40000000 		.4byte	.LFE68-.LFB68
+ 1602 0040 00000000 		.4byte	.LFB69
+ 1603 0044 18000000 		.4byte	.LFE69-.LFB69
+ 1604 0048 00000000 		.4byte	0
+ 1605 004c 00000000 		.4byte	0
+ 1606              		.section	.debug_ranges,"",%progbits
+ 1607              	.Ldebug_ranges0:
+ 1608 0000 00000000 		.4byte	.LFB63
+ 1609 0004 0A000000 		.4byte	.LFE63
+ 1610 0008 00000000 		.4byte	.LFB64
+ 1611 000c 0A000000 		.4byte	.LFE64
+ 1612 0010 00000000 		.4byte	.LFB65
+ 1613 0014 3A000000 		.4byte	.LFE65
+ 1614 0018 00000000 		.4byte	.LFB66
+ 1615 001c 5A000000 		.4byte	.LFE66
+ 1616 0020 00000000 		.4byte	.LFB67
+ 1617 0024 2E000000 		.4byte	.LFE67
+ 1618 0028 00000000 		.4byte	.LFB68
+ 1619 002c 40000000 		.4byte	.LFE68
+ 1620 0030 00000000 		.4byte	.LFB69
+ 1621 0034 18000000 		.4byte	.LFE69
+ 1622 0038 00000000 		.4byte	0
+ 1623 003c 00000000 		.4byte	0
+ 1624              		.section	.debug_line,"",%progbits
+ 1625              	.Ldebug_line0:
+ 1626 0000 35020000 		.section	.debug_str,"MS",%progbits,1
+ 1626      02007501 
+ 1626      00000201 
+ 1626      FB0E0D00 
+ 1626      01010101 
+ 1627              	.LASF4:
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 33
+
+
+ 1628 0000 5F5F7569 		.ascii	"__uint8_t\000"
+ 1628      6E74385F 
+ 1628      7400
+ 1629              	.LASF40:
+ 1630 000a 4932435F 		.ascii	"I2C_Master_MasterSendStop\000"
+ 1630      4D617374 
+ 1630      65725F4D 
+ 1630      61737465 
+ 1630      7253656E 
+ 1631              	.LASF33:
+ 1632 0024 4932435F 		.ascii	"I2C_Peripheral_IsDeviceConnected\000"
+ 1632      50657269 
+ 1632      70686572 
+ 1632      616C5F49 
+ 1632      73446576 
+ 1633              	.LASF5:
+ 1634 0045 5F5F696E 		.ascii	"__int32_t\000"
+ 1634      7433325F 
+ 1634      7400
+ 1635              	.LASF6:
+ 1636 004f 6C6F6E67 		.ascii	"long int\000"
+ 1636      20696E74 
+ 1636      00
+ 1637              	.LASF11:
+ 1638 0058 75696E74 		.ascii	"uint8_t\000"
+ 1638      385F7400 
+ 1639              	.LASF19:
+ 1640 0060 4572726F 		.ascii	"ErrorCode\000"
+ 1640      72436F64 
+ 1640      6500
+ 1641              	.LASF15:
+ 1642 006a 646F7562 		.ascii	"double\000"
+ 1642      6C6500
+ 1643              	.LASF12:
+ 1644 0071 696E7433 		.ascii	"int32_t\000"
+ 1644      325F7400 
+ 1645              	.LASF14:
+ 1646 0079 666C6F61 		.ascii	"float\000"
+ 1646      7400
+ 1647              	.LASF27:
+ 1648 007f 64617461 		.ascii	"data\000"
+ 1648      00
+ 1649              	.LASF13:
+ 1650 0084 75696E74 		.ascii	"uint8\000"
+ 1650      3800
+ 1651              	.LASF37:
+ 1652 008a 4932435F 		.ascii	"I2C_Master_MasterWriteByte\000"
+ 1652      4D617374 
+ 1652      65725F4D 
+ 1652      61737465 
+ 1652      72577269 
+ 1653              	.LASF41:
+ 1654 00a5 474E5520 		.ascii	"GNU C11 5.4.1 20160609 (release) [ARM/embedded-5-br"
+ 1654      43313120 
+ 1654      352E342E 
+ 1654      31203230 
+ 1654      31363036 
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 34
+
+
+ 1655 00d8 616E6368 		.ascii	"anch revision 237715] -mcpu=cortex-m3 -mthumb -g -O"
+ 1655      20726576 
+ 1655      6973696F 
+ 1655      6E203233 
+ 1655      37373135 
+ 1656 010b 67202D66 		.ascii	"g -ffunction-sections -ffat-lto-objects\000"
+ 1656      66756E63 
+ 1656      74696F6E 
+ 1656      2D736563 
+ 1656      74696F6E 
+ 1657              	.LASF43:
+ 1658 0133 433A5C55 		.ascii	"C:\\Users\\marco\\Desktop\\AY1920_II_HW_05_SINATRA_"
+ 1658      73657273 
+ 1658      5C6D6172 
+ 1658      636F5C44 
+ 1658      65736B74 
+ 1659 0162 4D415243 		.ascii	"MARCO\\AY1920_II_HW_05_PROJ_3.cydsn\000"
+ 1659      4F5C4159 
+ 1659      31393230 
+ 1659      5F49495F 
+ 1659      48575F30 
+ 1660              	.LASF32:
+ 1661 0185 4932435F 		.ascii	"I2C_Peripheral_WriteRegisterMulti\000"
+ 1661      50657269 
+ 1661      70686572 
+ 1661      616C5F57 
+ 1661      72697465 
+ 1662              	.LASF3:
+ 1663 01a7 73686F72 		.ascii	"short unsigned int\000"
+ 1663      7420756E 
+ 1663      7369676E 
+ 1663      65642069 
+ 1663      6E7400
+ 1664              	.LASF26:
+ 1665 01ba 72656769 		.ascii	"register_address\000"
+ 1665      73746572 
+ 1665      5F616464 
+ 1665      72657373 
+ 1665      00
+ 1666              	.LASF44:
+ 1667 01cb 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1667      52784275 
+ 1667      66666572 
+ 1667      00
+ 1668              	.LASF1:
+ 1669 01d8 756E7369 		.ascii	"unsigned char\000"
+ 1669      676E6564 
+ 1669      20636861 
+ 1669      7200
+ 1670              	.LASF34:
+ 1671 01e6 4932435F 		.ascii	"I2C_Master_Start\000"
+ 1671      4D617374 
+ 1671      65725F53 
+ 1671      74617274 
+ 1671      00
+ 1672              	.LASF7:
+ 1673 01f7 6C6F6E67 		.ascii	"long unsigned int\000"
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 35
+
+
+ 1673      20756E73 
+ 1673      69676E65 
+ 1673      6420696E 
+ 1673      7400
+ 1674              	.LASF28:
+ 1675 0209 4932435F 		.ascii	"I2C_Peripheral_ReadRegisterMulti\000"
+ 1675      50657269 
+ 1675      70686572 
+ 1675      616C5F52 
+ 1675      65616452 
+ 1676              	.LASF20:
+ 1677 022a 6C6F6E67 		.ascii	"long double\000"
+ 1677      20646F75 
+ 1677      626C6500 
+ 1678              	.LASF31:
+ 1679 0236 4932435F 		.ascii	"I2C_Peripheral_WriteRegister\000"
+ 1679      50657269 
+ 1679      70686572 
+ 1679      616C5F57 
+ 1679      72697465 
+ 1680              	.LASF10:
+ 1681 0253 756E7369 		.ascii	"unsigned int\000"
+ 1681      676E6564 
+ 1681      20696E74 
+ 1681      00
+ 1682              	.LASF9:
+ 1683 0260 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1683      206C6F6E 
+ 1683      6720756E 
+ 1683      7369676E 
+ 1683      65642069 
+ 1684              	.LASF39:
+ 1685 0277 4932435F 		.ascii	"I2C_Master_MasterReadByte\000"
+ 1685      4D617374 
+ 1685      65725F4D 
+ 1685      61737465 
+ 1685      72526561 
+ 1686              	.LASF42:
+ 1687 0291 4932435F 		.ascii	"I2C_Interface.c\000"
+ 1687      496E7465 
+ 1687      72666163 
+ 1687      652E6300 
+ 1688              	.LASF29:
+ 1689 02a1 72656769 		.ascii	"register_count\000"
+ 1689      73746572 
+ 1689      5F636F75 
+ 1689      6E7400
+ 1690              	.LASF36:
+ 1691 02b0 4932435F 		.ascii	"I2C_Master_MasterSendStart\000"
+ 1691      4D617374 
+ 1691      65725F4D 
+ 1691      61737465 
+ 1691      7253656E 
+ 1692              	.LASF21:
+ 1693 02cb 73697A65 		.ascii	"sizetype\000"
+ 1693      74797065 
+ 1693      00
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 36
+
+
+ 1694              	.LASF30:
+ 1695 02d4 6572726F 		.ascii	"error\000"
+ 1695      7200
+ 1696              	.LASF8:
+ 1697 02da 6C6F6E67 		.ascii	"long long int\000"
+ 1697      206C6F6E 
+ 1697      6720696E 
+ 1697      7400
+ 1698              	.LASF16:
+ 1699 02e8 63686172 		.ascii	"char\000"
+ 1699      00
+ 1700              	.LASF23:
+ 1701 02ed 4932435F 		.ascii	"I2C_Peripheral_Stop\000"
+ 1701      50657269 
+ 1701      70686572 
+ 1701      616C5F53 
+ 1701      746F7000 
+ 1702              	.LASF24:
+ 1703 0301 4932435F 		.ascii	"I2C_Peripheral_ReadRegister\000"
+ 1703      50657269 
+ 1703      70686572 
+ 1703      616C5F52 
+ 1703      65616452 
+ 1704              	.LASF2:
+ 1705 031d 73686F72 		.ascii	"short int\000"
+ 1705      7420696E 
+ 1705      7400
+ 1706              	.LASF25:
+ 1707 0327 64657669 		.ascii	"device_address\000"
+ 1707      63655F61 
+ 1707      64647265 
+ 1707      737300
+ 1708              	.LASF35:
+ 1709 0336 4932435F 		.ascii	"I2C_Master_Stop\000"
+ 1709      4D617374 
+ 1709      65725F53 
+ 1709      746F7000 
+ 1710              	.LASF17:
+ 1711 0346 4E4F5F45 		.ascii	"NO_ERROR\000"
+ 1711      52524F52 
+ 1711      00
+ 1712              	.LASF18:
+ 1713 034f 4552524F 		.ascii	"ERROR\000"
+ 1713      5200
+ 1714              	.LASF38:
+ 1715 0355 4932435F 		.ascii	"I2C_Master_MasterSendRestart\000"
+ 1715      4D617374 
+ 1715      65725F4D 
+ 1715      61737465 
+ 1715      7253656E 
+ 1716              	.LASF0:
+ 1717 0372 7369676E 		.ascii	"signed char\000"
+ 1717      65642063 
+ 1717      68617200 
+ 1718              	.LASF22:
+ 1719 037e 4932435F 		.ascii	"I2C_Peripheral_Start\000"
+ 1719      50657269 
+ARM GAS  C:\Users\marco\AppData\Local\Temp\cc7zUN4Q.s 			page 37
+
+
+ 1719      70686572 
+ 1719      616C5F53 
+ 1719      74617274 
+ 1720              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 5.4.1 20160609 (release) [ARM/embedded-5-bran
