@@ -1,0 +1,6 @@
+;---------------------------- RX8 packet structure ---------------------------------------------------------------------------
+;Header = {0xA0};
+;Data = { 4 bytes X_axis uint32, 4 bytes Y_axis uint32, 4 bytes Z_axis uint32 }
+;Tail = {0xC0}; 
+;-----------------------------------------------------------------------------------------------------------------------------
+rx8 [h=A0] @0X_axis @1X_axis @2X_Axis @3X_Axis @0Y_axis @1Y_axis @2Y_axis @3Y_axis @0Z_axis @1Z_axis  @2Z_axis @3Z_axis [t=C0]
