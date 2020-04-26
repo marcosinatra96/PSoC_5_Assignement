@@ -38,7 +38,7 @@
         <Files Root="C:\Users\marco\Desktop\AY1920_II_HW_05_SINATRA_MARCO\AY1920_II_HW_05_PROJ_3.cydsn">
           <File BuildType="BUILD" Toolchain="">main.c</File>
           <File BuildType="BUILD" Toolchain="">I2C_Interface.c</File>
-          <File BuildType="BUILD" Toolchain="">variable_definition.h</File>
+          <File BuildType="BUILD" Toolchain="">macro_definition.h</File>
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="">I2C_Interface.h</File>
           <File BuildType="BUILD" Toolchain="">ErrorCodes.h</File>

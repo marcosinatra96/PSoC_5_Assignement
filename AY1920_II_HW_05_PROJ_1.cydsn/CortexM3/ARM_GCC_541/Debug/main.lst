@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 1
 
 
    1              		.syntax unified
@@ -45,7 +45,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
   15:main.c        **** #include "I2C_Interface.h"
   16:main.c        **** #include "project.h"
   17:main.c        **** #include "stdio.h"
-  18:main.c        **** #include "variable_definition.h"
+  18:main.c        **** #include "macro_definition.h"
   19:main.c        **** 
   20:main.c        **** 
   21:main.c        **** int main(void)
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
   33              		.cfi_def_cfa_offset 8
   34              		.cfi_offset 4, -8
   35              		.cfi_offset 14, -4
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 2
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 2
 
 
   36 0002 92B0     		sub	sp, sp, #72
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
   41:main.c        ****             UART_Debug_PutString(message); 
   72              		.loc 1 41 0
   73 002a 05A8     		add	r0, sp, #20
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 3
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 3
 
 
   74 002c FFF7FEFF 		bl	UART_Debug_PutString
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
   61:main.c        ****     {
   62:main.c        ****         UART_Debug_PutString("Error occurred during I2C comm\r\n");   
  107              		.loc 1 62 0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 4
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 4
 
 
  108 0058 8B48     		ldr	r0, .L30+8
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
   84:main.c        ****     /******************************************/
   85:main.c        ****     uint8_t ctrl_reg1; 
   86:main.c        ****     error = I2C_Peripheral_ReadRegister(LIS3DH_DEVICE_ADDRESS,
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 5
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 5
 
 
  141              		.loc 1 86 0
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  174 00b4 9DF81130 		ldrb	r3, [sp, #17]	@ zero_extendqisi2
  175 00b8 472B     		cmp	r3, #71
  176 00ba 14D0     		beq	.L11
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 6
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 6
 
 
  108:main.c        ****     {
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  208 00e6 0DF11102 		add	r2, sp, #17
  209 00ea 2021     		movs	r1, #32
  210 00ec 1820     		movs	r0, #24
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 7
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 7
 
 
  211 00ee FFF7FEFF 		bl	I2C_Peripheral_ReadRegister
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  241              		.loc 1 154 0
  242 0118 48B9     		cbnz	r0, .L15
  155:main.c        ****     {
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 8
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 8
 
 
  156:main.c        ****         sprintf(message, "TEMPERATURE CONFIG REGISTER: 0x%02X\r\n", tmp_cfg_reg);
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  174:main.c        ****     
  175:main.c        ****     
  176:main.c        ****     if (error == NO_ERROR)
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 9
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 9
 
 
  279              		.loc 1 176 0
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  315              	.LVL62:
  195:main.c        ****         UART_Debug_PutString(message); 
  316              		.loc 1 195 0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 10
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 10
 
 
  317 0184 05A8     		add	r0, sp, #20
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  350              	.LVL69:
  351 01b6 FFF7FEFF 		bl	sprintf
  352              	.LVL70:
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 11
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 11
 
 
  217:main.c        ****         UART_Debug_PutString(message); 
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  386              	.LVL78:
  387 01ec 02E0     		b	.L24
  388              	.LVL79:
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 12
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 12
 
 
  389              	.L23:
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  419 021a 9DF80D30 		ldrb	r3, [sp, #13]	@ zero_extendqisi2
  420 021e 9DF80C20 		ldrb	r2, [sp, #12]	@ zero_extendqisi2
  421 0222 2A49     		ldr	r1, .L30+76
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 13
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 13
 
 
  422 0224 05A8     		add	r0, sp, #20
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  288:main.c        ****         /********************************************************************/
  289:main.c        ****         /*    Read Auxiliary ADC register with ReadRegisterMulti function   */
  290:main.c        ****         /********************************************************************/
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 14
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 14
 
 
  291:main.c        ****         
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  492 02a8 B0010000 		.word	.LC10
  493 02ac E8010000 		.word	.LC11
  494 02b0 10020000 		.word	.LC12
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 15
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 15
 
 
  495 02b4 58020000 		.word	.LC13
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  524 00e1 000000   		.space	3
  525              	.LC6:
  526 00e4 4572726F 		.ascii	"Error occurred during I2C comm to read control regi"
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 16
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 16
 
 
  526      72206F63 
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  548      65676973 
  548      7465720D 
  548      0A00
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 17
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 17
 
 
  549 0255 000000   		.space	3
@@ -1018,7 +1018,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  572      53544552 
  572      20322061 
  573 03c3 580D0A20 		.ascii	"X\015\012 and 0x%02X\015\012\000"
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 18
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 18
 
 
  573      616E6420 
@@ -1078,7 +1078,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  624 0053 D6010000 		.4byte	.LASF5
  625 0057 03       		.uleb128 0x3
  626 0058 4F000000 		.4byte	.LASF6
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 19
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 19
 
 
  627 005c 02       		.byte	0x2
@@ -1138,7 +1138,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  681 00c3 D2000000 		.4byte	.LASF17
  682 00c7 02       		.uleb128 0x2
  683 00c8 01       		.byte	0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 20
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 20
 
 
  684 00c9 08       		.byte	0x8
@@ -1198,7 +1198,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  738 0135 0A       		.uleb128 0xa
  739 0136 D9020000 		.4byte	.LASF26
  740 013a 01       		.byte	0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 21
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 21
 
 
  741 013b 34       		.byte	0x34
@@ -1258,7 +1258,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  795 01a8 A07F     		.sleb128 -96
  796 01aa 0C       		.uleb128 0xc
  797 01ab E9010000 		.4byte	.LASF34
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 22
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 22
 
 
  798 01af 01       		.byte	0x1
@@ -1318,7 +1318,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  852 0222 02       		.uleb128 0x2
  853 0223 91       		.byte	0x91
  854 0224 44       		.sleb128 -60
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 23
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 23
 
 
  855 0225 12       		.uleb128 0x12
@@ -1378,7 +1378,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  909 0282 12       		.uleb128 0x12
  910 0283 01       		.uleb128 0x1
  911 0284 52       		.byte	0x52
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 24
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 24
 
 
  912 0285 02       		.uleb128 0x2
@@ -1438,7 +1438,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  966 02e5 51       		.byte	0x51
  967 02e6 02       		.uleb128 0x2
  968 02e7 08       		.byte	0x8
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 25
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 25
 
 
  969 02e8 27       		.byte	0x27
@@ -1498,7 +1498,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1023 0348 01       		.uleb128 0x1
  1024 0349 48       		.byte	0x48
  1025 034a 12       		.uleb128 0x12
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 26
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 26
 
 
  1026 034b 01       		.uleb128 0x1
@@ -1558,7 +1558,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1080 03a8 B6030000 		.4byte	0x3b6
  1081 03ac 12       		.uleb128 0x12
  1082 03ad 01       		.uleb128 0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 27
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 27
 
 
  1083 03ae 50       		.byte	0x50
@@ -1618,7 +1618,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1137 0405 00       		.byte	0
  1138 0406 11       		.uleb128 0x11
  1139 0407 E6000000 		.4byte	.LVL36
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 28
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 28
 
 
  1140 040b 01080000 		.4byte	0x801
@@ -1678,7 +1678,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1194 0468 50       		.byte	0x50
  1195 0469 02       		.uleb128 0x2
  1196 046a 91       		.byte	0x91
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 29
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 29
 
 
  1197 046b 44       		.sleb128 -60
@@ -1738,7 +1738,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1251 04c8 D3040000 		.4byte	0x4d3
  1252 04cc 12       		.uleb128 0x12
  1253 04cd 01       		.uleb128 0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 30
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 30
 
 
  1254 04ce 50       		.byte	0x50
@@ -1798,7 +1798,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1308 0522 02       		.uleb128 0x2
  1309 0523 74       		.byte	0x74
  1310 0524 00       		.sleb128 0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 31
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 31
 
 
  1311 0525 00       		.byte	0
@@ -1858,7 +1858,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1365 0585 23       		.byte	0x23
  1366 0586 12       		.uleb128 0x12
  1367 0587 01       		.uleb128 0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 32
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 32
 
 
  1368 0588 52       		.byte	0x52
@@ -1918,7 +1918,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1422 05e9 01       		.uleb128 0x1
  1423 05ea 51       		.byte	0x51
  1424 05eb 02       		.uleb128 0x2
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 33
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 33
 
 
  1425 05ec 08       		.byte	0x8
@@ -1978,7 +1978,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1479 0640 50       		.byte	0x50
  1480 0641 02       		.uleb128 0x2
  1481 0642 91       		.byte	0x91
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 34
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 34
 
 
  1482 0643 44       		.sleb128 -60
@@ -2038,7 +2038,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1536 0698 03       		.byte	0x3
  1537 0699 24030000 		.4byte	.LC17
  1538 069d 00       		.byte	0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 35
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 35
 
 
  1539 069e 11       		.uleb128 0x11
@@ -2098,7 +2098,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1593 06fc 01       		.uleb128 0x1
  1594 06fd 50       		.byte	0x50
  1595 06fe 01       		.uleb128 0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 36
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 36
 
 
  1596 06ff 48       		.byte	0x48
@@ -2158,7 +2158,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1650 0754 05       		.uleb128 0x5
  1651 0755 03       		.byte	0x3
  1652 0756 54030000 		.4byte	.LC18
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 37
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 37
 
 
  1653 075a 00       		.byte	0
@@ -2218,7 +2218,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1707 07aa 15       		.uleb128 0x15
  1708 07ab C7000000 		.4byte	0xc7
  1709 07af BA070000 		.4byte	0x7ba
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 38
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 38
 
 
  1710 07b3 16       		.uleb128 0x16
@@ -2250,7 +2250,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1736 07ec 2E000000 		.4byte	.LASF38
  1737 07f0 2E000000 		.4byte	.LASF38
  1738 07f4 06       		.byte	0x6
- 1739 07f5 5D       		.byte	0x5d
+ 1739 07f5 5C       		.byte	0x5c
  1740 07f6 19       		.uleb128 0x19
  1741 07f7 64030000 		.4byte	.LASF39
  1742 07fb 64030000 		.4byte	.LASF39
@@ -2265,7 +2265,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1751 080d 74030000 		.4byte	.LASF41
  1752 0811 74030000 		.4byte	.LASF41
  1753 0815 06       		.byte	0x6
- 1754 0816 17       		.byte	0x17
+ 1754 0816 16       		.byte	0x16
  1755 0817 19       		.uleb128 0x19
  1756 0818 ED020000 		.4byte	.LASF42
  1757 081c ED020000 		.4byte	.LASF42
@@ -2278,27 +2278,27 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1764 082c 76       		.byte	0x76
  1765 082d 19       		.uleb128 0x19
  1766 082e 0A030000 		.4byte	.LASF44
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 39
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 39
 
 
  1767 0832 0A030000 		.4byte	.LASF44
  1768 0836 06       		.byte	0x6
- 1769 0837 28       		.byte	0x28
+ 1769 0837 27       		.byte	0x27
  1770 0838 19       		.uleb128 0x19
  1771 0839 23020000 		.4byte	.LASF45
  1772 083d 23020000 		.4byte	.LASF45
  1773 0841 06       		.byte	0x6
- 1774 0842 43       		.byte	0x43
+ 1774 0842 42       		.byte	0x42
  1775 0843 19       		.uleb128 0x19
  1776 0844 02020000 		.4byte	.LASF46
  1777 0848 02020000 		.4byte	.LASF46
  1778 084c 06       		.byte	0x6
- 1779 084d 36       		.byte	0x36
+ 1779 084d 35       		.byte	0x35
  1780 084e 19       		.uleb128 0x19
  1781 084f A9010000 		.4byte	.LASF47
  1782 0853 A9010000 		.4byte	.LASF47
  1783 0857 06       		.byte	0x6
- 1784 0858 51       		.byte	0x51
+ 1784 0858 50       		.byte	0x50
  1785 0859 19       		.uleb128 0x19
  1786 085a B4000000 		.4byte	.LASF48
  1787 085e B4000000 		.4byte	.LASF48
@@ -2338,7 +2338,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1821 001c 00       		.byte	0
  1822 001d 00       		.byte	0
  1823 001e 03       		.uleb128 0x3
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 40
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 40
 
 
  1824 001f 16       		.uleb128 0x16
@@ -2398,7 +2398,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1878 0055 03       		.uleb128 0x3
  1879 0056 0E       		.uleb128 0xe
  1880 0057 1C       		.uleb128 0x1c
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 41
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 41
 
 
  1881 0058 0B       		.uleb128 0xb
@@ -2458,7 +2458,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1935 0090 3B       		.uleb128 0x3b
  1936 0091 0B       		.uleb128 0xb
  1937 0092 49       		.uleb128 0x49
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 42
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 42
 
 
  1938 0093 13       		.uleb128 0x13
@@ -2518,7 +2518,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  1992 00c9 0E       		.uleb128 0xe
  1993 00ca 3A       		.uleb128 0x3a
  1994 00cb 0B       		.uleb128 0xb
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 43
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 43
 
 
  1995 00cc 3B       		.uleb128 0x3b
@@ -2578,7 +2578,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2049 0107 13       		.uleb128 0x13
  2050 0108 898201   		.uleb128 0x4109
  2051 010b 01       		.byte	0x1
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 44
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 44
 
 
  2052 010c 11       		.uleb128 0x11
@@ -2638,7 +2638,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2106 0144 13       		.uleb128 0x13
  2107 0145 00       		.byte	0
  2108 0146 00       		.byte	0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 45
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 45
 
 
  2109 0147 19       		.uleb128 0x19
@@ -2698,7 +2698,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2163 005c FC000000 		.4byte	.LVL38
  2164 0060 0100     		.2byte	0x1
  2165 0062 50       		.byte	0x50
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 46
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 46
 
 
  2166 0063 08010000 		.4byte	.LVL41
@@ -2758,7 +2758,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2220 00fa 0100     		.2byte	0x1
  2221 00fc 50       		.byte	0x50
  2222 00fd 00000000 		.4byte	0
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 47
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 47
 
 
  2223 0101 00000000 		.4byte	0
@@ -2818,7 +2818,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2277              		.section	.debug_ranges,"",%progbits
  2278              	.Ldebug_ranges0:
  2279 0000 00000000 		.4byte	.LFB64
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 48
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 48
 
 
  2280 0004 D0020000 		.4byte	.LFE64
@@ -2878,7 +2878,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2304      75675F50 
  2304      75744172 
  2304      72617900 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 49
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 49
 
 
  2305              	.LASF21:
@@ -2938,7 +2938,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2327              	.LASF31:
  2328 01cb 6374726C 		.ascii	"ctrl_reg23\000"
  2328      5F726567 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 50
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 50
 
 
  2328      323300
@@ -2998,7 +2998,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2351              	.LASF12:
  2352 0287 75696E74 		.ascii	"uint8_t\000"
  2352      385F7400 
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 51
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 51
 
 
  2353              	.LASF32:
@@ -3058,7 +3058,7 @@ ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 1
  2380 0326 73686F72 		.ascii	"short int\000"
  2380      7420696E 
  2380      7400
-ARM GAS  C:\Users\marco\AppData\Local\Temp\cckO1KCQ.s 			page 52
+ARM GAS  C:\Users\marco\AppData\Local\Temp\ccB4MhSV.s 			page 52
 
 
  2381              	.LASF19:

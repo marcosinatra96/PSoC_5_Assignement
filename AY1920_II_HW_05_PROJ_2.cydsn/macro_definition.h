@@ -9,8 +9,11 @@
  *
  * ========================================
 */
-#ifndef _VARIABLE_DEFINITION_H
-        
+#ifndef _MACRO_DEFINITION_H
+    
+    /*Header guard*/
+    #define _MACRO_DEFINITION_H
+    
     /**
     *   \brief 7-bit I2C address of the slave device.
     */
@@ -32,13 +35,13 @@
     #define LIS3DH_CTRL_REG1 0x20
 
     /**
-    *   \brief Hex value to set high resolution mode to the accelerator.
-    *    In order to achieve that aim, we need the 'LPen' bit (of the 
+    *   \brief Hex value to set normal resolution mode to the accelerator.
+    *    In order to achieve that aim, we also need the 'LPen' bit (of the 
     *    Temperature Sensor Configuration register) set to 0 and then, at 
-    *    the same time, the 'HR' bit (of the Control register 4) set to 1  
+    *    the same time, the 'HR' bit (of the Control register 4) set to 0  
     *    (see below for these 2 specific bits configuration).
     */
-    #define LIS3DH_NORMAL_MODE_CTRL_REG1 0x57 //set high resolution mode 100 Hz (according to datasheet related information)
+    #define LIS3DH_NORMAL_MODE_CTRL_REG1 0x57 //set normal mode at 100 Hz (according to datasheet related information)
 
     /**
     *   \brief  Address of the Temperature Sensor Configuration register
@@ -49,13 +52,10 @@
 
     /**
     *   \brief Address of the Control register 4
-    *    In order to have a full scale FS of ±4g, we need a specific combination of
-    *    bit setting in this register. In particular, the bit named 'FS1' must be set
-    *    to 1, while the bit named 'Fs0' must be set to 0.
     */
     #define LIS3DH_CTRL_REG4 0x23
 
-    #define LIS3DH_CTRL_REG4_BDU_ACTIVE 0x98 // in this way also 'HR' bit is set to 1, FS0 and FS1 are set to 1 and 0 respectively
+    #define LIS3DH_CTRL_REG4_BDU_ACTIVE 0x80 // in this way also 'HR' bit is set to 0
 
     /**
     *   \brief Address of the ADC output LSB register
@@ -68,26 +68,25 @@
     #define LIS3DH_OUT_ADC_3H 0x0D
 
     /**
-    *   \brief bit of the STATUS REGISTER (will be used in the main.c 
-    *   in order to understand if a new set of data is available or not)
-    */    
-    
-    /**
     *   \brief Address of the accelerometer X-axis (LOW register)
     */
     #define LIS3DH_OUT_X_L 0x28
 
-    /**    
+    /**
     *   \brief bit of the STATUS REGISTER (will be used in the main.c 
     *   in order to understand if a new set of data is available or not)
-    */           
+    */    
     #define ZYXDA 3
     
     /**
     *   \brief number of bytes to be sent definition
-    */  
-    #define BYTE_TO_SEND 12 //We know EXACTLY the number of bytes to be sent
+    */    
+    #define BYTE_TO_SEND 6 //We know EXACTLY the number of bytes to be sent
     #define TRANSMIT_BUFFER_SIZE 1+ BYTE_TO_SEND +1 //Contains 1 header byte and 1 tail byte
-    
+
+    /**
+    *   \brief conversion factor from raw data (received by the accelerometer) into mg
+    */  
+    #define CONVERSION_FACTOR 1000/256    
 #endif
 /* [] END OF FILE */

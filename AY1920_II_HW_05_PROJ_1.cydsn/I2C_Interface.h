@@ -6,8 +6,7 @@
  * this C-code to another platform, you could simply replace this
  * interface and still use the code.
  *
- * \author Davide Marzorati
- * \date September 12, 2019
+ * \Author Marco Sinatra
 */
 
 #ifndef I2C_Interface_H

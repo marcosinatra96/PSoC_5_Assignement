@@ -41,7 +41,7 @@
           <File BuildType="BUILD" Toolchain="">cyapicallbacks.h</File>
           <File BuildType="BUILD" Toolchain="">I2C_Interface.h</File>
           <File BuildType="BUILD" Toolchain="">ErrorCodes.h</File>
-          <File BuildType="BUILD" Toolchain="">variable_definition.h</File>
+          <File BuildType="BUILD" Toolchain="">macro_definition.h</File>
         </Files>
       </Folder>
       <Folder BuildType="STRICT" Path="C:\Users\marco\Desktop\AY1920_II_HW_05_SINATRA_MARCO\AY1920_II_HW_05_PROJ_1.cydsn\Generated_Source\PSoC5">

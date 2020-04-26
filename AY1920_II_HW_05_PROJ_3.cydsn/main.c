@@ -19,8 +19,7 @@
 #include "I2C_Interface.h"
 #include "project.h"
 #include "stdio.h"
-#include "math.h"
-#include "variable_definition.h"
+#include "macro_definition.h"
 
 int main(void)
 {
@@ -190,9 +189,10 @@ int main(void)
     /*   variable declaration and for(;;) definition)   */
     /****************************************************/
     
-    int range = 512; /*Maximum data range: indeed, 12-bit resolution corresponds to 4096 levels (values are 
-                      from -2048 to + 2048),namely ±4g. Hence ±1g corresponds to ±512 */
-    float32 gravity = 9.81; //Gravity acceleration 
+    #define range   512 /*Maximum data range: indeed, 12-bit resolution corresponds to 4096 levels (values are 
+                        from -2048 to + 2048),namely ±4g. Hence ±1g corresponds to ±512 */
+    #define gravity 9.81 //Gravity acceleration
+    
     int16_t Out_Acc_X; //X-axis accelerometer value in integer
     int16_t Out_Acc_Y; //Y-axis accelerometer value in integer
     int16_t Out_Acc_Z; //Z-axis accelerometer value in integer
@@ -229,15 +229,15 @@ int main(void)
             
             if(error == NO_ERROR)
             {
-                /*  Brief explanation to send data as float to the Bridge Control Panel: the METHOD HERE
-                USED, namely  < *(float*)(axis) > , allows to directly take the memory occupied by the specific 
-                axis (namely the uint8_t X-axis, Y_axis and Z_axis) and read it as a floating point number. 
-                In this way, we can just set the parameters of the Bridge Control Panel inerface as 'float'
-                and the 'scale' is set as default to value 1 (we do not lose information at all!). 
-                ANOTHER ALTERNATIVE and STANDARD method implies multiplying the values by a factor of 1000 and 
-                then, in the Bridge Control Panel interface, setting the 'scale' parameter equal to '0.001' (thus 
-                allowing to keep at least 3 decimals) */
-                
+                /*  Brief explanation to send data as float to the Bridge Control Panel: 
+                - The METHOD HERE IMPLEMENTED, namely  < *(float*)(axis) > , allows to directly take the memory occupied   
+                by the specific axis (namely the uint8_t X-axis, Y_axis and Z_axis) and read it as a floating  
+                point number. In this way, when considering the Bridge Control Panel inerface, we can just set the 
+                'float' type and leave the 'scale' parameter as default value of 1 (we do not lose information at all!). 
+                - ANOTHER ALTERNATIVE and STANDARD method (WHICH IS NOT IMPLEMENTED IN THIS FILE) implies multiplying 
+                the acceleration values by a factor of 1000 (while doing the conversion in m/s2 units) and then, 
+                in the Bridge Control Panel interface, setting the 'scale' parameter equal to '0.001' (thus allowing 
+                to keep at least 3 decimals) */
                 
                 /*  X-AXIS  */
                 Out_Acc_X = (int16)((AccData[0] | (AccData[1]<<8)))>>4; //Right justified 16bit integer         

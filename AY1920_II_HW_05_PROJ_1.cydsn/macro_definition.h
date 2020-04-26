@@ -1,18 +1,14 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
+ * 
+ * \file variable_definition.h
+ * \brief definition of macro directives
  *
  * ========================================
 */
-#ifndef _VARIABLE_DEFINITION_H
+#ifndef _MACRO_DEFINITION_H
     
     /*Header guard*/
-    #define _VARIABLE_DEFINITION_H
+    #define _MACRO_DEFINITION_H
     
     /**
     *   \brief 7-bit I2C address of the slave device.

@@ -15,7 +15,7 @@
 #include "I2C_Interface.h"
 #include "project.h"
 #include "stdio.h"
-#include "variable_definition.h"
+#include "macro_definition.h"
 
 
 int main(void)
